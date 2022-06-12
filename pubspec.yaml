@@ -8,6 +8,9 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.5
+  intl: 0.17.0
+  google_nav_bar: 5.0.6
+  get_storage: 2.0.3
   flutter: 
     sdk: flutter
 
