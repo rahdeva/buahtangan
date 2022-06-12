@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import '../modules/articles/bindings/articles_binding.dart';
+import '../modules/articles/views/articles_view.dart';
+import '../modules/dashboard/bindings/dashboard_binding.dart';
+import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/detail/bindings/detail_binding.dart';
 import '../modules/detail/views/detail_view.dart';
 import '../modules/favorites/bindings/favorites_binding.dart';
@@ -28,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.DASHBOARD;
 
   static final routes = [
     GetPage(
@@ -80,6 +84,16 @@ class AppPages {
       name: _Paths.FAVORITES,
       page: () => FavoritesView(),
       binding: FavoritesBinding(),
+    ),
+    GetPage(
+      name: _Paths.ARTICLES,
+      page: () => ArticlesView(),
+      binding: ArticlesBinding(),
+    ),
+    GetPage(
+      name: _Paths.DASHBOARD,
+      page: () => DashboardView(),
+      binding: DashboardBinding(),
     ),
   ];
 }

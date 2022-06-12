@@ -15,6 +15,8 @@ abstract class Routes {
   static const GIFT_PLANNER = _Paths.GIFT_PLANNER;
   static const SETTING = _Paths.SETTING;
   static const FAVORITES = _Paths.FAVORITES;
+  static const ARTICLES = _Paths.ARTICLES;
+  static const DASHBOARD = _Paths.DASHBOARD;
 }
 
 abstract class _Paths {
@@ -29,4 +31,6 @@ abstract class _Paths {
   static const GIFT_PLANNER = '/gift-planner';
   static const SETTING = '/setting';
   static const FAVORITES = '/favorites';
+  static const ARTICLES = '/articles';
+  static const DASHBOARD = '/dashboard';
 }
