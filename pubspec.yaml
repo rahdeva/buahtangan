@@ -12,6 +12,7 @@ dependencies:
   google_nav_bar: 5.0.6
   get_storage: 2.0.3
   flutter_iconly: 1.0.2
+  google_fonts: 3.0.1
   flutter: 
     sdk: flutter
 
