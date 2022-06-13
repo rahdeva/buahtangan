@@ -51,7 +51,7 @@ var projectTextTheme = TextTheme(
     letterSpacing: 0.25
   ),
   button: GoogleFonts.nunito(
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: FontWeight.w500,
     letterSpacing: 1.25
   ),
