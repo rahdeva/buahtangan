@@ -1,7 +1,7 @@
+import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 
 import 'package:get/get.dart';
 
@@ -55,7 +55,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 24),
                       decoration: BoxDecoration(
                         boxShadow: [dropShadow()],
                       ),
@@ -84,7 +84,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 24.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 40),
                       decoration: BoxDecoration(
                         boxShadow: [dropShadow()],
                       ),
@@ -117,6 +117,104 @@ class LoginView extends GetView<LoginController> {
                             borderSide: BorderSide(color: surfaceColor, width: 0.0)
                           )
                         ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 16, bottom: 24, right: 40, left: 40),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Remember Me",
+                            textAlign: TextAlign.start,
+                            style: projectTextTheme.overline?.copyWith(color: onSurfaceColor),
+                          ),
+                          TextButton(
+                            onPressed: () => Get.defaultDialog(title: "Forgot Password?", middleText : "Halo Mamank"),
+                            child: Text(
+                              "forgot password?",
+                              textAlign: TextAlign.start,
+                              style: projectTextTheme.overline?.copyWith(
+                                color: slate500
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 24),
+                      child: Container(
+                        width: Get.width,
+                        height: 60,
+                        decoration: shadowDecoration(),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Get.toNamed(Routes.HOME);
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(primaryColor),
+                            overlayColor: MaterialStateProperty.all(primaryVariantColor),
+                            foregroundColor: MaterialStateProperty.all(onPrimaryColor),
+                            shape: MaterialStateProperty.all<OutlinedBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              )
+                            ),
+                          ),
+                          child: Text(
+                            "Login",
+                            style: projectTextTheme.button,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 24),
+                      child: Text("- Or Login With -", style: projectTextTheme.caption),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: (){},
+                            child: const CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Colors.white,
+                              backgroundImage: NetworkImage("https://source.unsplash.com/random/80x80?google"),
+                            ),
+                          ),
+                          const SizedBox(width: 50),
+                          InkWell(
+                            onTap: (){},
+                            child: const CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Colors.white,
+                              backgroundImage: NetworkImage("https://source.unsplash.com/random/80x80?google"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 50, bottom: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Didn’t have any account yet?", style: projectTextTheme.bodyText2),
+                          TextButton(
+                            onPressed: () => Get.toNamed(Routes.REGISTER), 
+                            child: Text(
+                              "Register!", 
+                              style: projectTextTheme.bodyText2?.copyWith(
+                                color: secondaryColor,
+                                fontWeight: FontWeight.bold
+                              )
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ],
