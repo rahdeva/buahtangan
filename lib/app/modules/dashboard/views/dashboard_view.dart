@@ -1,3 +1,5 @@
+import '../../../themes/color_theme.dart';
+
 import '../../articles/views/articles_view.dart';
 import '../../gift-directory/views/gift_directory_view.dart';
 import '../../gift-planner/views/gift_planner_view.dart';
@@ -47,15 +49,15 @@ class DashboardView extends GetView<DashboardController> {
                 child: GNav(
                   selectedIndex: controller.tabIndex,
                   onTabChange: controller.changeTabIndex,
-                  rippleColor: Colors.grey[300]!,
-                  hoverColor: Colors.grey[100]!,
+                  rippleColor: primaryColor,
+                  hoverColor: primaryColor,
                   gap: 8,
-                  activeColor: Colors.black,
+                  activeColor: onPrimaryColor,
                   iconSize: 24,
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                   duration: const Duration(milliseconds: 400),
-                  tabBackgroundColor: Colors.grey[100]!,
-                  color: Colors.black,
+                  tabBackgroundColor: primaryColor,
+                  color: onBackgroundColor,
                   tabs: const [
                     GButton(
                       icon: IconlyLight.home,
