@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/onboarding_controller.dart';
+import '../controllers/home_result_controller.dart';
 
-class OnboardingView extends GetView<OnboardingController> {
-  const OnboardingView({Key? key}) : super(key: key);
+class HomeResultView extends GetView<HomeResultController> {
+  const HomeResultView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OnboardingView'),
+        title: Text('HomeResultView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'OnboardingView is working',
+          'HomeResultView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

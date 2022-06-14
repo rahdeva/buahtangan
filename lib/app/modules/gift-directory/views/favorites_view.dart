@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/onboarding_controller.dart';
+import '../controllers/favorites_controller.dart';
 
-class OnboardingView extends GetView<OnboardingController> {
-  const OnboardingView({Key? key}) : super(key: key);
+class FavoritesView extends GetView<FavoritesController> {
+  const FavoritesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OnboardingView'),
+        title: Text('FavoritesView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'OnboardingView is working',
+          'FavoritesView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

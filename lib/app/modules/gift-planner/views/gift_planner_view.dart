@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import '../controllers/gift_planner_controller.dart';
 
 class GiftPlannerView extends GetView<GiftPlannerController> {
+  const GiftPlannerView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

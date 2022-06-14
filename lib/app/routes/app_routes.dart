@@ -11,12 +11,19 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
   static const GIFT_DIRECTORY = _Paths.GIFT_DIRECTORY;
-  static const DETAIL = _Paths.DETAIL;
   static const GIFT_PLANNER = _Paths.GIFT_PLANNER;
   static const SETTING = _Paths.SETTING;
   static const FAVORITES = _Paths.FAVORITES;
   static const ARTICLES = _Paths.ARTICLES;
   static const DASHBOARD = _Paths.DASHBOARD;
+  static const HOME_RESULT = _Paths.HOME_RESULT;
+  static const GIFT_DETAIL = _Paths.GIFT_DETAIL;
+  static const ARTICLES_DETAIL = _Paths.ARTICLES_DETAIL;
+  static const PLANNER_ADD_PEOPLE = _Paths.PLANNER_ADD_PEOPLE;
+  static const PLANNER_PEOPLE_DETAIL = _Paths.PLANNER_PEOPLE_DETAIL;
+  static const EDIT_PROFIL = _Paths.EDIT_PROFIL;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const ABOUT = _Paths.ABOUT;
 }
 
 abstract class _Paths {
@@ -27,10 +34,17 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const GIFT_DIRECTORY = '/gift-directory';
-  static const DETAIL = '/detail';
   static const GIFT_PLANNER = '/gift-planner';
   static const SETTING = '/setting';
   static const FAVORITES = '/favorites';
   static const ARTICLES = '/articles';
   static const DASHBOARD = '/dashboard';
+  static const HOME_RESULT = '/home-result';
+  static const GIFT_DETAIL = '/gift-detail';
+  static const ARTICLES_DETAIL = '/articles-detail';
+  static const PLANNER_ADD_PEOPLE = '/planner-add-people';
+  static const PLANNER_PEOPLE_DETAIL = '/planner-people-detail';
+  static const EDIT_PROFIL = '/edit-profil';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const ABOUT = '/about';
 }

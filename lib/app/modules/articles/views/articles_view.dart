@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import '../controllers/articles_controller.dart';
 
 class ArticlesView extends GetView<ArticlesController> {
+  const ArticlesView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

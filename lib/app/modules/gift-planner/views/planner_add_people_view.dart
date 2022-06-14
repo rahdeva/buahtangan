@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/onboarding_controller.dart';
+import '../controllers/planner_add_people_controller.dart';
 
-class OnboardingView extends GetView<OnboardingController> {
-  const OnboardingView({Key? key}) : super(key: key);
+class PlannerAddPeopleView extends GetView<PlannerAddPeopleController> {
+  const PlannerAddPeopleView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('OnboardingView'),
+        title: Text('PlannerAddPeopleView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'OnboardingView is working',
+          'PlannerAddPeopleView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),
