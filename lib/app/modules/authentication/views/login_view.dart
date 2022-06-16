@@ -2,16 +2,24 @@ import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'package:get/get.dart';
 
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  const LoginView({Key? key}) : super(key: key);
+  LoginView({Key? key}) : super(key: key);
+
+  final box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
+    if (box.read("rememberme") != null) {
+      controller.emailC.text = box.read("rememberme")["email"];
+      controller.passwordC.text = box.read("rememberme")["pass"];
+      controller.rememberme.value = true;
+    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -62,6 +70,8 @@ class LoginView extends GetView<LoginController> {
                       child: TextField(
                         style: projectTextTheme.subtitle1,
                         controller: controller.emailC,
+                        keyboardType: TextInputType.emailAddress,
+                        autocorrect: false,
                         decoration: InputDecoration(
                           labelText: "Email",
                           hintText: "Your Email...",
@@ -88,34 +98,39 @@ class LoginView extends GetView<LoginController> {
                       decoration: BoxDecoration(
                         boxShadow: [dropShadow()],
                       ),
-                      child: TextField(
-                        style: projectTextTheme.subtitle1,
-                        controller: controller.emailC,
-                        decoration: InputDecoration(
-                          labelText: "Password",
-                          hintText: "Your Password...",
-                          hoverColor: surfaceColor,
-                          fillColor: surfaceColor,
-                          focusColor: primaryColor,
-                          isDense: true,
-                          filled: true,
-                          suffixIcon: IconButton(
-                            onPressed: (){}, 
-                            icon: Icon(
-                              Icons.visibility_off_rounded,
-                              color: primaryColor,
+                      child: Obx(
+                        () => TextField(
+                          style: projectTextTheme.subtitle1,
+                          controller: controller.passwordC,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: controller.isHidden.value,
+                          autocorrect: false,
+                          decoration: InputDecoration(
+                            labelText: "Password",
+                            hintText: "Your Password...",
+                            hoverColor: surfaceColor,
+                            fillColor: surfaceColor,
+                            focusColor: primaryColor,
+                            isDense: true,
+                            filled: true,
+                            suffixIcon: IconButton(
+                              onPressed: () => controller.isHidden.toggle(), 
+                              icon: Icon(
+                                controller.isHidden.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
+                                color: primaryColor,
+                              )
+                            ),
+                            contentPadding: const EdgeInsets.all(20), 
+                            labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: primaryColor, width: 0.0)
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: surfaceColor, width: 0.0)
                             )
                           ),
-                          contentPadding: const EdgeInsets.all(20), 
-                          labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: primaryColor, width: 0.0)
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                          )
                         ),
                       ),
                     ),
@@ -124,10 +139,21 @@ class LoginView extends GetView<LoginController> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Remember Me",
-                            textAlign: TextAlign.start,
-                            style: projectTextTheme.overline?.copyWith(color: onSurfaceColor),
+                          Obx(
+                            () => Row(
+                              children: [
+                                Checkbox(
+                                  value: controller.rememberme.value,
+                                  onChanged: (_) => controller.rememberme.toggle(),
+                                ),
+                                Text(
+                                  "Remember me", 
+                                  style: projectTextTheme.caption?.copyWith(
+                                    color: slate500
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           TextButton(
                             onPressed: () => Get.defaultDialog(title: "Forgot Password?", middleText : "Halo Mamank"),
@@ -142,29 +168,34 @@ class LoginView extends GetView<LoginController> {
                         ],
                       ),
                     ),
+                    // Login Button
                     Container(
                       margin: const EdgeInsets.fromLTRB(40, 0, 40, 24),
                       child: Container(
                         width: Get.width,
                         height: 60,
                         decoration: shadowDecoration(),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Get.toNamed(Routes.HOME);
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(primaryColor),
-                            overlayColor: MaterialStateProperty.all(primaryVariantColor),
-                            foregroundColor: MaterialStateProperty.all(onPrimaryColor),
-                            shape: MaterialStateProperty.all<OutlinedBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              )
+                        child: Obx(
+                          () => ElevatedButton(
+                            onPressed: () {
+                              if (controller.isLoading.isFalse) {
+                                controller.login();
+                              }
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(primaryColor),
+                              overlayColor: MaterialStateProperty.all(primaryVariantColor),
+                              foregroundColor: MaterialStateProperty.all(onPrimaryColor),
+                              shape: MaterialStateProperty.all<OutlinedBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                )
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            "Login",
-                            style: projectTextTheme.button,
+                            child: Text(
+                              controller.isLoading.isFalse ? "Login" : "Loading...",
+                              style: projectTextTheme.button,
+                            ),
                           ),
                         ),
                       ),
@@ -227,4 +258,3 @@ class LoginView extends GetView<LoginController> {
     );
   }
 }
-

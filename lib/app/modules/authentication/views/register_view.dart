@@ -60,3 +60,81 @@ class RegisterView extends GetView<RegisterController> {
     );
   }
 }
+
+// import 'package:flutter/material.dart';
+
+// import 'package:get/get.dart';
+
+// import '../controllers/register_controller.dart';
+
+// class RegisterView extends GetView<RegisterController> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('REGISTER'),
+//         centerTitle: true,
+//       ),
+//       body: ListView(
+//         padding: EdgeInsets.all(20),
+//         children: [
+//           TextField(
+//             controller: controller.nameC,
+//             autocorrect: false,
+//             decoration: InputDecoration(
+//               labelText: "Name",
+//               border: OutlineInputBorder(),
+//             ),
+//           ),
+//           SizedBox(height: 20),
+//           TextField(
+//             controller: controller.phoneC,
+//             keyboardType: TextInputType.phone,
+//             autocorrect: false,
+//             decoration: InputDecoration(
+//               labelText: "Phone",
+//               border: OutlineInputBorder(),
+//             ),
+//           ),
+//           SizedBox(height: 20),
+//           TextField(
+//             controller: controller.emailC,
+//             keyboardType: TextInputType.emailAddress,
+//             autocorrect: false,
+//             decoration: InputDecoration(
+//               labelText: "Email",
+//               border: OutlineInputBorder(),
+//             ),
+//           ),
+//           SizedBox(height: 20),
+//           Obx(
+//             () => TextField(
+//               obscureText: controller.isHidden.value,
+//               controller: controller.passC,
+//               autocorrect: false,
+//               decoration: InputDecoration(
+//                 labelText: "Password",
+//                 border: OutlineInputBorder(),
+//                 suffixIcon: IconButton(
+//                   onPressed: () => controller.isHidden.toggle(),
+//                   icon: Icon(controller.isHidden.isTrue ? Icons.remove_red_eye : Icons.remove_red_eye_outlined),
+//                 ),
+//               ),
+//             ),
+//           ),
+//           SizedBox(height: 20),
+//           Obx(
+//             () => ElevatedButton(
+//               onPressed: () {
+//                 if (controller.isLoading.isFalse) {
+//                   controller.register();
+//                 }
+//               },
+//               child: Text(controller.isLoading.isFalse ? "REGISTER" : "LOADING..."),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
