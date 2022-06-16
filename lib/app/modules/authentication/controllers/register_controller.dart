@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class RegisterController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isHidden = true.obs;
+  RxBool isHidden2 = true.obs;
   TextEditingController nameC = TextEditingController();
   TextEditingController phoneC = TextEditingController();
   TextEditingController emailC = TextEditingController();
