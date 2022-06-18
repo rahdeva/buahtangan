@@ -28,10 +28,8 @@ import '../modules/home/bindings/home_result_binding.dart';
 import '../modules/home/views/home_result_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/onboarding/bindings/onboarding_binding.dart';
-import '../modules/onboarding/bindings/splash_binding.dart';
-import '../modules/onboarding/views/onboarding_view.dart';
-import '../modules/onboarding/views/splash_view.dart';
+import '../modules/introduction/onboarding_view.dart';
+import '../modules/introduction/splash_view.dart';
 import '../modules/gift-planner/bindings/planner_add_people_binding.dart';
 import '../modules/gift-planner/views/planner_add_people_view.dart';
 import '../modules/gift-planner/bindings/planner_people_detail_binding.dart';
@@ -46,7 +44,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -57,12 +55,10 @@ class AppPages {
     GetPage(
       name: _Paths.SPLASH,
       page: () => SplashView(),
-      binding: SplashBinding(),
     ),
     GetPage(
       name: _Paths.ONBOARDING,
       page: () => OnboardingView(),
-      binding: OnboardingBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
