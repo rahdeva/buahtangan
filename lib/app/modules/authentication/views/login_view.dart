@@ -171,31 +171,29 @@ class LoginView extends GetView<LoginController> {
                     // Login Button
                     Container(
                       margin: const EdgeInsets.fromLTRB(40, 0, 40, 24),
-                      child: Container(
-                        width: Get.width,
-                        height: 60,
-                        decoration: shadowDecoration(),
-                        child: Obx(
-                          () => ElevatedButton(
-                            onPressed: () {
-                              if (controller.isLoading.isFalse) {
-                                controller.login();
-                              }
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(primaryColor),
-                              overlayColor: MaterialStateProperty.all(primaryVariantColor),
-                              foregroundColor: MaterialStateProperty.all(onPrimaryColor),
-                              shape: MaterialStateProperty.all<OutlinedBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                )
-                              ),
+                      width: Get.width,
+                      height: 60,
+                      decoration: shadowDecoration(),
+                      child: Obx(
+                        () => ElevatedButton(
+                          onPressed: () {
+                            if (controller.isLoading.isFalse) {
+                              controller.login();
+                            }
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(primaryColor),
+                            overlayColor: MaterialStateProperty.all(primaryVariantColor),
+                            foregroundColor: MaterialStateProperty.all(onPrimaryColor),
+                            shape: MaterialStateProperty.all<OutlinedBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              )
                             ),
-                            child: Text(
-                              controller.isLoading.isFalse ? "Login" : "Loading...",
-                              style: projectTextTheme.button,
-                            ),
+                          ),
+                          child: Text(
+                            controller.isLoading.isFalse ? "Login" : "Loading...",
+                            style: projectTextTheme.button,
                           ),
                         ),
                       ),
