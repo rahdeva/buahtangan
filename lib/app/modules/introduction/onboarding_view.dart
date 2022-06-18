@@ -23,14 +23,14 @@ class _OnboardingViewState extends State<OnboardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primaryColor,
       body: PageView(
         controller: controller,
         children: [
           OnboardingItems(
-              image: "assets/lottie/recommendation.json",
+              image: "assets/lottie/finder.json",
               title: "Restaurant\nRecommendation",
-              subtitle:
-                  "Don't know where to eat?\nWe'll suggest best restaurant\nfor you!",
+              subtitle: "Don't know where to eat?\nWe'll suggest best restaurant\nfor you!",
               controller: controller),
           OnboardingItems(
               image: "assets/images/onboarding-2.png",
@@ -110,11 +110,12 @@ class OnboardingItems extends StatelessWidget {
                 )),
               ),
               onPressed: () => Get.offAllNamed(Routes.LOGIN),
-              child: Text(
+              child: const Text(
                 "Login",
-                style: const TextStyle(
+                style: TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 22.0),
-              )),
+              )
+            ),
         ),
       ],
     );
