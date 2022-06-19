@@ -7,7 +7,6 @@ abstract class Routes {
   Routes._();
   static const HOME = _Paths.HOME;
   static const SPLASH = _Paths.SPLASH;
-  static const ONBOARDING = _Paths.ONBOARDING;
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
   static const GIFT_DIRECTORY = _Paths.GIFT_DIRECTORY;
@@ -24,13 +23,13 @@ abstract class Routes {
   static const EDIT_PROFIL = _Paths.EDIT_PROFIL;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const ABOUT = _Paths.ABOUT;
+  static const ONBOARDING = _Paths.ONBOARDING;
 }
 
 abstract class _Paths {
   _Paths._();
   static const HOME = '/home';
   static const SPLASH = '/splash';
-  static const ONBOARDING = '/onboarding';
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const GIFT_DIRECTORY = '/gift-directory';
@@ -47,4 +46,5 @@ abstract class _Paths {
   static const EDIT_PROFIL = '/edit-profil';
   static const CHANGE_PASSWORD = '/change-password';
   static const ABOUT = '/about';
+  static const ONBOARDING = '/onboarding';
 }

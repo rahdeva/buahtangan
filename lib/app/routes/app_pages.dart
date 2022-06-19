@@ -1,40 +1,41 @@
 import 'package:get/get.dart';
 
-import '../modules/setting/bindings/about_binding.dart';
-import '../modules/setting/views/about_view.dart';
+import '../modules/articles/bindings/articles_binding.dart';
 import '../modules/articles/bindings/articles_detail_binding.dart';
 import '../modules/articles/views/articles_detail_view.dart';
-import '../modules/articles/bindings/articles_binding.dart';
 import '../modules/articles/views/articles_view.dart';
 import '../modules/authentication/bindings/login_binding.dart';
 import '../modules/authentication/bindings/register_binding.dart';
 import '../modules/authentication/views/login_view.dart';
 import '../modules/authentication/views/register_view.dart';
-import '../modules/setting/bindings/change_password_binding.dart';
-import '../modules/setting/views/change_password_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
-import '../modules/setting/bindings/edit_profil_binding.dart';
-import '../modules/setting/views/edit_profil_view.dart';
-import '../modules/gift-directory/bindings/gift_detail_binding.dart';
-import '../modules/gift-directory/views/gift_detail_view.dart';
 import '../modules/gift-directory/bindings/favorites_binding.dart';
+import '../modules/gift-directory/bindings/gift_detail_binding.dart';
 import '../modules/gift-directory/bindings/gift_directory_binding.dart';
 import '../modules/gift-directory/views/favorites_view.dart';
+import '../modules/gift-directory/views/gift_detail_view.dart';
 import '../modules/gift-directory/views/gift_directory_view.dart';
 import '../modules/gift-planner/bindings/gift_planner_binding.dart';
+import '../modules/gift-planner/bindings/planner_add_people_binding.dart';
+import '../modules/gift-planner/bindings/planner_people_detail_binding.dart';
 import '../modules/gift-planner/views/gift_planner_view.dart';
+import '../modules/gift-planner/views/planner_add_people_view.dart';
+import '../modules/gift-planner/views/planner_people_detail_view.dart';
+import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/bindings/home_result_binding.dart';
 import '../modules/home/views/home_result_view.dart';
-import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/introduction/onboarding_view.dart';
-import '../modules/introduction/splash_view.dart';
-import '../modules/gift-planner/bindings/planner_add_people_binding.dart';
-import '../modules/gift-planner/views/planner_add_people_view.dart';
-import '../modules/gift-planner/bindings/planner_people_detail_binding.dart';
-import '../modules/gift-planner/views/planner_people_detail_view.dart';
+import '../modules/introduction/views/splash_view.dart';
+import '../modules/introduction/bindings/onboarding_binding.dart';
+import '../modules/introduction/views/onboarding_view.dart';
+import '../modules/setting/bindings/about_binding.dart';
+import '../modules/setting/bindings/change_password_binding.dart';
+import '../modules/setting/bindings/edit_profil_binding.dart';
 import '../modules/setting/bindings/setting_binding.dart';
+import '../modules/setting/views/about_view.dart';
+import '../modules/setting/views/change_password_view.dart';
+import '../modules/setting/views/edit_profil_view.dart';
 import '../modules/setting/views/setting_view.dart';
 
 // ignore_for_file: constant_identifier_names
@@ -55,10 +56,6 @@ class AppPages {
     GetPage(
       name: _Paths.SPLASH,
       page: () => SplashView(),
-    ),
-    GetPage(
-      name: _Paths.ONBOARDING,
-      page: () => OnboardingView(),
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -139,6 +136,11 @@ class AppPages {
       name: _Paths.ABOUT,
       page: () => AboutView(),
       binding: AboutBinding(),
+    ),
+    GetPage(
+      name: _Paths.ONBOARDING,
+      page: () => OnboardingView(),
+      binding: OnboardingBinding(),
     ),
   ];
 }
