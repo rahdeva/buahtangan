@@ -1,3 +1,5 @@
+import 'package:buahtangan/app/themes/text_theme.dart';
+
 import '../../../themes/color_theme.dart';
 
 import '../../articles/views/articles_view.dart';
@@ -58,26 +60,31 @@ class DashboardView extends GetView<DashboardController> {
                   duration: const Duration(milliseconds: 400),
                   tabBackgroundColor: primaryColor,
                   color: onBackgroundColor,
-                  tabs: const [
+                  tabs: [
                     GButton(
                       icon: IconlyLight.home,
                       text: 'Home',
+                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
                     ),
                     GButton(
                       icon: IconlyLight.folder,
                       text: 'Directory',
+                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
                     ),
                     GButton(
                       icon: IconlyLight.paper,
                       text: 'Articles',
+                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
                     ),
                     GButton(
                       icon: IconlyLight.calendar,
                       text: 'Planner',
+                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
                     ),
                     GButton(
                       icon: IconlyLight.setting,
                       text: 'Setting',
+                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
                     ),
                   ],
                 ),

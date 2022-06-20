@@ -10,104 +10,41 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+      backgroundColor: primaryColor,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              decoration: shadowDecoration(),
+              margin: const EdgeInsets.all(25.0),
+              child: Center(
+                child: CircleAvatar(
+                  radius: 120,
+                  backgroundColor: backgroundColor,
+                  child: CircleAvatar(
+                    radius: 100,
+                    backgroundColor: backgroundColor,
+                    child: Image.asset("assets/images/imagesLogo.png"),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                boxShadow: [dropShadow()],
+                borderRadius: BorderRadius.circular(20)
+              ),
+              margin: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+              child: Image.asset(
+                "assets/images/textLogo.png",
+                width: Get.width * 0.5,
+              ),
+            ),
+          ],
         ),
-      )
+      ),
     );
   }
 }
-
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:flutter/material.dart';
-
-// import 'package:get/get.dart';
-// import 'package:myfirebase/app/routes/app_pages.dart';
-
-// import '../controllers/home_controller.dart';
-
-// class HomeView extends GetView<HomeController> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('HOME'),
-//         centerTitle: true,
-//         actions: [
-//           StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-//             stream: controller.streamProfile(),
-//             builder: (context, snapshot) {
-//               if (snapshot.connectionState == ConnectionState.waiting) {
-//                 return CircleAvatar(
-//                   backgroundColor: Colors.grey[400],
-//                 );
-//               }
-//               Map<String, dynamic>? data = snapshot.data!.data();
-
-//               return GestureDetector(
-//                 onTap: () => Get.toNamed(Routes.PROFILE),
-//                 child: CircleAvatar(
-//                   backgroundColor: Colors.grey[400],
-//                   backgroundImage: NetworkImage(data?["profile"] != null ? data!["profile"] : "https://ui-avatars.com/api/?name=${data!["name"]}"),
-//                 ),
-//               );
-//             },
-//           ),
-//           SizedBox(width: 20),
-//         ],
-//       ),
-//       body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-//         stream: controller.streamNotes(),
-//         builder: (context, snapshot) {
-//           if (snapshot.connectionState == ConnectionState.waiting) {
-//             return Center(
-//               child: CircularProgressIndicator(),
-//             );
-//           }
-
-//           if (snapshot.data?.docs.length == 0 || snapshot.data == null) {
-//             return Center(
-//               child: Text("Belum ada data notes."),
-//             );
-//           }
-
-//           return ListView.builder(
-//             itemCount: snapshot.data!.docs.length,
-//             itemBuilder: (context, index) {
-//               var docNote = snapshot.data!.docs[index];
-//               Map<String, dynamic> note = docNote.data();
-//               return ListTile(
-//                 onTap: () => Get.toNamed(
-//                   Routes.EDIT_NOTE,
-//                   arguments: docNote.id,
-//                 ),
-//                 leading: CircleAvatar(
-//                   child: Text("${index + 1}"),
-//                 ),
-//                 title: Text("${note['title']}"),
-//                 subtitle: Text("${note['desc']}"),
-//                 trailing: IconButton(
-//                   onPressed: () {
-//                     controller.deleteNote(docNote.id);
-//                   },
-//                   icon: Icon(Icons.delete),
-//                 ),
-//               );
-//             },
-//           );
-//         },
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: () => Get.toNamed(Routes.ADD_NOTE),
-//         child: Icon(Icons.add),
-//       ),
-//     );
-//   }
-// }

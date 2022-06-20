@@ -17,13 +17,11 @@ class OnboardingView extends GetView<OnboardingController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
           CarouselSlider(
             options: CarouselOptions(
-              height: Get.height * 0.6,
+              height: Get.height,
               autoPlay: true,
               autoPlayAnimationDuration: const Duration(milliseconds: 500),
               onPageChanged: (index, reason) => controller.index.value = index,
