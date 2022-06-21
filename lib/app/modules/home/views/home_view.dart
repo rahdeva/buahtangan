@@ -204,7 +204,7 @@ class HomeView extends GetView<HomeController> {
                     height: 60,
                     decoration: shadowDecoration(),
                     child: ElevatedButton(
-                      onPressed: () => Get.offAllNamed(Routes.HOME_RESULT),
+                      onPressed: () => Get.toNamed(Routes.HOME_RESULT),
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(secondaryColor),
                         overlayColor: MaterialStateProperty.all(secondaryVariantColor),

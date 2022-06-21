@@ -36,7 +36,7 @@ class ArticlesDetailView extends GetView<ArticlesDetailController> {
                     Container(
                       margin: const EdgeInsets.fromLTRB(40, 60, 40, 28),
                       child: Text(
-                        "Change Password",
+                        "Articles Detail",
                         style: projectTextTheme.headline6?.copyWith(
                           color: onBackgroundColor
                         ),

@@ -36,7 +36,7 @@ class HomeResultView extends GetView<HomeResultController> {
                     Container(
                       margin: const EdgeInsets.fromLTRB(40, 60, 40, 28),
                       child: Text(
-                        "Change Password",
+                        "Gift Finder Result",
                         style: projectTextTheme.headline6?.copyWith(
                           color: onBackgroundColor
                         ),
