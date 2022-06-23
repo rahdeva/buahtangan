@@ -57,7 +57,7 @@ class LoginController extends GetxController {
                   } catch (e) {
                     print(e);
                     Get.back(); // tutup dialog
-                    Get.snackbar("Error!", "Kamu terlalu banyak meminta kirim email verifikasi.");
+                    Get.snackbar("Oops!", "Kamu terlalu banyak meminta kirim email verifikasi.");
                   }
                 },
                 child: const Text("KIRIM LAGI"),
@@ -67,11 +67,16 @@ class LoginController extends GetxController {
         }
       } on FirebaseAuthException catch (e) {
         isLoading.value = false;
-        print(e.code);
-        Get.snackbar("Error!", e.code);
+        if (e.code == 'user-not-found') {
+          Get.snackbar("Oops!", "Tidak ditemukan User dengan Email yang Anda masukkan.");
+        } else if (e.code == 'wrong-password') {
+          Get.snackbar("Oops!", "Password yang Anda masukkan salah.");
+        } else {
+          Get.snackbar("Oops!", e.code);
+        }
       }
     } else {
-      Get.snackbar("Error!", "Email & password harus diisi.");
+      Get.snackbar("Oops!", "Email & password harus diisi.");
     }
   }
 
