@@ -42,6 +42,164 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                         ),
                       ),
                     ),
+                    // Current Password TextField
+                    // Container(
+                    //   margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                    //   decoration: BoxDecoration(
+                    //     boxShadow: [dropShadow()],
+                    //   ),
+                    //   child: Obx(
+                    //     () => TextField(
+                    //       style: projectTextTheme.subtitle1,
+                    //       controller: controller.passNewC,
+                    //       keyboardType: TextInputType.visiblePassword,
+                    //       obscureText: controller.isHidden1.value,
+                    //       autocorrect: false,
+                    //       decoration: InputDecoration(
+                    //         labelText: "New Password",
+                    //         hintText: "New Password...",
+                    //         hoverColor: surfaceColor,
+                    //         fillColor: surfaceColor,
+                    //         focusColor: primaryColor,
+                    //         isDense: true,
+                    //         filled: true,
+                    //         suffixIcon: IconButton(
+                    //           onPressed: () => controller.isHidden1.toggle(), 
+                    //           icon: Icon(
+                    //             controller.isHidden1.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
+                    //             color: primaryColor,
+                    //           )
+                    //         ),
+                    //         contentPadding: const EdgeInsets.all(20), 
+                    //         labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
+                    //         focusedBorder: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(20),
+                    //           borderSide: BorderSide(color: primaryColor, width: 0.0)
+                    //         ),
+                    //         enabledBorder: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(20),
+                    //           borderSide: BorderSide(color: surfaceColor, width: 0.0)
+                    //         )
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // Password TextField
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      decoration: BoxDecoration(
+                        boxShadow: [dropShadow()],
+                      ),
+                      child: Obx(
+                        () => TextField(
+                          style: projectTextTheme.subtitle1,
+                          controller: controller.passNewC,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: controller.isHidden1.value,
+                          autocorrect: false,
+                          decoration: InputDecoration(
+                            labelText: "New Password",
+                            hintText: "New Password...",
+                            hoverColor: surfaceColor,
+                            fillColor: surfaceColor,
+                            focusColor: primaryColor,
+                            isDense: true,
+                            filled: true,
+                            suffixIcon: IconButton(
+                              onPressed: () => controller.isHidden1.toggle(), 
+                              icon: Icon(
+                                controller.isHidden1.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
+                                color: primaryColor,
+                              )
+                            ),
+                            contentPadding: const EdgeInsets.all(20), 
+                            labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: primaryColor, width: 0.0)
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: surfaceColor, width: 0.0)
+                            )
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Confirm Password TextField
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      decoration: BoxDecoration(
+                        boxShadow: [dropShadow()],
+                      ),
+                      child: Obx(
+                        () => TextField(
+                          style: projectTextTheme.subtitle1,
+                          controller: controller.passConfirmC,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: controller.isHidden2.value,
+                          autocorrect: false,
+                          decoration: InputDecoration(
+                            labelText: "Confirm Password",
+                            hintText: "Confirm Password...",
+                            hoverColor: surfaceColor,
+                            fillColor: surfaceColor,
+                            focusColor: primaryColor,
+                            isDense: true,
+                            filled: true,
+                            suffixIcon: IconButton(
+                              onPressed: () => controller.isHidden2.toggle(), 
+                              icon: Icon(
+                                controller.isHidden2.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
+                                color: primaryColor,
+                              )
+                            ),
+                            contentPadding: const EdgeInsets.all(20), 
+                            labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: primaryColor, width: 0.0)
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: surfaceColor, width: 0.0)
+                            )
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Register Button
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(40, 50, 40, 0),
+                      child: Container(
+                        width: Get.width,
+                        height: 60,
+                        decoration: shadowDecoration(),
+                        child: Obx(
+                          () => ElevatedButton(
+                            onPressed: () {
+                              if (controller.isLoading.isFalse) {
+                                controller.updatePassword();
+                              }
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(secondaryColor),
+                              overlayColor: MaterialStateProperty.all(secondaryVariantColor),
+                              foregroundColor: MaterialStateProperty.all(onSecondaryColor),
+                              shape: MaterialStateProperty.all<OutlinedBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                )
+                              ),
+                            ),
+                            child: Text(
+                              controller.isLoading.isFalse ? "Update Password" : "Loading...",
+                              style: projectTextTheme.button,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ]
                 ),
             )
@@ -51,46 +209,3 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-
-// import 'package:get/get.dart';
-
-// import '../controllers/reset_password_controller.dart';
-
-// class ResetPasswordView extends GetView<ResetPasswordController> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('RESET PASSWORD'),
-//         centerTitle: true,
-//       ),
-//       body: ListView(
-//         padding: EdgeInsets.all(20),
-//         children: [
-//           TextField(
-//             controller: controller.emailC,
-//             autocorrect: false,
-//             decoration: InputDecoration(
-//               labelText: "Email",
-//               border: OutlineInputBorder(),
-//             ),
-//           ),
-//           SizedBox(height: 20),
-//           Obx(
-//             () => ElevatedButton(
-//               onPressed: () {
-//                 if (controller.isLoading.isFalse) {
-//                   controller.reset();
-//                 }
-//               },
-//               child: Text(controller.isLoading.isFalse ? "RESET" : "LOADING..."),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-

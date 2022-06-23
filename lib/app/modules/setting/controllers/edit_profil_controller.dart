@@ -29,21 +29,26 @@ class EditProfilController extends GetxController {
   }
 
   void updateProfile() async {
-    try {
-      isLoading.value = true;
-      String uid = auth.currentUser!.uid;
-      await firestore.collection("users").doc(uid).update({
-        "name": nameC.text,
-        "phone": phoneC.text
-      });
-      isLoading.value = false;
-      Get.offNamed(Routes.SETTING);
-      Get.snackbar("Berhasil!", "Profil Anda berhasil diperbarui.");
-    } catch (e) {
-      isLoading.value = false;
-      print(e);
-      Get.snackbar("Oops!", "Tidak dapat get data user.");
-      return null;
+    if(emailC.text.isNotEmpty && phoneC.text.isNotEmpty){
+      try {
+        isLoading.value = true;
+        String uid = auth.currentUser!.uid;
+        await firestore.collection("users").doc(uid).update({
+          "name": nameC.text,
+          "phone": phoneC.text
+        });
+        isLoading.value = false;
+        Get.offNamed(Routes.SETTING);
+        Get.snackbar("Berhasil!", "Profil Anda berhasil diperbarui.");
+      } catch (e) {
+        isLoading.value = false;
+        print(e);
+        Get.snackbar("Oops!", "Tidak dapat get data user.");
+        return null;
+      }
+    }
+    else{
+      Get.snackbar("Oops!", "Mohon isi semua field");
     }
   }
 }
