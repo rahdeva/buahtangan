@@ -7,9 +7,13 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
+    var controller = Get.lazyPut<HomeController>(
+      () => HomeController(),
+    );
+    print("home");
     return Scaffold(
       backgroundColor: primaryColor,
       body: SingleChildScrollView(

@@ -26,15 +26,19 @@ class SettingView extends GetView<SettingController> {
                 child: const Center(
                   child: CircleAvatar(
                     radius: 120,
-                    backgroundColor: Colors.white,
-                    child: CircleAvatar(
-                      radius: 100,
-                      backgroundColor: Colors.white,
-                      backgroundImage: NetworkImage("https://source.unsplash.com/random/800x800?gift")
-                    ),
+                    backgroundImage: NetworkImage("https://source.unsplash.com/random/800x800?profile")
                   ),
                 ),
               ),
+              Center(
+                child: Text(
+                  "Nyoman Charles", 
+                  style: projectTextTheme.headline6?.copyWith(
+                    color: onPrimaryColor
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
               Container(
                 width: Get.width,
                 height: Get.height,

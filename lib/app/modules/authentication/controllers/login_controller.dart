@@ -40,11 +40,11 @@ class LoginController extends GetxController {
         } else {
           Get.defaultDialog(
             title: "Belum Tervefirikasi",
-            middleText: "Apakah kamu ingin mengirim email verifikasi kembali ?",
+            middleText: "Apakah kamu ingin mengirim email verifikasi kembali ? Mohon cek juga pada bagian spam",
             actions: [
               OutlinedButton(
                 onPressed: () => Get.back(), // menutup dialog
-                child: Text("Cancel"),
+                child: const Text("Cancel"),
               ),
               ElevatedButton(
                 onPressed: () async {
@@ -60,7 +60,7 @@ class LoginController extends GetxController {
                     Get.snackbar("Error!", "Kamu terlalu banyak meminta kirim email verifikasi.");
                   }
                 },
-                child: Text("KIRIM LAGI"),
+                child: const Text("KIRIM LAGI"),
               ),
             ],
           );

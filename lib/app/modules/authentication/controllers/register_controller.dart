@@ -12,45 +12,52 @@ class RegisterController extends GetxController {
   TextEditingController phoneC = TextEditingController();
   TextEditingController emailC = TextEditingController();
   TextEditingController passC = TextEditingController();
+  TextEditingController passC2 = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   void register() async {
-    if (nameC.text.isNotEmpty && phoneC.text.isNotEmpty && emailC.text.isNotEmpty && passC.text.isNotEmpty) {
-      isLoading.value = true;
-      try {
-        UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-          email: emailC.text,
-          password: passC.text,
-        );
+    if (nameC.text.isNotEmpty && phoneC.text.isNotEmpty && emailC.text.isNotEmpty && passC.text.isNotEmpty && passC2.text.isNotEmpty) {
+      if(passC.text == passC2.text){
+        isLoading.value = true;
+        try {
+          UserCredential userCredential = await auth.createUserWithEmailAndPassword(
+            email: emailC.text,
+            password: passC.text,
+          );
 
-        print(userCredential);
+          print(userCredential);
 
-        isLoading.value = false;
+          isLoading.value = false;
 
-        // kirim link email verifikasi
-        await userCredential.user!.sendEmailVerification();
+          // kirim link email verifikasi
+          await userCredential.user!.sendEmailVerification();
 
-        await firestore.collection("users").doc(userCredential.user!.uid).set({
-          "name": nameC.text,
-          "phone": phoneC.text,
-          "email": emailC.text,
-          "uid": userCredential.user!.uid,
-          "createdAt": DateTime.now().toIso8601String(),
-        });
+          await firestore.collection("users").doc(userCredential.user!.uid).set({
+            "name": nameC.text,
+            "phone": phoneC.text,
+            "email": emailC.text,
+            "uid": userCredential.user!.uid,
+            "createdAt": DateTime.now().toIso8601String(),
+          });
 
-        Get.offAllNamed(Routes.LOGIN);
-      } on FirebaseAuthException catch (e) {
-        isLoading.value = false;
-        print(e.code);
-        Get.snackbar("TERJADI KESALAHAN", e.code);
-      } catch (e) {
-        isLoading.value = false;
-        Get.snackbar("TERJADI KESALAHAN", e.toString());
+          Get.offAllNamed(Routes.LOGIN);
+          Get.snackbar("Berhasil Registrasi!", "Mohon cek email Anda untuk melakukan verifikasi.");
+        } on FirebaseAuthException catch (e) {
+          isLoading.value = false;
+          print(e.code);
+          Get.snackbar("Oops", e.code);
+        } catch (e) {
+          isLoading.value = false;
+          Get.snackbar("Oops", e.toString());
+        }
+      }
+      else{
+        Get.snackbar("Oops", "Password yang dimasukkan harus sama");
       }
     } else {
-      Get.snackbar("TERJADI KESALAHAN", "Semua input harus diisi.");
+      Get.snackbar("Oops", "Semua input harus diisi.");
     }
   }
 }

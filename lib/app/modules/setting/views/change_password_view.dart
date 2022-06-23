@@ -1,6 +1,6 @@
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
-import 'package:buahtangan/app/widgets/back_button.dart';
+import 'package:buahtangan/app/widgets/back-button/back_button.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';

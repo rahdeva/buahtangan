@@ -83,14 +83,13 @@ class ArticlesView extends GetView<ArticlesController> {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            SizedBox(
+                            Container(
                               height: Get.width <= 380 ? 130 : 150,
-                              child: Padding(
-                                padding: const EdgeInsets.only(top:16.0, left: 16.0, bottom: 16.0),
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(Radius.circular(15.0)),
-                                  child: Image.network(articleImage)),
-                              ),
+                              decoration: shadowDecoration(),
+                              padding: const EdgeInsets.only(top:16.0, left: 16.0, bottom: 16.0),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.all(Radius.circular(15.0)),
+                                child: Image.network(articleImage)),
                             ),
                             Expanded(
                               child: Container(
