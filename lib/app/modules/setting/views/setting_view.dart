@@ -1,6 +1,7 @@
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
@@ -20,28 +21,68 @@ class SettingView extends GetView<SettingController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                decoration: shadowDecoration(),
-                margin: const EdgeInsets.all(25.0),
-                child: const Center(
-                  child: CircleAvatar(
-                    radius: 120,
-                    backgroundImage: NetworkImage("https://source.unsplash.com/random/800x800?profile")
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  "Nyoman Charles", 
-                  style: projectTextTheme.headline6?.copyWith(
-                    color: onPrimaryColor
-                  ),
-                ),
+              StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                stream: controller.streamProfile(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircleAvatar(
+                        radius: 80,
+                        backgroundColor: slate500,
+                      ),
+                    );
+                  }
+
+                  Map<String, dynamic>? data = snapshot.data!.data();
+
+                  return Column(
+                    children: [
+                      Container(
+                        decoration: shadowDecoration(),
+                        margin: const EdgeInsets.all(25.0),
+                        child: Center(
+                          child: Stack(
+                            children: [
+                              CircleAvatar(
+                                radius: 80,
+                                backgroundImage: NetworkImage(
+                                  data?["profile"] != null 
+                                  ? data!["profile"] 
+                                  : "https://ui-avatars.com/api/?size=120&name=${data!["name"]}"
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 10,
+                                child: CircleAvatar(
+                                  backgroundColor: secondaryColor,
+                                  radius: 20,
+                                  child: IconButton(
+                                    onPressed: () => controller.pickImage(), 
+                                    icon: Icon(
+                                      Icons.edit,
+                                      color: onSecondaryColor,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Text(
+                        data["name"], 
+                        style: projectTextTheme.headline6?.copyWith(
+                          color: onPrimaryColor
+                        ),
+                      ),
+                    ],
+                  );
+                }
               ),
               const SizedBox(height: 40),
               Container(
                 width: Get.width,
-                height: Get.height,
                 decoration: BoxDecoration(
                   color: backgroundColor,
                   boxShadow: [dropShadow()],
@@ -108,6 +149,7 @@ class SettingView extends GetView<SettingController> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 50),
                   ],
                 ),
               ),

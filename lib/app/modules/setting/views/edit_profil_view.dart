@@ -20,13 +20,19 @@ class EditProfilView extends GetView<EditProfilController> {
               future: controller.getProfile(),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
+                  return SizedBox(
+                    height: Get.height,
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   );
                 }
                 if (snapshot.data == null) {
-                  return const Center(
-                    child: Text("Tidak ada data user."),
+                  return SizedBox(
+                    height: Get.height,
+                    child: const Center(
+                      child: Text("Tidak ada data user."),
+                    ),
                   );
                 } else {
                   controller.emailC.text = snapshot.data!["email"];
