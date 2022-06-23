@@ -46,18 +46,24 @@ class RegisterController extends GetxController {
           Get.snackbar("Berhasil Registrasi!", "Mohon cek email Anda untuk melakukan verifikasi.");
         } on FirebaseAuthException catch (e) {
           isLoading.value = false;
-          print(e.code);
-          Get.snackbar("Oops", e.code);
+          if (e.code == 'weak-password') {
+            Get.snackbar("Oops!", 'Password yang Anda masukkan terlalu lemah.');
+          } else if (e.code == 'email-already-in-use') {
+            Get.snackbar("Oops!", 'Email tersebut sudah digunakan.');
+          }
+          else{
+            Get.snackbar("Oops!", e.code);
+          }
         } catch (e) {
           isLoading.value = false;
-          Get.snackbar("Oops", e.toString());
+          Get.snackbar("Oops!", e.toString());
         }
       }
       else{
-        Get.snackbar("Oops", "Password yang dimasukkan harus sama");
+        Get.snackbar("Oops!", "Password yang dimasukkan harus sama");
       }
     } else {
-      Get.snackbar("Oops", "Semua input harus diisi.");
+      Get.snackbar("Oops!", "Semua input harus diisi.");
     }
   }
 }

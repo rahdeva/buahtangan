@@ -30,14 +30,14 @@ class LoginView extends GetView<LoginController> {
               Container(
                 decoration: shadowDecoration(),
                 margin: const EdgeInsets.all(25.0),
-                child: const Center(
+                child: Center(
                   child: CircleAvatar(
                     radius: 120,
                     backgroundColor: Colors.white,
                     child: CircleAvatar(
                       radius: 100,
-                      backgroundColor: Colors.white,
-                      backgroundImage: NetworkImage("https://source.unsplash.com/random/800x800?gift")
+                      backgroundColor: backgroundColor,
+                      child: Image.asset("assets/images/imagesLogo.png"),
                     ),
                   ),
                 ),
