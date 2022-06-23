@@ -191,6 +191,7 @@ class LoginController extends GetxController {
         Get.snackbar("Berhasil!", "Kami telah mengirimkan link untuk reset password pada Email Anda.");
       }
       on FirebaseAuthException catch (e) {
+        isLoading.value = false;
         if (e.code.toString() == 'invalid-email') {
           Get.snackbar("Oops!", 'Email yang anda masukkan tidak valid.');
         } else if (e.code.toString() == 'user-not-found') {
@@ -200,6 +201,7 @@ class LoginController extends GetxController {
         }
       }
       catch (e) {
+        isLoading.value = false;
         Get.snackbar("Oops!", "Tidak dapat reset password ke Email ini.");
       }
     }

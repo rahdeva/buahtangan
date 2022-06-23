@@ -42,6 +42,32 @@ class EditProfilView extends GetView<EditProfilController> {
                         ),
                       ),
                     ),
+                    // Email TextField
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      decoration: BoxDecoration(
+                        boxShadow: [dropShadow()],
+                      ),
+                      child: TextField(
+                        enabled: false,
+                        style: projectTextTheme.subtitle1,
+                        controller: controller.emailC,
+                        keyboardType: TextInputType.emailAddress,
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                          labelText: "Search Something...",
+                          filled: true,
+                          fillColor: slate300,
+                          isDense: true,
+                          contentPadding: const EdgeInsets.all(20), 
+                          labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                      ),
+                    ),
                     // Name TextField
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
@@ -50,7 +76,7 @@ class EditProfilView extends GetView<EditProfilController> {
                       ),
                       child: TextField(
                         style: projectTextTheme.subtitle1,
-                        // controller: controller.nameC,
+                        controller: controller.nameC,
                         keyboardType: TextInputType.name,
                         autocorrect: false,
                         decoration: InputDecoration(
@@ -69,44 +95,76 @@ class EditProfilView extends GetView<EditProfilController> {
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: surfaceColor, width: 0.0)
+                            borderSide: BorderSide.none,
                           )
                         ),
                       ),
                     ),
-                    // Register Button
-                    // Container(
-                    //   margin: const EdgeInsets.fromLTRB(40, 50, 40, 0),
-                    //   child: Container(
-                    //     width: Get.width,
-                    //     height: 60,
-                    //     decoration: shadowDecoration(),
-                    //     child: Obx(
-                    //       () => ElevatedButton(
-                    //         onPressed: () {
-                    //           // if (controller.isLoading.isFalse) {
-                    //           //   controller.register();
-                    //           // }
-                    //         },
-                    //         style: ButtonStyle(
-                    //           backgroundColor: MaterialStateProperty.all(secondaryColor),
-                    //           overlayColor: MaterialStateProperty.all(secondaryVariantColor),
-                    //           foregroundColor: MaterialStateProperty.all(onSecondaryColor),
-                    //           shape: MaterialStateProperty.all<OutlinedBorder>(
-                    //             RoundedRectangleBorder(
-                    //               borderRadius: BorderRadius.circular(20.0),
-                    //             )
-                    //           ),
-                    //         ),
-                    //         child: Text(
-                    //           // controller.isLoading.isFalse ? "Register" : "Loading...",
-                    //           "Update Profile",
-                    //           style: projectTextTheme.button,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
+                    
+                    // Phone TextField
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      decoration: BoxDecoration(
+                        boxShadow: [dropShadow()],
+                      ),
+                      child: TextField(
+                        style: projectTextTheme.subtitle1,
+                        controller: controller.phoneC,
+                        keyboardType: TextInputType.phone,
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                          labelText: "Phone Number",
+                          hintText: "Your Phone Number...",
+                          hoverColor: surfaceColor,
+                          fillColor: surfaceColor,
+                          focusColor: primaryColor,
+                          isDense: true,
+                          filled: true,
+                          contentPadding: const EdgeInsets.all(20), 
+                          labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: primaryColor, width: 0.0)
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide.none,
+                          )
+                        ),
+                      ),
+                    ),
+                    // Update Profile Button
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(40, 50, 40, 0),
+                      child: Container(
+                        width: Get.width,
+                        height: 60,
+                        decoration: shadowDecoration(),
+                        child: Obx(
+                          () => ElevatedButton(
+                            onPressed: () {
+                              if (controller.isLoading.isFalse) {
+                                // controller.updateProfile();
+                              }
+                            },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(secondaryColor),
+                              overlayColor: MaterialStateProperty.all(secondaryVariantColor),
+                              foregroundColor: MaterialStateProperty.all(onSecondaryColor),
+                              shape: MaterialStateProperty.all<OutlinedBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                )
+                              ),
+                            ),
+                            child: Text(
+                              controller.isLoading.isFalse ? "Update Profile" : "Loading...",
+                              style: projectTextTheme.button,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ]
                 ),
             )
