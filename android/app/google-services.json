@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "954777707606",
+    "project_id": "buahtangan-aa1b2",
+    "storage_bucket": "buahtangan-aa1b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954777707606:android:d7c6dee3218588e3c5c7f7",
+        "android_client_info": {
+          "package_name": "com.rahdeva.buahtangan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954777707606-7lrve3la2inu0op1kc0bkq6j7g1mied2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhDcXg3NeoGRzSKZLjwhlVZSNzaTm3PkU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954777707606-7lrve3la2inu0op1kc0bkq6j7g1mied2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

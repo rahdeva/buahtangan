@@ -8,7 +8,7 @@
 PRODUCT_NAME = buahtangan
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.buahtangan
+PRODUCT_BUNDLE_IDENTIFIER = com.rahdeva.buahtangan
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2022 com.example. All rights reserved.

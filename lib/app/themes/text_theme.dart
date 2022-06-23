@@ -56,12 +56,12 @@ var projectTextTheme = TextTheme(
     letterSpacing: 1.25
   ),
   caption: GoogleFonts.nunito(
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     letterSpacing: 0.4
   ),
   overline: GoogleFonts.nunito(
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: FontWeight.w400,
     letterSpacing: 1.5
   ),

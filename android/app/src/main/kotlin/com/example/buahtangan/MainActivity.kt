@@ -1,4 +1,4 @@
-package com.example.buahtangan
+package com.rahdeva.buahtangan
 
 import io.flutter.embedding.android.FlutterActivity
 

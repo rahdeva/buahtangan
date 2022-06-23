@@ -26,3 +26,9 @@ BoxShadow dropShadow() {
     offset: const Offset(0, 5), // changes position of shadow
   );
 }
+
+BoxDecoration shadowDecoration() {
+  return BoxDecoration(
+    boxShadow: [dropShadow()],
+  );
+}
