@@ -156,7 +156,7 @@ class LoginView extends GetView<LoginController> {
                             ),
                           ),
                           TextButton(
-                            onPressed: () => Get.defaultDialog(title: "Forgot Password?", middleText : "Halo Mamank"),
+                            onPressed: () => controller.resetDialog(),
                             child: Text(
                               "forgot password?",
                               textAlign: TextAlign.start,
