@@ -22,7 +22,7 @@ class RegisterView extends GetView<RegisterController> {
             const BackButtonWidget(),
             Container(
                 width: Get.width,
-                height: Get.height,
+                height: Get.height - 50,
                 decoration: BoxDecoration(
                   color: backgroundColor,
                   boxShadow: [dropShadow()],
@@ -224,7 +224,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                     // Register Button
                     Container(
-                      margin: const EdgeInsets.fromLTRB(40, 50, 40, 0),
+                      margin: const EdgeInsets.fromLTRB(40, 24, 40, 0),
                       child: Container(
                         width: Get.width,
                         height: 60,

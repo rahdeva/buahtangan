@@ -32,10 +32,10 @@ class LoginView extends GetView<LoginController> {
                 margin: const EdgeInsets.all(25.0),
                 child: Center(
                   child: CircleAvatar(
-                    radius: 120,
+                    radius: 80,
                     backgroundColor: Colors.white,
                     child: CircleAvatar(
-                      radius: 100,
+                      radius: 60,
                       backgroundColor: backgroundColor,
                       child: Image.asset("assets/images/imagesLogo.png"),
                     ),
@@ -56,7 +56,7 @@ class LoginView extends GetView<LoginController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 60, bottom: 16),
+                      margin: const EdgeInsets.only(top: 40, bottom: 8),
                       child: Text(
                         "Welcome to BuahTangan!",
                         style: projectTextTheme.headline6,
@@ -135,7 +135,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 16, bottom: 24, right: 40, left: 40),
+                      margin: const EdgeInsets.only(top: 8, bottom: 8, right: 40, left: 40),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -170,7 +170,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                     // Login Button
                     Container(
-                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 24),
+                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 16),
                       width: Get.width,
                       height: 60,
                       decoration: shadowDecoration(),
@@ -199,7 +199,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 24),
+                      margin: const EdgeInsets.fromLTRB(40, 0, 40, 16),
                       child: Text("- Or Login With -", style: projectTextTheme.caption),
                     ),
                     Container(
@@ -228,7 +228,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 50, bottom: 25),
+                      margin: const EdgeInsets.only(top: 16, bottom: 25),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

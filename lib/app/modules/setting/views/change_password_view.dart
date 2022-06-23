@@ -22,7 +22,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
             const BackButtonWidget(),
             Container(
                 width: Get.width,
-                height: Get.height,
+                height: Get.height - 100,
                 decoration: BoxDecoration(
                   color: backgroundColor,
                   boxShadow: [dropShadow()],

@@ -136,10 +136,10 @@ class LoginController extends GetxController {
             child: ElevatedButton(
               onPressed: () => reset(),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(secondaryColor),
+                backgroundColor: MaterialStateProperty.all(primaryColor),
                 overlayColor:
-                    MaterialStateProperty.all(secondaryVariantColor),
-                foregroundColor: MaterialStateProperty.all(onSecondaryColor),
+                    MaterialStateProperty.all(primaryVariantColor),
+                foregroundColor: MaterialStateProperty.all(onPrimaryColor),
                 shape: MaterialStateProperty.all<OutlinedBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -161,8 +161,8 @@ class LoginController extends GetxController {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(backgroundColor),
                 overlayColor: MaterialStateProperty.all(surfaceColor),
-                foregroundColor: MaterialStateProperty.all(errorColor),
-                side: MaterialStateProperty.all(BorderSide(color: errorColor)),
+                foregroundColor: MaterialStateProperty.all(secondaryColor),
+                side: MaterialStateProperty.all(BorderSide(color: secondaryColor)),
                 shape: MaterialStateProperty.all<OutlinedBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
