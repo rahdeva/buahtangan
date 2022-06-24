@@ -2,6 +2,7 @@ import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../controllers/home_controller.dart';
 
@@ -29,7 +30,7 @@ class HomeView extends GetView<HomeController> {
                   child: CircleAvatar(
                     radius: 100,
                     backgroundColor: backgroundColor,
-                    child: Image.asset("assets/images/imagesLogo.png"),
+                    child: SvgPicture.asset("assets/images/imagesLogo.svg"),
                   ),
                 ),
               ),
@@ -42,8 +43,8 @@ class HomeView extends GetView<HomeController> {
               ),
               margin: const EdgeInsets.all(24.0),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-              child: Image.asset(
-                "assets/images/textLogo.png",
+              child: SvgPicture.asset(
+                "assets/images/textLogo.svg",
                 width: Get.width * 0.5,
               ),
             ),

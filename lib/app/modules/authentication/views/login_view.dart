@@ -2,6 +2,7 @@ import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:get/get.dart';
@@ -33,11 +34,11 @@ class LoginView extends GetView<LoginController> {
                 child: Center(
                   child: CircleAvatar(
                     radius: 80,
-                    backgroundColor: Colors.white,
+                    backgroundColor: backgroundColor,
                     child: CircleAvatar(
                       radius: 60,
                       backgroundColor: backgroundColor,
-                      child: Image.asset("assets/images/imagesLogo.png"),
+                      child: SvgPicture.asset("assets/images/imagesLogo.svg"),
                     ),
                   ),
                 ),
@@ -209,19 +210,31 @@ class LoginView extends GetView<LoginController> {
                         children: [
                           InkWell(
                             onTap: (){},
-                            child: const CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Colors.white,
-                              backgroundImage: NetworkImage("https://source.unsplash.com/random/80x80?google"),
+                            child: Container(
+                              decoration: shadowDecoration(),
+                              child: CircleAvatar(
+                                radius: 25,
+                                backgroundColor: Colors.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: SvgPicture.asset("assets/images/google.svg"),
+                                ),
+                              ),
                             ),
                           ),
                           const SizedBox(width: 50),
                           InkWell(
                             onTap: (){},
-                            child: const CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Colors.white,
-                              backgroundImage: NetworkImage("https://source.unsplash.com/random/80x80?google"),
+                            child: Container(
+                              decoration: shadowDecoration(),
+                              child: CircleAvatar(
+                                radius: 25,
+                                backgroundColor: Colors.white,
+                                child : Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: SvgPicture.asset("assets/images/facebook.svg"),
+                                ),
+                              ),
                             ),
                           ),
                         ],
