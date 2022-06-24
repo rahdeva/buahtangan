@@ -25,10 +25,10 @@ class HomeView extends GetView<HomeController> {
               margin: const EdgeInsets.fromLTRB(25,25,25,0),
               child: Center(
                 child: CircleAvatar(
-                  radius: 120,
+                  radius: 80,
                   backgroundColor: backgroundColor,
                   child: CircleAvatar(
-                    radius: 100,
+                    radius: 60,
                     backgroundColor: backgroundColor,
                     child: SvgPicture.asset("assets/images/imagesLogo.svg"),
                   ),

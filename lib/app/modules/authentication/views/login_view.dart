@@ -179,7 +179,7 @@ class LoginView extends GetView<LoginController> {
                         () => ElevatedButton(
                           onPressed: () {
                             if (controller.isLoading.isFalse) {
-                              controller.login();
+                              controller.loginEmail();
                             }
                           },
                           style: ButtonStyle(
@@ -209,7 +209,7 @@ class LoginView extends GetView<LoginController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
-                            onTap: (){},
+                            onTap: () => controller.signInWithGoogle(),
                             child: Container(
                               decoration: shadowDecoration(),
                               child: CircleAvatar(

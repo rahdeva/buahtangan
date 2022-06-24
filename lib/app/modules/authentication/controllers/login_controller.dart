@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginController extends GetxController {
   RxBool isLoading = false.obs;
@@ -18,7 +19,7 @@ class LoginController extends GetxController {
 
   final box = GetStorage();
 
-  void login() async {
+  void loginEmail() async {
     if (emailC.text.isNotEmpty && passwordC.text.isNotEmpty) {
       isLoading.value = true;
       try {
@@ -87,12 +88,35 @@ class LoginController extends GetxController {
     }
   }
 
+  void signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+
+    print(userCredential);
+    if (userCredential != null) {
+      Get.toNamed(Routes.SETTING);
+    }
+  }
+
   void resetDialog() {
     Get.defaultDialog(
       title: "Reset Password",
-      titleStyle: projectTextTheme.headline6?.copyWith(
-        color: onBackgroundColor
-      ),
+      titleStyle:
+          projectTextTheme.headline6?.copyWith(color: onBackgroundColor),
       titlePadding: const EdgeInsets.only(top: 40),
       contentPadding: const EdgeInsets.all(24),
       content: Column(
@@ -120,12 +144,10 @@ class LoginController extends GetxController {
                       ?.copyWith(color: onSurfaceColor),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide:
-                          BorderSide(color: primaryColor, width: 0.0)),
+                      borderSide: BorderSide(color: primaryColor, width: 0.0)),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide:
-                          BorderSide(color: surfaceColor, width: 0.0))),
+                      borderSide: BorderSide(color: surfaceColor, width: 0.0))),
             ),
           ),
           const SizedBox(height: 40),
@@ -137,8 +159,7 @@ class LoginController extends GetxController {
               onPressed: () => reset(),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(primaryColor),
-                overlayColor:
-                    MaterialStateProperty.all(primaryVariantColor),
+                overlayColor: MaterialStateProperty.all(primaryVariantColor),
                 foregroundColor: MaterialStateProperty.all(onPrimaryColor),
                 shape: MaterialStateProperty.all<OutlinedBorder>(
                     RoundedRectangleBorder(
@@ -162,11 +183,11 @@ class LoginController extends GetxController {
                 backgroundColor: MaterialStateProperty.all(backgroundColor),
                 overlayColor: MaterialStateProperty.all(surfaceColor),
                 foregroundColor: MaterialStateProperty.all(secondaryColor),
-                side: MaterialStateProperty.all(BorderSide(color: secondaryColor)),
+                side: MaterialStateProperty.all(
+                    BorderSide(color: secondaryColor)),
                 shape: MaterialStateProperty.all<OutlinedBorder>(
                     RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
-                  
                 )),
               ),
               child: Text(
@@ -181,16 +202,16 @@ class LoginController extends GetxController {
   }
 
   void reset() async {
-    if(emailResetC.text.isNotEmpty){
+    if (emailResetC.text.isNotEmpty) {
       isLoading.value = true;
-      try{
+      try {
         await auth.sendPasswordResetEmail(email: emailResetC.text);
 
         isLoading.value = false;
         Get.back();
-        Get.snackbar("Berhasil!", "Kami telah mengirimkan link untuk reset password pada Email Anda.");
-      }
-      on FirebaseAuthException catch (e) {
+        Get.snackbar("Berhasil!",
+            "Kami telah mengirimkan link untuk reset password pada Email Anda.");
+      } on FirebaseAuthException catch (e) {
         isLoading.value = false;
         if (e.code.toString() == 'invalid-email') {
           Get.snackbar("Oops!", 'Email yang anda masukkan tidak valid.');
@@ -199,13 +220,11 @@ class LoginController extends GetxController {
         } else {
           Get.snackbar("Oops!", e.code);
         }
-      }
-      catch (e) {
+      } catch (e) {
         isLoading.value = false;
         Get.snackbar("Oops!", "Tidak dapat reset password ke Email ini.");
       }
-    }
-    else{
+    } else {
       Get.snackbar("Oops!", "Email belum diisi.");
     }
   }
