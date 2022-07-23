@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
+import 'package:get/get.dart';
 
 void showSnackbar(title, subtitle, Widget icon){
   Get.snackbar(
