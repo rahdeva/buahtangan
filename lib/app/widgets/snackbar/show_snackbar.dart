@@ -8,7 +8,7 @@ void showSnackbar(title, subtitle, Widget icon){
     subtitle,
     snackPosition: SnackPosition.BOTTOM,
     icon: icon,
-    backgroundColor: onSurfaceColor,
+    backgroundColor: surfaceColor,
     borderRadius: 20,
     margin: const EdgeInsets.all(20),
     colorText: onSurfaceColor,
