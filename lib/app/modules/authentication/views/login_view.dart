@@ -224,7 +224,7 @@ class LoginView extends GetView<LoginController> {
                           ),
                           const SizedBox(width: 50),
                           InkWell(
-                            onTap: (){},
+                            onTap: () => controller.signInWithFacebook(),
                             child: Container(
                               decoration: shadowDecoration(),
                               child: CircleAvatar(

@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/helpers/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,7 +9,7 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+  Utils.initializedNavBar(bindings: AppPages.NAV_PAGE_BINDINGS);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -24,8 +25,10 @@ Future<void> main() async {
         }
         return GetMaterialApp(
           title: "BuahTangan",
-          initialRoute: snap.data != null ? Routes.HOME :AppPages.INITIAL,
+          initialRoute: snap.data != null ? Routes.DASHBOARD :AppPages.INITIAL,
           getPages: AppPages.routes,
+          locale: const Locale('id', 'ID'),
+          fallbackLocale: const Locale('id', 'ID'),
           // theme: AppTheme.light,
           // darkTheme: AppTheme.dark,
           // themeMode: ThemeMode.system,

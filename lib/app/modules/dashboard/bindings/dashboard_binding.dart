@@ -9,8 +9,5 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<DashboardController>(
       () => DashboardController(),
     );
-    // Get.lazyPut<HomeController>(
-    //   () => HomeController(),
-    // );
   }
 }

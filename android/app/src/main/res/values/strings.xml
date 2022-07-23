@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BuahTangan</string>
+    <string name="facebook_app_id">989054765116151</string>
+    <string name="fb_login_protocol_scheme">fb989054765116151</string>
+    <string name="facebook_client_token">35d7e09c2823d25cb17ab82f1a85b2ae</string>
+</resources>
+
