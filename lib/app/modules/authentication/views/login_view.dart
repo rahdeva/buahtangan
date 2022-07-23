@@ -209,7 +209,7 @@ class LoginView extends GetView<LoginController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
-                            onTap: () => controller.signInWithGoogle(),
+                            onTap: () => controller.loginGoogle(),
                             child: Container(
                               decoration: shadowDecoration(),
                               child: CircleAvatar(
@@ -224,7 +224,7 @@ class LoginView extends GetView<LoginController> {
                           ),
                           const SizedBox(width: 50),
                           InkWell(
-                            onTap: () => controller.signInWithFacebook(),
+                            onTap: () => controller.loginFacebook(),
                             child: Container(
                               decoration: shadowDecoration(),
                               child: CircleAvatar(

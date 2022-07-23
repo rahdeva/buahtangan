@@ -39,6 +39,7 @@ class RegisterController extends GetxController {
             "phone": phoneC.text,
             "email": emailC.text,
             "uid": userCredential.user!.uid,
+            "profile": null,
             "createdAt": DateTime.now().toIso8601String(),
           });
 

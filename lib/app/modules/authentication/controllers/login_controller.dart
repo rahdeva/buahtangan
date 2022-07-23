@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/modules/authentication/provider/login_provider.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
@@ -89,45 +90,67 @@ class LoginController extends GetxController {
     }
   }
 
-  void signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  // void signInWithGoogle() async {
+  //   // Trigger the authentication flow
+  //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+  //   // Obtain the auth details from the request
+  //   final GoogleSignInAuthentication? googleAuth =
+  //       await googleUser?.authentication;
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+  //   // Create a new credential
+  //   final credential = GoogleAuthProvider.credential(
+  //     accessToken: googleAuth?.accessToken,
+  //     idToken: googleAuth?.idToken,
+  //   );
 
-    // Once signed in, return the UserCredential
-    UserCredential userCredential =
-        await FirebaseAuth.instance.signInWithCredential(credential);
+  //   // Once signed in, return the UserCredential
+  //   UserCredential userCredential =
+  //       await FirebaseAuth.instance.signInWithCredential(credential);
 
-    print(userCredential);
+  //   print(userCredential);
+  //   if (userCredential != null) {
+  //     Get.toNamed(Routes.SETTING);
+  //   }
+  // }
+
+  // void signInWithFacebook() async {
+  //     // Trigger the sign-in flow
+  //   final LoginResult loginResult = await FacebookAuth.instance.login();
+
+  //   // Create a credential from the access token
+  //   final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+  //   // Once signed in, return the UserCredential
+  //   UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+
+  //   print(userCredential);
+  //   if (userCredential != null) {
+  //     Get.toNamed(Routes.HOME);
+  //   }
+  
+  // }
+
+  Future<void> loginGoogle() async {
+    final userCredential = await LoginProvider.signInWithGoogle();
     if (userCredential != null) {
-      Get.toNamed(Routes.SETTING);
+      // await firestore.collection("users").doc(userCredential.user!.uid).set({
+      //       "name": nameC.text,
+      //       "phone": phoneC.text,
+      //       "email": emailC.text,
+      //       "uid": userCredential.user!.uid,
+      //       "profile": null,
+      //       "createdAt": DateTime.now().toIso8601String(),
+      //     });
+      Get.toNamed(Routes.DASHBOARD);
     }
   }
 
-  void signInWithFacebook() async {
-      // Trigger the sign-in flow
-    final LoginResult loginResult = await FacebookAuth.instance.login();
-
-    // Create a credential from the access token
-    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-    // Once signed in, return the UserCredential
-    UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-
-    print(userCredential);
+  Future<void> loginFacebook() async {
+    final userCredential = await LoginProvider.signInWithFacebook();
     if (userCredential != null) {
-      Get.toNamed(Routes.HOME);
+      Get.toNamed(Routes.DASHBOARD);
     }
-  
   }
 
   void resetDialog() {
