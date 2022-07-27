@@ -17,15 +17,13 @@ class LoginController extends GetxController {
   TextEditingController passwordC = TextEditingController();
   TextEditingController emailResetC = TextEditingController();
 
-  FirebaseAuth auth = FirebaseAuth.instance;
-
   final box = GetStorage();
 
   void loginEmail() async {
     if (emailC.text.isNotEmpty && passwordC.text.isNotEmpty) {
       isLoading.value = true;
       try {
-        UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailC.text,
           password: passwordC.text,
         );
@@ -89,47 +87,6 @@ class LoginController extends GetxController {
       Get.snackbar("Oops!", "Email & password harus diisi.");
     }
   }
-
-  // void signInWithGoogle() async {
-  //   // Trigger the authentication flow
-  //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-  //   // Obtain the auth details from the request
-  //   final GoogleSignInAuthentication? googleAuth =
-  //       await googleUser?.authentication;
-
-  //   // Create a new credential
-  //   final credential = GoogleAuthProvider.credential(
-  //     accessToken: googleAuth?.accessToken,
-  //     idToken: googleAuth?.idToken,
-  //   );
-
-  //   // Once signed in, return the UserCredential
-  //   UserCredential userCredential =
-  //       await FirebaseAuth.instance.signInWithCredential(credential);
-
-  //   print(userCredential);
-  //   if (userCredential != null) {
-  //     Get.toNamed(Routes.SETTING);
-  //   }
-  // }
-
-  // void signInWithFacebook() async {
-  //     // Trigger the sign-in flow
-  //   final LoginResult loginResult = await FacebookAuth.instance.login();
-
-  //   // Create a credential from the access token
-  //   final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-  //   // Once signed in, return the UserCredential
-  //   UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-
-  //   print(userCredential);
-  //   if (userCredential != null) {
-  //     Get.toNamed(Routes.HOME);
-  //   }
-  
-  // }
 
   Future<void> loginGoogle() async {
     final userCredential = await LoginProvider.signInWithGoogle();
@@ -246,7 +203,7 @@ class LoginController extends GetxController {
     if (emailResetC.text.isNotEmpty) {
       isLoading.value = true;
       try {
-        await auth.sendPasswordResetEmail(email: emailResetC.text);
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: emailResetC.text);
 
         isLoading.value = false;
         Get.back();

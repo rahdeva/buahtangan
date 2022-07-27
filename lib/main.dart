@@ -24,6 +24,7 @@ Future<void> main() async {
           return const Center(child: CircularProgressIndicator.adaptive());
         }
         return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           title: "BuahTangan",
           initialRoute: snap.data != null ? Routes.DASHBOARD :AppPages.INITIAL,
           getPages: AppPages.routes,

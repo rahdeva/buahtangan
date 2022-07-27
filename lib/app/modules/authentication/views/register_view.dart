@@ -232,7 +232,7 @@ class RegisterView extends GetView<RegisterController> {
                         child: Obx(
                           () => ElevatedButton(
                             onPressed: () {
-                              if (controller.isLoading.isFalse) {
+                              if (controller.isLoading.isFalse) { 
                                 controller.register();
                               }
                             },
