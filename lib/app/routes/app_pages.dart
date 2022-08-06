@@ -53,15 +53,10 @@ class AppPages {
     GiftDirectoryBinding(),
     ArticlesBinding(),
     GiftPlannerBinding(),
-    SettingBinding()
+    SettingBinding(),
   ];
 
   static final routes = [
-    GetPage(
-      name: _Paths.HOME,
-      page: () => const HomeView(),
-      binding: HomeBinding(),
-    ),
     GetPage(
       name: _Paths.SPLASH,
       page: () => const SplashView(),
@@ -76,30 +71,35 @@ class AppPages {
       page: () => const RegisterView(),
       binding: RegisterBinding(),
     ),
-    GetPage(
-      name: _Paths.GIFT_DIRECTORY,
-      page: () => const GiftDirectoryView(),
-      binding: GiftDirectoryBinding(),
-    ),
-    GetPage(
-      name: _Paths.GIFT_PLANNER,
-      page: () => const GiftPlannerView(),
-      binding: GiftPlannerBinding(),
-    ),
-    GetPage(
-      name: _Paths.SETTING,
-      page: () => const SettingView(),
-      binding: SettingBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.HOME,
+    //   page: () => const HomeView(),
+    //   binding: HomeBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.GIFT_DIRECTORY,
+    //   page: () => const GiftDirectoryView(),
+    //   binding: GiftDirectoryBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.GIFT_PLANNER,
+    //   page: () => const GiftPlannerView(),
+    //   binding: GiftPlannerBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.SETTING,
+    //   page: () => const SettingView(),
+    //   binding: SettingBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.ARTICLES,
+    //   page: () => ArticlesView(),
+    //   binding: ArticlesBinding(),
+    // ),
     GetPage(
       name: _Paths.FAVORITES,
       page: () => const FavoritesView(),
       binding: FavoritesBinding(),
-    ),
-    GetPage(
-      name: _Paths.ARTICLES,
-      page: () => ArticlesView(),
-      binding: ArticlesBinding(),
     ),
     GetPage(
       name: _Paths.DASHBOARD,

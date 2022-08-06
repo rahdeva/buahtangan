@@ -1,11 +1,11 @@
-import 'package:buahtangan/app/routes/app_pages.dart';
-import 'package:buahtangan/app/themes/color_theme.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
-import 'package:get/get.dart';
+import '../../../routes/app_pages.dart';
+import '../../../themes/color_theme.dart';
+import '../../../themes/text_theme.dart';
 
 import '../controllers/setting_controller.dart';
 

@@ -1,10 +1,10 @@
-import 'package:buahtangan/app/routes/app_pages.dart';
-import 'package:buahtangan/app/themes/color_theme.dart';
+import 'dart:async';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:async';
 
-import 'package:get/get.dart';
+import '../../../routes/app_pages.dart';
+import '../../../themes/color_theme.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);

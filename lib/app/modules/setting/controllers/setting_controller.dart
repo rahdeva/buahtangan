@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:buahtangan/app/routes/app_pages.dart';
+import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as s;
+import '../../../routes/app_pages.dart';
 
 class SettingController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;

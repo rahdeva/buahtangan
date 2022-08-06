@@ -1,9 +1,11 @@
-import 'package:buahtangan/app/routes/app_pages.dart';
-import 'package:buahtangan/app/themes/color_theme.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+
+import '../../../routes/app_pages.dart';
+import '../../../themes/color_theme.dart';
+import '../../../themes/text_theme.dart';
+
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -11,9 +13,6 @@ class HomeView extends GetView<HomeController> {
   
   @override
   Widget build(BuildContext context) {
-    var controller = Get.lazyPut<HomeController>(
-      () => HomeController(),
-    );
     print("home");
     return Scaffold(
       backgroundColor: primaryColor,

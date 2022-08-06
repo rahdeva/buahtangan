@@ -1,7 +1,7 @@
-import 'package:buahtangan/app/widgets/bottom-navigation/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/dashboard_controller.dart';
+import '../../../widgets/bottom-navigation/bottom_nav_bar.dart';
 
 class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);

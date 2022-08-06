@@ -1,9 +1,9 @@
-import 'package:buahtangan/app/themes/color_theme.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:buahtangan/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import '../../themes/color_theme.dart';
+import '../../themes/text_theme.dart';
+import '../../modules/dashboard/controllers/dashboard_controller.dart';
 
 class BottomNavBarWidget extends StatelessWidget {
   const BottomNavBarWidget({Key? key,required this.controller}) : super(key: key);
