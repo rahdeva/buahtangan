@@ -1,3 +1,6 @@
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 
 import '../modules/articles/bindings/articles_binding.dart';
@@ -38,8 +41,6 @@ import '../modules/setting/views/change_password_view.dart';
 import '../modules/setting/views/edit_profil_view.dart';
 import '../modules/setting/views/setting_view.dart';
 
-// ignore_for_file: constant_identifier_names
-
 part 'app_routes.dart';
 
 class AppPages {
@@ -47,15 +48,18 @@ class AppPages {
 
   static const INITIAL = Routes.SPLASH;
 
+  static final NAV_PAGE_BINDINGS = [
+    HomeBinding(),
+    GiftDirectoryBinding(),
+    ArticlesBinding(),
+    GiftPlannerBinding(),
+    SettingBinding(),
+  ];
+
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
-      page: () => HomeView(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
       name: _Paths.SPLASH,
-      page: () => SplashView(),
+      page: () => const SplashView(),
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -64,77 +68,82 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.REGISTER,
-      page: () => RegisterView(),
+      page: () => const RegisterView(),
       binding: RegisterBinding(),
     ),
-    GetPage(
-      name: _Paths.GIFT_DIRECTORY,
-      page: () => GiftDirectoryView(),
-      binding: GiftDirectoryBinding(),
-    ),
-    GetPage(
-      name: _Paths.GIFT_PLANNER,
-      page: () => GiftPlannerView(),
-      binding: GiftPlannerBinding(),
-    ),
-    GetPage(
-      name: _Paths.SETTING,
-      page: () => SettingView(),
-      binding: SettingBinding(),
-    ),
+    // GetPage(
+    //   name: _Paths.HOME,
+    //   page: () => const HomeView(),
+    //   binding: HomeBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.GIFT_DIRECTORY,
+    //   page: () => const GiftDirectoryView(),
+    //   binding: GiftDirectoryBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.GIFT_PLANNER,
+    //   page: () => const GiftPlannerView(),
+    //   binding: GiftPlannerBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.SETTING,
+    //   page: () => const SettingView(),
+    //   binding: SettingBinding(),
+    // ),
+    // GetPage(
+    //   name: _Paths.ARTICLES,
+    //   page: () => ArticlesView(),
+    //   binding: ArticlesBinding(),
+    // ),
     GetPage(
       name: _Paths.FAVORITES,
-      page: () => FavoritesView(),
+      page: () => const FavoritesView(),
       binding: FavoritesBinding(),
     ),
     GetPage(
-      name: _Paths.ARTICLES,
-      page: () => ArticlesView(),
-      binding: ArticlesBinding(),
-    ),
-    GetPage(
       name: _Paths.DASHBOARD,
-      page: () => DashboardView(),
+      page: () => const DashboardView(),
       binding: DashboardBinding(),
     ),
     GetPage(
       name: _Paths.HOME_RESULT,
-      page: () => HomeResultView(),
+      page: () => const HomeResultView(),
       binding: HomeResultBinding(),
     ),
     GetPage(
       name: _Paths.GIFT_DETAIL,
-      page: () => GiftDetailView(),
+      page: () => const GiftDetailView(),
       binding: GiftDetailBinding(),
     ),
     GetPage(
       name: _Paths.ARTICLES_DETAIL,
-      page: () => ArticlesDetailView(),
+      page: () => const ArticlesDetailView(),
       binding: ArticlesDetailBinding(),
     ),
     GetPage(
       name: _Paths.PLANNER_ADD_PEOPLE,
-      page: () => PlannerAddPeopleView(),
+      page: () => const PlannerAddPeopleView(),
       binding: PlannerAddPeopleBinding(),
     ),
     GetPage(
       name: _Paths.PLANNER_PEOPLE_DETAIL,
-      page: () => PlannerPeopleDetailView(),
+      page: () => const PlannerPeopleDetailView(),
       binding: PlannerPeopleDetailBinding(),
     ),
     GetPage(
       name: _Paths.EDIT_PROFIL,
-      page: () => EditProfilView(),
+      page: () => const EditProfilView(),
       binding: EditProfilBinding(),
     ),
     GetPage(
       name: _Paths.CHANGE_PASSWORD,
-      page: () => ChangePasswordView(),
+      page: () => const ChangePasswordView(),
       binding: ChangePasswordBinding(),
     ),
     GetPage(
       name: _Paths.ABOUT,
-      page: () => AboutView(),
+      page: () => const AboutView(),
       binding: AboutBinding(),
     ),
     GetPage(

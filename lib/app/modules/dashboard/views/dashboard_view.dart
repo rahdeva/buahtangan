@@ -1,98 +1,28 @@
-import 'package:buahtangan/app/themes/text_theme.dart';
-
-import '../../../themes/color_theme.dart';
-
-import '../../articles/views/articles_view.dart';
-import '../../gift-directory/views/gift_directory_view.dart';
-import '../../gift-planner/views/gift_planner_view.dart';
-import '../../home/views/home_view.dart';
-import '../../setting/views/setting_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-
 import 'package:get/get.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
-
 import '../controllers/dashboard_controller.dart';
+import '../../../widgets/bottom-navigation/bottom_nav_bar.dart';
 
 class DashboardView extends GetView<DashboardController> {
   const DashboardView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DashboardController>(
-      builder: (controller) {
-        return Scaffold(
-          body: SafeArea(
-            child: IndexedStack(
-              index: controller.tabIndex,
-              children: [
-                HomeView(),
-                GiftDirectoryView(),
-                ArticlesView(),
-                GiftPlannerView(),
-                SettingView(),
-              ],
-            ),
-          ),
-          bottomNavigationBar: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: 20,
-                  color: Colors.black.withOpacity(.1),
-                )
-              ],
-            ),
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
-                child: GNav(
-                  selectedIndex: controller.tabIndex,
-                  onTabChange: controller.changeTabIndex,
-                  rippleColor: primaryColor,
-                  hoverColor: primaryColor,
-                  gap: 8,
-                  activeColor: onPrimaryColor,
-                  iconSize: 24,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  duration: const Duration(milliseconds: 400),
-                  tabBackgroundColor: primaryColor,
-                  color: onBackgroundColor,
-                  tabs: [
-                    GButton(
-                      icon: IconlyLight.home,
-                      text: 'Home',
-                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
-                    ),
-                    GButton(
-                      icon: IconlyLight.folder,
-                      text: 'Directory',
-                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
-                    ),
-                    GButton(
-                      icon: IconlyLight.paper,
-                      text: 'Articles',
-                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
-                    ),
-                    GButton(
-                      icon: IconlyLight.calendar,
-                      text: 'Planner',
-                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
-                    ),
-                    GButton(
-                      icon: IconlyLight.setting,
-                      text: 'Setting',
-                      textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      body: GetBuilder(
+        id: 'nav-bar',
+        init: controller,
+        builder: (_) {
+          return controller.tabView[controller.tabIndex];
+        },
+      ),
+      bottomNavigationBar: GetBuilder(
+        id: 'bottom-nav-bar',
+        init: controller,
+        builder: (_) {
+          return BottomNavBarWidget(controller: controller);
+        },
+      ),
     );
   }
 }

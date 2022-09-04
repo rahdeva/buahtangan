@@ -1,9 +1,10 @@
-import 'package:buahtangan/app/themes/color_theme.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
-import 'package:buahtangan/app/widgets/back-button/back_button.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
+import '../../../themes/color_theme.dart';
+import '../../../themes/decoration.dart';
+import '../../../themes/text_theme.dart';
+import '../../../widgets/button/back_button.dart';
 
 import '../controllers/planner_add_people_controller.dart';
 

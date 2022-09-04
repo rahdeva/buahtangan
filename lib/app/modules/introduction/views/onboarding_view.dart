@@ -1,17 +1,16 @@
-import 'package:buahtangan/app/routes/app_pages.dart';
-import 'package:buahtangan/app/themes/color_theme.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
-import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
-import '../controllers/onboarding_controller.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
 
+import '../../../routes/app_pages.dart';
+import '../../../themes/color_theme.dart';
+import '../../../themes/decoration.dart';
+import '../../../themes/text_theme.dart';
+import '../controllers/onboarding_controller.dart';
+
 class OnboardingView extends GetView<OnboardingController> {
-  OnboardingView({Key? key}) : super(key: key);
+  const OnboardingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

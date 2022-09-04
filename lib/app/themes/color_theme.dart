@@ -17,18 +17,3 @@ var onSurfaceColor = const Color(0xFF334155);
 var onErrorColor = const Color(0xFFFFFFFF);
 var slate300 = const Color(0xFFCBD5E1);
 var slate500 = const Color(0xFF64748B);
-
-BoxShadow dropShadow() {
-  return BoxShadow(
-    color: onSurfaceColor.withOpacity(0.1),
-    spreadRadius: 0,
-    blurRadius: 20,
-    offset: const Offset(0, 5), // changes position of shadow
-  );
-}
-
-BoxDecoration shadowDecoration() {
-  return BoxDecoration(
-    boxShadow: [dropShadow()],
-  );
-}

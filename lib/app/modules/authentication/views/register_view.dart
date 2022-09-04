@@ -1,9 +1,13 @@
-import 'package:buahtangan/app/themes/color_theme.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
-import 'package:buahtangan/app/widgets/back-button/back_button.dart';
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
-import 'package:get/get.dart';
+import '../../../themes/color_theme.dart';
+import '../../../themes/text_theme.dart';
+import '../../../themes/decoration.dart';
+import '../../../widgets/button/back_button.dart';
+import '../../../widgets/button/primary_button_widget.dart';
+import '../../../widgets/text-field/password_text_field_widget.dart';
+import '../../../widgets/text-field/text_field_widget.dart';
 
 import '../controllers/register_controller.dart';
 
@@ -21,241 +25,67 @@ class RegisterView extends GetView<RegisterController> {
           children: <Widget>[
             const BackButtonWidget(),
             Container(
-                width: Get.width,
-                height: Get.height,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  boxShadow: [dropShadow()],
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30), 
-                    topRight: Radius.circular(30), 
-                  )
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(40, 60, 40, 28),
-                      child: Text(
-                        "Create a new Account",
-                        style: projectTextTheme.headline6?.copyWith(
-                          color: onBackgroundColor
-                        ),
-                      ),
+              width: Get.width,
+              padding: const EdgeInsets.fromLTRB(40, 60, 40, 60),
+              decoration: whiteContainerDecoration(),
+              child: Column(
+                children: [
+                  Text(
+                    "Create a new Account",
+                    style: projectTextTheme.headline6?.copyWith(
+                      color: onBackgroundColor
                     ),
-                    // Name TextField
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                      decoration: BoxDecoration(
-                        boxShadow: [dropShadow()],
-                      ),
-                      child: TextField(
-                        style: projectTextTheme.subtitle1,
-                        controller: controller.nameC,
-                        keyboardType: TextInputType.name,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          labelText: "Name",
-                          hintText: "Your Name...",
-                          hoverColor: surfaceColor,
-                          fillColor: surfaceColor,
-                          focusColor: primaryColor,
-                          isDense: true,
-                          filled: true,
-                          contentPadding: const EdgeInsets.all(20), 
-                          labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: primaryColor, width: 0.0)
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                          )
-                        ),
-                      ),
-                    ),
-                    // Email TextField
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                      decoration: BoxDecoration(
-                        boxShadow: [dropShadow()],
-                      ),
-                      child: TextField(
-                        style: projectTextTheme.subtitle1,
-                        controller: controller.emailC,
-                        keyboardType: TextInputType.emailAddress,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          labelText: "Email",
-                          hintText: "Your Email...",
-                          hoverColor: surfaceColor,
-                          fillColor: surfaceColor,
-                          focusColor: primaryColor,
-                          isDense: true,
-                          filled: true,
-                          contentPadding: const EdgeInsets.all(20), 
-                          labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: primaryColor, width: 0.0)
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                          )
-                        ),
-                      ),
-                    ),
-                    // Phone TextField
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                      decoration: BoxDecoration(
-                        boxShadow: [dropShadow()],
-                      ),
-                      child: TextField(
-                        style: projectTextTheme.subtitle1,
-                        controller: controller.phoneC,
-                        keyboardType: TextInputType.phone,
-                        autocorrect: false,
-                        decoration: InputDecoration(
-                          labelText: "Phone Number",
-                          hintText: "Your Phone Number...",
-                          hoverColor: surfaceColor,
-                          fillColor: surfaceColor,
-                          focusColor: primaryColor,
-                          isDense: true,
-                          filled: true,
-                          contentPadding: const EdgeInsets.all(20), 
-                          labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: primaryColor, width: 0.0)
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                          )
-                        ),
-                      ),
-                    ),
-                    // Password TextField
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                      decoration: BoxDecoration(
-                        boxShadow: [dropShadow()],
-                      ),
-                      child: Obx(
-                        () => TextField(
-                          style: projectTextTheme.subtitle1,
-                          controller: controller.passC,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: controller.isHidden2.value,
-                          autocorrect: false,
-                          decoration: InputDecoration(
-                            labelText: "Password",
-                            hintText: "Password...",
-                            hoverColor: surfaceColor,
-                            fillColor: surfaceColor,
-                            focusColor: primaryColor,
-                            isDense: true,
-                            filled: true,
-                            suffixIcon: IconButton(
-                              onPressed: () => controller.isHidden2.toggle(), 
-                              icon: Icon(
-                                controller.isHidden2.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
-                                color: primaryColor,
-                              )
-                            ),
-                            contentPadding: const EdgeInsets.all(20), 
-                            labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: primaryColor, width: 0.0)
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                            )
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Confirm Password TextField [TBA]
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                      decoration: BoxDecoration(
-                        boxShadow: [dropShadow()],
-                      ),
-                      child: Obx(
-                        () => TextField(
-                          style: projectTextTheme.subtitle1,
-                          controller: controller.passC2,
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: controller.isHidden.value,
-                          autocorrect: false,
-                          decoration: InputDecoration(
-                            labelText: "Confirm Password",
-                            hintText: "Confirm Password...",
-                            hoverColor: surfaceColor,
-                            fillColor: surfaceColor,
-                            focusColor: primaryColor,
-                            isDense: true,
-                            filled: true,
-                            suffixIcon: IconButton(
-                              onPressed: () => controller.isHidden.toggle(), 
-                              icon: Icon(
-                                controller.isHidden.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
-                                color: primaryColor,
-                              )
-                            ),
-                            contentPadding: const EdgeInsets.all(20), 
-                            labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: primaryColor, width: 0.0)
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                            )
-                          ),
-                        ),
-                      ),
-                    ),
-                    // Register Button
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(40, 50, 40, 0),
-                      child: Container(
-                        width: Get.width,
-                        height: 60,
-                        decoration: shadowDecoration(),
-                        child: Obx(
-                          () => ElevatedButton(
-                            onPressed: () {
-                              if (controller.isLoading.isFalse) {
-                                controller.register();
-                              }
-                            },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(secondaryColor),
-                              overlayColor: MaterialStateProperty.all(secondaryVariantColor),
-                              foregroundColor: MaterialStateProperty.all(onSecondaryColor),
-                              shape: MaterialStateProperty.all<OutlinedBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                )
-                              ),
-                            ),
-                            child: Text(
-                              controller.isLoading.isFalse ? "Register" : "Loading...",
-                              style: projectTextTheme.button,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ]
-                ),
+                  ),
+                  const SizedBox(height: 40),
+                  TextFieldWidget(
+                    controller: controller.nameC,
+                    keyboardType: TextInputType.name,
+                    labelText: "Name",
+                    hintText: "Your Name...",
+                  ),
+                  const SizedBox(height: 24),
+                  TextFieldWidget(
+                    controller: controller.emailC,
+                    keyboardType: TextInputType.emailAddress,
+                    labelText: "Email",
+                    hintText: "Your Email..."
+                  ),
+                  const SizedBox(height: 24),
+                  TextFieldWidget(
+                    controller: controller.phoneC,
+                    keyboardType: TextInputType.phone,
+                    labelText: "Phone Number",
+                    hintText: "Your Phone Number...",
+                  ),
+                  const SizedBox(height: 24),
+                  PasswordTextFieldWidget(
+                    controller: controller.passC,
+                    isHidden: controller.isHidden, 
+                    labelText: "Password",
+                    hintText: "Password...",
+                  ),
+                  const SizedBox(height: 24),
+                  PasswordTextFieldWidget(
+                    controller: controller.passC2,
+                    isHidden: controller.isHidden2, 
+                    labelText: "Confirm Password",
+                    hintText: "Confirm Password...",
+                  ),
+                  const SizedBox(height: 40),
+                  PrimaryButtonWidget(
+                    buttonText: "Register",           
+                    isLoading: controller.isLoading,
+                    backgroundColor: secondaryColor, 
+                    overlayColor: secondaryVariantColor, 
+                    foregroundColor: onSecondaryColor, 
+                    onPress: () {
+                      if (controller.isLoading.isFalse) { 
+                        controller.register();
+                      }
+                    }, 
+                  ),
+                ]
+              ),
             )
           ],
         ),
