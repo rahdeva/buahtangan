@@ -47,7 +47,10 @@ class LoginView extends GetView<LoginController> {
                     ),
                     const SizedBox(height: 24),
                     PasswordTextFieldWidget(
-                      controller: controller
+                      controller: controller.passwordC,
+                      isHidden: controller.isHidden, 
+                      hintText: "Password",
+                      labelText: "Your Password...",
                     ),
                     const SizedBox(height: 16),
                     RememberMeForgotPass(

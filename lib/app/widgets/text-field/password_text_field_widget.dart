@@ -1,4 +1,3 @@
-import 'package:buahtangan/app/modules/authentication/controllers/login_controller.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +8,16 @@ import '../../themes/decoration.dart';
 class PasswordTextFieldWidget extends StatelessWidget {
   const PasswordTextFieldWidget({
     Key? key,
-    required this.controller,
+    required this.controller, 
+    required this.isHidden, 
+    required this.labelText, 
+    required this.hintText,
   }) : super(key: key);
 
-  final LoginController controller;
+  final TextEditingController controller;
+  final RxBool isHidden;
+  final String labelText;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +28,22 @@ class PasswordTextFieldWidget extends StatelessWidget {
       child: Obx(
         () => TextField(
           style: projectTextTheme.subtitle1,
-          controller: controller.passwordC,
+          controller: controller,
           keyboardType: TextInputType.visiblePassword,
-          obscureText: controller.isHidden.value,
+          obscureText: isHidden.value,
           autocorrect: false,
           decoration: InputDecoration(
-            labelText: "Password",
-            hintText: "Your Password...",
+            labelText: labelText,
+            hintText: hintText,
             hoverColor: surfaceColor,
             fillColor: surfaceColor,
             focusColor: primaryColor,
             isDense: true,
             filled: true,
             suffixIcon: IconButton(
-              onPressed: () => controller.isHidden.toggle(), 
+              onPressed: () => isHidden.toggle(), 
               icon: Icon(
-                controller.isHidden.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
+                isHidden.isTrue ? Icons.visibility_rounded : Icons.visibility_off_rounded, 
                 color: primaryColor,
               )
             ),
