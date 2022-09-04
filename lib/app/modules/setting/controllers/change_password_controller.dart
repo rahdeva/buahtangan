@@ -7,17 +7,19 @@ class ChangePasswordController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isHidden1 = true.obs;
   RxBool isHidden2 = true.obs;
-  TextEditingController passNewC = TextEditingController();
-  TextEditingController passConfirmC = TextEditingController();
+  RxBool isHidden3 = true.obs;
+  TextEditingController curentPassC = TextEditingController();
+  TextEditingController newPassC = TextEditingController();
+  TextEditingController confirmNewPassC = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
   void updatePassword() async {
-    if (passNewC.text.isNotEmpty && passConfirmC.text.isNotEmpty) {
-      if (passNewC.text == passConfirmC.text) {
+    if (newPassC.text.isNotEmpty && confirmNewPassC.text.isNotEmpty) {
+      if (newPassC.text == confirmNewPassC.text) {
         try {
           isLoading.value = true;
-          await auth.currentUser!.updatePassword(passNewC.text);
+          await auth.currentUser!.updatePassword(newPassC.text);
           isLoading.value = false;
           Get.offAllNamed(Routes.SETTING);
           Get.snackbar("Berhasil!", "Password Anda telah berhasil diganti.");

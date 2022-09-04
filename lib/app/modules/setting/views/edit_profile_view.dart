@@ -9,10 +9,10 @@ import '../../../widgets/button/primary_button_widget.dart';
 import '../../../widgets/text-field/disable_text_field_widget.dart';
 import '../../../widgets/text-field/text_field_widget.dart';
 
-import '../controllers/edit_profil_controller.dart';
+import '../controllers/edit_profile_controller.dart';
 
-class EditProfilView extends GetView<EditProfilController> {
-  const EditProfilView({Key? key}) : super(key: key);
+class EditProfileView extends GetView<EditProfileController> {
+  const EditProfileView({Key? key}) : super(key: key);
 
   // @override
   // Widget build(BuildContext context) {

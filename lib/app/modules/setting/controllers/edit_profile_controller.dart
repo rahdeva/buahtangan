@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../routes/app_pages.dart';
 
-class EditProfilController extends GetxController {
+class EditProfileController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isHidden = true.obs;
   RxBool isHidden2 = true.obs;
