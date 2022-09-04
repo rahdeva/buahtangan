@@ -1,7 +1,7 @@
-import 'package:buahtangan/app/widgets/logo-container/logo_container_widget.dart';
+import 'package:buahtangan/app/widgets/logo-container/logo_image_container.dart';
+import 'package:buahtangan/app/widgets/logo-container/logo_text_container.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
@@ -20,20 +20,8 @@ class HomeView extends GetView<HomeController> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const LogoContainer(),
-              Container(
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  boxShadow: [dropShadow()],
-                  borderRadius: BorderRadius.circular(20)
-                ),
-                margin: const EdgeInsets.all(24.0),
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
-                child: SvgPicture.asset(
-                  "assets/images/textLogo.svg",
-                  width: Get.width * 0.5,
-                ),
-              ),
+              const LogoImageContainer(),
+              const LogoTextContainer(),
               Container(
                 decoration: BoxDecoration(
                   color: backgroundColor,
@@ -221,3 +209,5 @@ class HomeView extends GetView<HomeController> {
     );
   }
 }
+
+

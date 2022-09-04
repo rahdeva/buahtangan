@@ -2,8 +2,8 @@ import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LogoContainer extends StatelessWidget {
-  const LogoContainer({
+class LogoImageContainer extends StatelessWidget {
+  const LogoImageContainer({
     Key? key,
   }) : super(key: key);
 
