@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -29,14 +30,7 @@ class LoginView extends GetView<LoginController> {
               Container(
                 width: Get.width,
                 padding: const EdgeInsets.fromLTRB(40, 40, 40, 24),
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  boxShadow: [dropShadow()],
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30), 
-                    topRight: Radius.circular(30), 
-                  )
-                ),
+                decoration: whiteContainerDecoration(),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -46,7 +40,10 @@ class LoginView extends GetView<LoginController> {
                     ),
                     const SizedBox(height: 32),
                     TextFieldWidget(
-                      controller: controller
+                      controller: controller.emailC,
+                      keyboardType: TextInputType.emailAddress,
+                      hintText: "Email",
+                      labelText: "Your Email..."
                     ),
                     const SizedBox(height: 24),
                     PasswordTextFieldWidget(

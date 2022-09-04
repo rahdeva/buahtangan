@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import '../../../themes/color_theme.dart';
+import '../../../themes/decoration.dart';
 import '../../../themes/text_theme.dart';
 
 import '../controllers/gift_planner_controller.dart';

@@ -1,7 +1,8 @@
 import '../../../modules/authentication/controllers/login_controller.dart';
-import '../../../themes/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../themes/decoration.dart';
 
 class LoginWithGoogleWidget extends StatelessWidget {
   const LoginWithGoogleWidget({

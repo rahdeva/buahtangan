@@ -1,15 +1,22 @@
-import 'package:buahtangan/app/modules/authentication/controllers/login_controller.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+
+import '../../themes/decoration.dart';
 
 class TextFieldWidget extends StatelessWidget {
   const TextFieldWidget({
     Key? key,
     required this.controller,
+    required this.keyboardType,
+    required this.labelText,
+    required this.hintText,
   }) : super(key: key);
 
-  final LoginController controller;
+  final TextEditingController controller;
+  final TextInputType keyboardType;
+  final String labelText;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +26,12 @@ class TextFieldWidget extends StatelessWidget {
       ),
       child: TextField(
         style: projectTextTheme.subtitle1,
-        controller: controller.emailC,
-        keyboardType: TextInputType.emailAddress,
+        controller: controller,
+        keyboardType: keyboardType,
         autocorrect: false,
         decoration: InputDecoration(
-          labelText: "Email",
-          hintText: "Your Email...",
+          labelText: labelText,
+          hintText: hintText,
           hoverColor: surfaceColor,
           fillColor: surfaceColor,
           focusColor: primaryColor,

@@ -4,6 +4,8 @@ import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../themes/decoration.dart';
+
 class PasswordTextFieldWidget extends StatelessWidget {
   const PasswordTextFieldWidget({
     Key? key,
