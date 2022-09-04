@@ -14,9 +14,9 @@ class EditProfilView extends GetView<EditProfilController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: primaryColor,
-        body: SafeArea(
-            child: SingleChildScrollView(
+      backgroundColor: primaryColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: FutureBuilder<Map<String, dynamic>?>(
               future: controller.getProfile(),
               builder: (context, snapshot) {
