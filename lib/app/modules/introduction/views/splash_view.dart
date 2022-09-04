@@ -25,21 +25,23 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              'assets/images/imagesLogo.svg',
-              width: Get.width * 0.6,
-            ),
-            const SizedBox(height: 16),
-            SvgPicture.asset(
-              'assets/images/textLogo.svg',
-              width: Get.width * 0.6,
-            ),
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                'assets/images/imagesLogo.svg',
+                width: Get.width * 0.6,
+              ),
+              const SizedBox(height: 16),
+              SvgPicture.asset(
+                'assets/images/textLogo.svg',
+                width: Get.width * 0.6,
+              ),
+            ],
+          ),
         ),
       ),
     );

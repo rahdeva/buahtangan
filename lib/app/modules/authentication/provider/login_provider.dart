@@ -63,7 +63,7 @@ class LoginProvider {
   //   return null;
   // }
 
-  static Future<UserCredential?> signInWithGoogle() async {
+  Future<UserCredential?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
@@ -72,38 +72,99 @@ class LoginProvider {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-
       UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
       return userCredential;
-      
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       showSnackbar(
-        "Terjadi Kesalahan!", "Kode Error : ${e.toString()}", 
+        "There's an error",
+        "There's error on server",
         const Icon(Icons.close_rounded, color: Colors.red)
       );
     } catch (e) {
       showSnackbar(
-        "Terjadi Kesalahan!", "Tidak dapat Login menggunakan Email ini", 
+        "There's an error","Can't login using this Email",
         const Icon(Icons.close_rounded, color: Colors.red)
       );
     }
     return null;
   }
 
-  static Future<UserCredential?> signInWithFacebook() async {
+  // Future<UserCredential?> signInWithFacebook() async {
+  //   try {
+  //     final LoginResult loginResult = await FacebookAuth.instance.login(
+  //       permissions: ['public_profile', 'email', 'pages_show_list', 'pages_messaging', 'pages_manage_metadata'],
+  //     );
+  //     print(loginResult.status);
+  //     final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+  //     print(facebookAuthCredential);
+  //     UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  //     print(userCredential);
+  //     return userCredential;
+  //   } on FirebaseAuthException {
+  //     showSnackbar(
+  //       "There's an error",
+  //       "There's error on server",
+  //       const Icon(Icons.close_rounded, color: Colors.red)
+  //     );
+  //   } catch (e) {
+  //     showSnackbar(
+  //       "There's an error","Can't login using this Email",
+  //       const Icon(Icons.close_rounded, color: Colors.red)
+  //     );
+  //   }
+  //   return null;
+  // }
+  
+  // Future<UserCredential?> signInWithFacebook() async {
+  //   try {
+  //     final LoginResult loginResult = await FacebookAuth.instance.login();
+  //     print(loginResult.status);
+  //     print("masuk satu");
+  //     final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+  //     print(facebookAuthCredential);
+  //     print("masuk dua");
+  //     UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  //     print("masuk tiga");
+  //     print(userCredential);
+  //     return userCredential;
+  //   } on FirebaseAuthException {
+  //     showSnackbar(
+  //       "There's an error",
+  //       "There's error on server",
+  //       const Icon(Icons.close_rounded, color: Colors.red)
+  //     );
+  //   } catch (e) {
+  //     showSnackbar(
+  //       "There's an error","Can't login using this Email",
+  //       const Icon(Icons.close_rounded, color: Colors.red)
+  //     );
+  //   }
+  //   return null;
+  // }
+
+  Future<UserCredential?> signInWithFacebook() async {
     try {
-      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final LoginResult loginResult = await FacebookAuth.instance.login(permissions: ['email']);
+      print(loginResult.status);
+      print("masuk satu");
       final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      print(facebookAuthCredential);
+      print("masuk dua");
       UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+      print("masuk tiga");
+      print(userCredential);
       return userCredential;
-    } on FirebaseAuthException catch (e) {
-      showSnackbar(
-        "Terjadi Kesalahan!", "Kode Error : ${e.toString()}", 
-        const Icon(Icons.close_rounded, color: Colors.red)
-      );
+    // } on FirebaseAuthException {
+    //   showSnackbar(
+    //     "There's an error",
+    //     "There's error on server",
+    //     const Icon(Icons.close_rounded, color: Colors.red)
+    //   );
     } catch (e) {
+      print(e);
+      print(e.toString());
       showSnackbar(
-        "Terjadi Kesalahan!", "Tidak dapat Login menggunakan Email ini", 
+        "There's an error","Can't login using this Email",
         const Icon(Icons.close_rounded, color: Colors.red)
       );
     }

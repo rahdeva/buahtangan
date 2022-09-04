@@ -16,7 +16,7 @@ class DashboardController extends GetxController {
     update(['nav-bar', 'bottom-nav-bar']);
   }
 
-  List<Widget> tabView = [
+  List<Widget> tabView = const [
     HomeView(),
     GiftDirectoryView(),
     ArticlesView(),

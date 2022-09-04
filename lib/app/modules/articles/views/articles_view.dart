@@ -8,23 +8,7 @@ import '../../../themes/text_theme.dart';
 import '../controllers/articles_controller.dart';
 
 class ArticlesView extends GetView<ArticlesController> {
-  ArticlesView({Key? key}) : super(key: key);
-
-  String category = "Latest Tech";
-  String title = "Immerse Project SIC Mobile Blog App";
-  String author = "Jimmy Cool";
-  String writtenDate = "14/02/2022";
-  String articleImage =
-      "https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80";
-  String userImage =
-      "https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80";
-  String articleContent =
-      "Article ini adalah contoh article yang digunakan untuk mengembangkan aplikasi mobile dari SIC Blog. Adapun content dari article ini tidak ada isinya karena ini semua hanya untuk keperluan mengembangkan aplikasi blogapp.";
-  String username = "User 1";
-  String articleComment = "Article yang bagus!";
-  int likeCount = 777;
-  int dislikeCount = 123;
-  int commentCount = 777;
+  const ArticlesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +73,7 @@ class ArticlesView extends GetView<ArticlesController> {
                               padding: const EdgeInsets.only(top:16.0, left: 16.0, bottom: 16.0),
                               child: ClipRRect(
                                 borderRadius: const BorderRadius.all(Radius.circular(15.0)),
-                                child: Image.network(articleImage)),
+                                child: Image.network(controller.articleImage)),
                             ),
                             Expanded(
                               child: Container(
@@ -99,7 +83,7 @@ class ArticlesView extends GetView<ArticlesController> {
                                   children: <Widget>[
                                     const SizedBox(height: 8),
                                     Text(
-                                      title,
+                                      controller.title,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.justify,
@@ -111,7 +95,7 @@ class ArticlesView extends GetView<ArticlesController> {
                                     ),
                                     const SizedBox(height: 12),
                                     Text(
-                                      "$author - $writtenDate",
+                                      "$controller.author - $controller.writtenDate",
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
                                         fontSize: 10.0,

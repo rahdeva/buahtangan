@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
 import '../../../themes/text_theme.dart';
@@ -14,8 +15,19 @@ class LoginController extends GetxController {
   TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
   TextEditingController emailResetC = TextEditingController();
+  final LoginProvider service = Get.find<LoginProvider>();
 
   final box = GetStorage();
+
+  @override
+  void onInit() {
+    if (box.read("rememberme") != null) {
+      emailC.text = box.read("rememberme")["email"];
+      passwordC.text = box.read("rememberme")["pass"];
+      rememberme.value = true;
+    }
+    super.onInit();
+  }
 
   void loginEmail() async {
     if (emailC.text.isNotEmpty && passwordC.text.isNotEmpty) {
@@ -87,24 +99,42 @@ class LoginController extends GetxController {
   }
 
   Future<void> loginGoogle() async {
-    final userCredential = await LoginProvider.signInWithGoogle();
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
     if (userCredential != null) {
-      // await firestore.collection("users").doc(userCredential.user!.uid).set({
-      //       "name": nameC.text,
-      //       "phone": phoneC.text,
-      //       "email": emailC.text,
-      //       "uid": userCredential.user!.uid,
-      //       "profile": null,
-      //       "createdAt": DateTime.now().toIso8601String(),
-      //     });
-      Get.toNamed(Routes.DASHBOARD);
+      // var userData = await service.getUserData(userCredential.user!.uid);
+      if (userCredential.additionalUserInfo!.isNewUser) {
+        // if(userData == null){
+          Get.offNamed(Routes.HOME_RESULT);
+        // } 
+      } else {
+        // await getUserDataStorage(userCredential.user!);
+        Get.offNamed(Routes.HOME_RESULT);
+        // final fcmToken = await FirebaseMessaging.instance.getToken();
+        // subcribeFCM(fcmToken);
+      }
     }
   }
 
   Future<void> loginFacebook() async {
-    final userCredential = await LoginProvider.signInWithFacebook();
+    final userCredential = await service.signInWithFacebook();
     if (userCredential != null) {
-      Get.toNamed(Routes.DASHBOARD);
+      // var userData = await service.getUserData(userCredential.user!.uid);
+      if (userCredential.additionalUserInfo!.isNewUser) {
+        // if(userData == null){
+          print("masuk 1");
+          // Get.offNamed(Routes.HOME_RESULT);
+        // } 
+      } else {
+          print("masuk 2");
+        Get.offNamed(Routes.HOME_RESULT);
+      }
     }
   }
 

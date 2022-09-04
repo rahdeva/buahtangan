@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import '../app/helpers/utils.dart';
+import 'app/helpers/utils.dart';
 // import '../app/themes/app_theme.dart';
 
 Future<void> main() async {

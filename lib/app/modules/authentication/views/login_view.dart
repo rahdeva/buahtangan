@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get_storage/get_storage.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
@@ -10,17 +9,10 @@ import '../../../themes/text_theme.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
-  LoginView({Key? key}) : super(key: key);
-
-  final box = GetStorage();
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (box.read("rememberme") != null) {
-      controller.emailC.text = box.read("rememberme")["email"];
-      controller.passwordC.text = box.read("rememberme")["pass"];
-      controller.rememberme.value = true;
-    }
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
