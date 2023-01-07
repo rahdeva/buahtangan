@@ -1,8 +1,8 @@
-import 'package:buahtangan/app/themes/color_theme.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../themes/text_theme.dart';
+import '../../themes/color_theme.dart';
 import '../../themes/decoration.dart';
 
 class PrimaryButtonWidget extends StatelessWidget {
@@ -42,10 +42,18 @@ class PrimaryButtonWidget extends StatelessWidget {
               )
             ),
           ),
-          child: Text(
-            isLoading.isFalse ? buttonText : "Loading...",
-            style: projectTextTheme.button,
-          ),
+          child: isLoading.isFalse 
+            ? Text(
+                buttonText,
+                style: projectTextTheme.button,
+              )
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CircularProgressIndicator(
+                  color: surfaceColor,
+                  backgroundColor: slate500,
+                ),
+              )
         ),
       ),
     );

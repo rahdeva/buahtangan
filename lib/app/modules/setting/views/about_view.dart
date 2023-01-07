@@ -17,38 +17,30 @@ class AboutView extends GetView<AboutController> {
       backgroundColor: primaryColor,
       body: SafeArea(
         child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const BackButtonWidget(),
-            Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const BackButtonWidget(),
+              Container(
                 width: Get.width,
                 height: Get.height - 100,
-                decoration: BoxDecoration(
-                  color: backgroundColor,
-                  boxShadow: [dropShadow()],
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30), 
-                    topRight: Radius.circular(30), 
-                  )
-                ),
+                decoration: whiteContainerDecoration(),
+                padding: const EdgeInsets.fromLTRB(40, 60, 40, 0),
                 child: Column(
                   children: [
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(40, 60, 40, 28),
-                      child: Text(
-                        "About",
-                        style: projectTextTheme.headline6?.copyWith(
-                          color: onBackgroundColor
-                        ),
+                    Text(
+                      "About",
+                      style: projectTextTheme.headline6?.copyWith(
+                        color: onBackgroundColor
                       ),
                     ),
                   ]
                 ),
-            )
-          ],
-        ),
-      )),
+              )
+            ],
+          ),
+        )
+      ),
     );
   }
 }

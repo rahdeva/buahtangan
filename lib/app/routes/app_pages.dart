@@ -34,11 +34,11 @@ import '../modules/introduction/bindings/onboarding_binding.dart';
 import '../modules/introduction/views/onboarding_view.dart';
 import '../modules/setting/bindings/about_binding.dart';
 import '../modules/setting/bindings/change_password_binding.dart';
-import '../modules/setting/bindings/edit_profil_binding.dart';
+import '../modules/setting/bindings/edit_profile_binding.dart';
 import '../modules/setting/bindings/setting_binding.dart';
 import '../modules/setting/views/about_view.dart';
 import '../modules/setting/views/change_password_view.dart';
-import '../modules/setting/views/edit_profil_view.dart';
+import '../modules/setting/views/edit_profile_view.dart';
 import '../modules/setting/views/setting_view.dart';
 
 part 'app_routes.dart';
@@ -133,8 +133,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_PROFIL,
-      page: () => const EditProfilView(),
-      binding: EditProfilBinding(),
+      page: () => const EditProfileView(),
+      binding: EditProfileBinding(),
     ),
     GetPage(
       name: _Paths.CHANGE_PASSWORD,

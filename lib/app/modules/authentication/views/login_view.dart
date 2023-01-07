@@ -1,9 +1,9 @@
-import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 import '../../../themes/color_theme.dart';
 import '../../../themes/text_theme.dart';
+import '../../../themes/decoration.dart';
 import '../../../widgets/text-field/text_field_widget.dart';
 import '../../../widgets/button/primary_button_widget.dart';
 import '../../../widgets/logo-container/logo_image_container.dart';
@@ -42,15 +42,15 @@ class LoginView extends GetView<LoginController> {
                     TextFieldWidget(
                       controller: controller.emailC,
                       keyboardType: TextInputType.emailAddress,
-                      hintText: "Email",
-                      labelText: "Your Email..."
+                      labelText: "Email",
+                      hintText: "Your Email..."
                     ),
                     const SizedBox(height: 24),
                     PasswordTextFieldWidget(
                       controller: controller.passwordC,
                       isHidden: controller.isHidden, 
-                      hintText: "Password",
-                      labelText: "Your Password...",
+                      labelText: "Password",
+                      hintText: "Your Password...",
                     ),
                     const SizedBox(height: 16),
                     RememberMeForgotPass(
