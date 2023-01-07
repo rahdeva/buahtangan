@@ -8,23 +8,23 @@ class OnboardingController extends GetxController {
   final List<Map> data = [
     {
       "image": 'assets/lottie/finder.json',
-      "title": "title",
-      "desc": "desc"
+      "title": "Gift Finder",
+      "desc": "Let us find the best gifts for you"
     },
     {
       "image": 'assets/lottie/gifts.json',
-      "title": "title",
-      "desc": "desc"
+      "title": "Gift Directory",
+      "desc": "Discover gifts that you might like"
     },
     {
       "image": 'assets/lottie/articles.json',
-      "title": "title",
-      "desc": "desc"
+      "title": "Articles",
+      "desc": "Discover things you don't know about"
     },
     {
       "image": 'assets/lottie/calendar.json',
-      "title": "title",
-      "desc": "desc"
+      "title": "Gift Planner",
+      "desc": "Be more organized in your gift-giving"
     }
   ];
 }
