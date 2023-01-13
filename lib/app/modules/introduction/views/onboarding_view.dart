@@ -82,11 +82,12 @@ class OnboardingView extends GetView<OnboardingController> {
                       )
                     : Column(
                         children: [
+                          const SizedBox(height: 24),
                           Lottie.asset(
                             data["image"],
-                            width: Get.width * 0.8
+                            width: Get.width * 0.75
                           ),
-                          const SizedBox(height: 24),
+                          const SizedBox(height: 20),
                           Text(
                             data["title"],
                             style: projectTextTheme.headline5?.copyWith(
@@ -153,7 +154,7 @@ class OnboardingView extends GetView<OnboardingController> {
             )),
           ),
           child: Text(
-            "Login",
+            "Get Started",
             style: projectTextTheme.button,
           ),
         ),

@@ -14,7 +14,7 @@ class OnboardingController extends GetxController {
     },
     {
       "id": 2,
-      "image": 'assets/lottie/test-3.json',
+      "image": 'assets/lottie/gift.json',
       "title": "Gift Directory",
       "desc": "Discover gifts that you might like"
     },
@@ -26,7 +26,7 @@ class OnboardingController extends GetxController {
     },
     {
       "id": 4,
-      "image": 'assets/lottie/test-6.json',
+      "image": 'assets/lottie/calendar.json',
       "title": "Gift Planner",
       "desc": "Be more organized in your gift-giving"
     },
