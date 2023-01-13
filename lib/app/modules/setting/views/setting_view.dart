@@ -100,7 +100,7 @@ class SettingView extends GetView<SettingController> {
                       onTap: () => Get.toNamed(Routes.CHANGE_PASSWORD),
                     ),
                     SettingWidgets(
-                      leading : IconlyBold.lock,
+                      leading : IconlyBold.message,
                       title : "Send Feedback",
                       onTap: () => Get.defaultDialog(title: "Halo"),
                     ),

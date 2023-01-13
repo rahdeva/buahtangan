@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 var primaryColor = const Color(0xFF034A64);
 var primaryVariantColor = const Color(0xFF013142);
 var secondaryColor = const Color(0xFFED6F6A);
-var secondaryVariantColor = const Color(0xFFEE413F);
+var secondaryVariantColor = const Color(0xFFE15655);
 var tertiaryColor = const Color(0xFFA7D6EA);
 var tertiaryVariantColor = const Color(0xFF61B9E9);
 var backgroundColor = const Color(0xFFFAFAFA);
