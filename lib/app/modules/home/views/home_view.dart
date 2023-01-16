@@ -38,7 +38,7 @@ class HomeView extends GetView<HomeController> {
                       "We've your back",
                       style: projectTextTheme.subtitle1?.copyWith(color: slate500),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     Text(
                       "Try Out Our Gift Finder",
                       style: projectTextTheme.headline6?.copyWith(
@@ -179,7 +179,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                     ), 
                     Container(
-                      margin: const EdgeInsets.only(top: 24),
+                      margin: const EdgeInsets.only(top: 16),
                       width: Get.width,
                       height: 60,
                       decoration: shadowDecoration(),

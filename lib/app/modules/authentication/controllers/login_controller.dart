@@ -112,11 +112,11 @@ class LoginController extends GetxController {
       // var userData = await service.getUserData(userCredential.user!.uid);
       if (userCredential.additionalUserInfo!.isNewUser) {
         // if(userData == null){
-          Get.offNamed(Routes.HOME_RESULT);
+          Get.offNamed(Routes.DASHBOARD);
         // } 
       } else {
         // await getUserDataStorage(userCredential.user!);
-        Get.offNamed(Routes.HOME_RESULT);
+        Get.offNamed(Routes.DASHBOARD);
         // final fcmToken = await FirebaseMessaging.instance.getToken();
         // subcribeFCM(fcmToken);
       }

@@ -1,9 +1,9 @@
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 
 import '../../themes/decoration.dart';
+import 'package:sizer/sizer.dart';
 
 class LogoTextContainer extends StatelessWidget {
   const LogoTextContainer({
@@ -18,11 +18,11 @@ class LogoTextContainer extends StatelessWidget {
         boxShadow: [dropShadow()],
         borderRadius: BorderRadius.circular(20)
       ),
-      margin: const EdgeInsets.all(24.0),
+      margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
       child: SvgPicture.asset(
         "assets/images/textLogo.svg",
-        width: Get.width * 0.5,
+        width: 40.w,
       ),
     );
   }

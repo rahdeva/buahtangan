@@ -13,13 +13,13 @@ class LogoImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: shadowDecoration(),
-      margin: const EdgeInsets.all(25.0),
+      margin: const EdgeInsets.fromLTRB(24, 16, 24, 12),
       child: Center(
         child: CircleAvatar(
-          radius: 80,
+          radius: 60,
           backgroundColor: backgroundColor,
           child: CircleAvatar(
-            radius: 60,
+            radius: 40,
             backgroundColor: backgroundColor,
             child: SvgPicture.asset("assets/images/imagesLogo.svg"),
           ),
