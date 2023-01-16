@@ -70,7 +70,7 @@ class ArticlesView extends GetView<ArticlesController> {
                           children: <Widget>[
                             Container(
                               height: Get.width <= 380 ? 130 : 150,
-                              decoration: shadowDecoration(),
+                              // decoration: shadowDecoration(),
                               padding: const EdgeInsets.only(top:16.0, left: 16.0, bottom: 16.0),
                               child: ClipRRect(
                                 borderRadius: const BorderRadius.all(Radius.circular(15.0)),
@@ -96,7 +96,7 @@ class ArticlesView extends GetView<ArticlesController> {
                                     ),
                                     const SizedBox(height: 12),
                                     Text(
-                                      "$controller.author - $controller.writtenDate",
+                                      "${controller.author} - ${controller.writtenDate}",
                                       overflow: TextOverflow.ellipsis,
                                       style: const TextStyle(
                                         fontSize: 10.0,
