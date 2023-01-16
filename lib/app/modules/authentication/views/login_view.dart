@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
 import '../../../themes/text_theme.dart';
@@ -22,68 +23,72 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const LogoImageContainer(),
-              Container(
-                width: Get.width,
-                padding: const EdgeInsets.fromLTRB(40, 40, 40, 24),
-                decoration: whiteContainerDecoration(),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Welcome to BuahTangan!",
-                      style: projectTextTheme.headline6,
-                    ),
-                    const SizedBox(height: 32),
-                    TextFieldWidget(
-                      controller: controller.emailC,
-                      keyboardType: TextInputType.emailAddress,
-                      labelText: "Email",
-                      hintText: "Your Email..."
-                    ),
-                    const SizedBox(height: 24),
-                    PasswordTextFieldWidget(
-                      controller: controller.passwordC,
-                      isHidden: controller.isHidden, 
-                      labelText: "Password",
-                      hintText: "Your Password...",
-                    ),
-                    const SizedBox(height: 16),
-                    RememberMeForgotPass(
-                      controller: controller
-                    ),
-                    const SizedBox(height: 8),
-                    PrimaryButtonWidget(
-                      buttonText: "Login",           
-                      isLoading: controller.isLoading,
-                      backgroundColor: primaryColor, 
-                      overlayColor: primaryVariantColor, 
-                      foregroundColor: onPrimaryColor, 
-                      onPress: () {
-                        if (controller.isLoading.isFalse) {
-                          controller.loginEmail();
-                        }
-                      }, 
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      "- Or Login With -", 
-                      style: projectTextTheme.caption
-                    ),
-                    const SizedBox(height: 16),
-                    LoginWithGoogleWidget(
-                      controller: controller
-                    ),
-                    const SizedBox(height: 16),
-                    const GotoRegisterText(),
-                  ],
+        child: SizedBox(
+          height: 100.h,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const LogoImageContainer(),
+                Container(
+                  width: 100.w,
+                  padding: const EdgeInsets.fromLTRB(40, 40, 40, 24),
+                  // constraints: BoxConstraints(maxHeight: 100.w),
+                  decoration: whiteContainerDecoration(),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Welcome to BuahTangan!",
+                        style: projectTextTheme.headline6,
+                      ),
+                      const SizedBox(height: 32),
+                      TextFieldWidget(
+                        controller: controller.emailC,
+                        keyboardType: TextInputType.emailAddress,
+                        labelText: "Email",
+                        hintText: "Your Email..."
+                      ),
+                      const SizedBox(height: 24),
+                      PasswordTextFieldWidget(
+                        controller: controller.passwordC,
+                        isHidden: controller.isHidden, 
+                        labelText: "Password",
+                        hintText: "Your Password...",
+                      ),
+                      const SizedBox(height: 8),
+                      RememberMeForgotPass(
+                        controller: controller
+                      ),
+                      const SizedBox(height: 8),
+                      PrimaryButtonWidget(
+                        buttonText: "Login",           
+                        isLoading: controller.isLoading,
+                        backgroundColor: primaryColor, 
+                        overlayColor: primaryVariantColor, 
+                        foregroundColor: onPrimaryColor, 
+                        onPress: () {
+                          if (controller.isLoading.isFalse) {
+                            controller.loginEmail();
+                          }
+                        }, 
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "- Or Login With -", 
+                        style: projectTextTheme.caption
+                      ),
+                      const SizedBox(height: 16),
+                      LoginWithGoogleWidget(
+                        controller: controller
+                      ),
+                      const SizedBox(height: 16),
+                      const GotoRegisterText(),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         )
       ),
