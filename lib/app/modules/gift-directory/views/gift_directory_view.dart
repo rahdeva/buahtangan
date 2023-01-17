@@ -67,7 +67,7 @@ class GiftDirectoryView extends GetView<GiftDirectoryController> {
                             boxShadow: [dropShadow()],
                             borderRadius: BorderRadius.circular(200)
                           ),
-                          padding: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.fromLTRB(12, 14, 12, 10),
                           child: Icon(
                             IconlyBold.heart,
                             size: 24,
