@@ -32,6 +32,9 @@ class SearchTextFieldWidget extends StatelessWidget {
           decoration: InputDecoration(
             // labelText: labelText,
             hintText: hintText,
+            hintStyle: projectTextTheme.bodyText1!.copyWith(
+              color: slate400
+            ),
             hoverColor: surfaceColor,
             fillColor: surfaceColor,
             focusColor: primaryColor,
