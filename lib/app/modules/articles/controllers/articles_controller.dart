@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ArticlesController extends GetxController {
+  TextEditingController searchC = TextEditingController();
+
   String category = "Latest Tech";
   String title = "Immerse Project SIC Mobile Blog App";
   String author = "Jimmy Cool";

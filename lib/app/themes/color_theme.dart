@@ -16,4 +16,5 @@ var onBackgroundColor = const Color(0xFF1E293B);
 var onSurfaceColor = const Color(0xFF334155);
 var onErrorColor = const Color(0xFFFFFFFF);
 var slate300 = const Color(0xFFCBD5E1);
+var slate400 = const Color(0xFF94A3B8);
 var slate500 = const Color(0xFF64748B);

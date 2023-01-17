@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/themes/decoration.dart';
+import 'package:buahtangan/app/widgets/text-field/search_text_field_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -34,19 +35,25 @@ class ArticlesView extends GetView<ArticlesController> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Text(
-                    "Articles",
-                      style: projectTextTheme.headline6?.copyWith(
-                      color: onBackgroundColor,
-                      fontWeight: FontWeight.bold
-                    ),
+                  "Articles",
+                    style: projectTextTheme.headline6?.copyWith(
+                    color: onBackgroundColor,
+                    fontWeight: FontWeight.bold
                   ),
+                ),
                 const SizedBox(height: 8),
                 Text(
-                    "Discover things you don't know about",
-                    style: projectTextTheme.subtitle2?.copyWith(
-                      color: slate500,
-                    ),
+                  "Discover things you don't know about",
+                  style: projectTextTheme.subtitle2?.copyWith(
+                    color: slate500,
                   ),
+                ),
+                const SizedBox(height: 16),
+                SearchTextFieldWidget(
+                  // controller : controller,
+                  searchC: controller.searchC, 
+                  hintText: "Search an Article", 
+                ),
                 const SizedBox(height: 24),
                 const Divider(),
                 ListView.builder(
