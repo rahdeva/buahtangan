@@ -1,3 +1,5 @@
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
+import 'package:buahtangan/app/widgets/text-field/search_text_field_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +14,10 @@ class GiftDirectoryView extends GetView<GiftDirectoryController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 16),
@@ -43,21 +45,81 @@ class GiftDirectoryView extends GetView<GiftDirectoryController> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    "Discover things you don't know about",
+                    "Discover gifts you might like",
                     style: projectTextTheme.subtitle2?.copyWith(
                       color: slate500,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 24),
-                    child: const Divider()
+                  const SizedBox(height: 16),
+                  SearchTextFieldWidget(
+                    // controller : controller,
+                    searchC: controller.searchC, 
+                    hintText: "Search an Article", 
                   ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Sort by",
+                        style: projectTextTheme.bodyText2?.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: onSurfaceColor,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Container(
+                        width: 160,
+                        decoration: BoxDecoration(
+                          color: surfaceColor,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [dropShadow()]
+                        ),
+                        child: DropdownButtonFormField<String>(
+                          decoration: InputDecoration(
+                            hoverColor: surfaceColor,
+                            fillColor: surfaceColor,
+                            focusColor: primaryColor,
+                            isDense: true,
+                            filled: true,
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4), 
+                            labelStyle: projectTextTheme.caption?.copyWith(color: slate500),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: primaryColor, width: 0.0)
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: surfaceColor, width: 0.0)
+                            ),
+                          ),
+                          value: "Newest",
+                          items: ["Newest", 'bb', 'cc'].map((item) 
+                            => DropdownMenuItem<String>(
+                                value: item,
+                                child: Text(
+                                  item,
+                                  style: projectTextTheme.caption?.copyWith(color: slate500),
+                                )
+                              )
+                            ).toList(),
+                            onChanged: ((item) {
+                              item = item.toString();
+                            })
+                          ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Divider(color: slate400),
+                  const SizedBox(height: 16),
                 ]
               ),
             )
           ],
         ),
-      )),
+        ),
+      ),
     );
   }
 }

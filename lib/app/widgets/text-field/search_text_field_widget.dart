@@ -40,18 +40,21 @@ class SearchTextFieldWidget extends StatelessWidget {
             focusColor: primaryColor,
             isDense: true,
             filled: true,
-            suffixIcon: Icon(
-              IconlyLight.search,
-              size: 24,
-              color: slate400,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Icon(
+                IconlyLight.search,
+                size: 24,
+                color: slate400,
+              ),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20), 
+            contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16), 
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(25),
               borderSide: BorderSide(color: primaryColor, width: 0.0)
             ),
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(25),
               borderSide: BorderSide(color: surfaceColor, width: 0.0)
             )
           ),
