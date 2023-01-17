@@ -43,7 +43,7 @@ class GiftPlannerView extends GetView<GiftPlannerController> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    "Discover things you don't know about",
+                    "Be more organized in your gift-giving",
                     style: projectTextTheme.subtitle2?.copyWith(
                       color: slate500,
                     ),
