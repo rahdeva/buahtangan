@@ -43,7 +43,7 @@ class AboutView extends GetView<AboutController> {
                           children: [
                             const SizedBox(height: 56),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+                              padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
                               child: Text(
                                 "BuahTangan is an application that  allows users to get the gift finder according to user input, see the gift directory, read articles about the gift, and gift planner.",
                                 style: projectTextTheme.bodyText1?.copyWith(
@@ -60,7 +60,7 @@ class AboutView extends GetView<AboutController> {
                             ),
                             const SizedBox(height: 24),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                              padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
                               child: Text(
                                 "Copyright © A-Dev 2023",
                                 style: projectTextTheme.bodyText2?.copyWith(
