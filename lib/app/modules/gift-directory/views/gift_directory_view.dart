@@ -37,19 +37,45 @@ class GiftDirectoryView extends GetView<GiftDirectoryController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Gift Directory",
-                      style: projectTextTheme.headline6?.copyWith(
-                      color: onBackgroundColor,
-                      fontWeight: FontWeight.bold
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    "Discover gifts you might like",
-                    style: projectTextTheme.subtitle2?.copyWith(
-                      color: slate500,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Gift Directory",
+                              style: projectTextTheme.headline6?.copyWith(
+                              color: onBackgroundColor,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            "Discover gifts you might like",
+                            style: projectTextTheme.subtitle2?.copyWith(
+                              color: slate500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      InkWell(
+                        onTap: (){},
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: surfaceColor,
+                            boxShadow: [dropShadow()],
+                            borderRadius: BorderRadius.circular(200)
+                          ),
+                          padding: const EdgeInsets.all(12),
+                          child: Icon(
+                            IconlyBold.heart,
+                            size: 24,
+                            color: secondaryVariantColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 16),
                   SearchTextFieldWidget(
