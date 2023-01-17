@@ -242,6 +242,7 @@ class SettingView extends GetView<SettingController> {
                                   ),
                                 ),
                               ),
+                              const SizedBox(height: 8),
                             ],
                           ),
                         )
