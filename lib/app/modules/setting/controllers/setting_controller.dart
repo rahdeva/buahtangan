@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,6 +8,14 @@ import 'package:firebase_storage/firebase_storage.dart' as s;
 import '../../../routes/app_pages.dart';
 
 class SettingController extends GetxController {
+  static SettingController find = Get.find();
+  TextEditingController searchC = TextEditingController();
+  TextEditingController reviewC = TextEditingController();
+  String searchKeyword = "";
+  double rating = 3;
+  int maxLength = 200;
+  RxString reviewResult = "".obs;
+
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   s.FirebaseStorage storage = s.FirebaseStorage.instance;

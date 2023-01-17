@@ -15,24 +15,24 @@ class RememberMeForgotPass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Obx(
-          () => Row(
-            children: [
-              Checkbox(
-                value: controller.rememberme.value,
-                onChanged: (_) => controller.rememberme.toggle(),
-              ),
-              Text(
-                "Remember me", 
-                style: projectTextTheme.caption?.copyWith(
-                  color: slate500
-                ),
-              ),
-            ],
-          ),
-        ),
+        // Obx(
+        //   () => Row(
+        //     children: [
+        //       Checkbox(
+        //         value: controller.rememberme.value,
+        //         onChanged: (_) => controller.rememberme.toggle(),
+        //       ),
+        //       Text(
+        //         "Remember me", 
+        //         style: projectTextTheme.caption?.copyWith(
+        //           color: slate500
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         TextButton(
           onPressed: () => controller.resetDialog(),
           child: Text(

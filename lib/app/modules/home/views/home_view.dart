@@ -1,5 +1,7 @@
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:buahtangan/app/widgets/logo-container/logo_image_container.dart';
 import 'package:buahtangan/app/widgets/logo-container/logo_text_container.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -15,10 +17,10 @@ class HomeView extends GetView<HomeController> {
   
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SingleChildScrollView(
           child: Column(
             children: [
               const LogoImageContainer(),
@@ -38,7 +40,7 @@ class HomeView extends GetView<HomeController> {
                       "We've your back",
                       style: projectTextTheme.subtitle1?.copyWith(color: slate500),
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     Text(
                       "Try Out Our Gift Finder",
                       style: projectTextTheme.headline6?.copyWith(
@@ -92,8 +94,8 @@ class HomeView extends GetView<HomeController> {
                             borderSide: BorderSide(color: surfaceColor, width: 0.0)
                           ),
                         ),
-                        value: "aa",
-                        items: ["aa", 'bb', 'cc'].map((item) 
+                        value: "Event",
+                        items: ["Event", 'bb', 'cc'].map((item) 
                           => DropdownMenuItem<String>(
                               value: item,
                               child: Text(item)
@@ -129,8 +131,8 @@ class HomeView extends GetView<HomeController> {
                             borderSide: BorderSide(color: surfaceColor, width: 0.0)
                           ),
                         ),
-                        value: "aa",
-                        items: ["aa", 'bb', 'cc'].map((item) 
+                        value: "Receiver",
+                        items: ["Receiver", 'bb', 'cc'].map((item) 
                           => DropdownMenuItem<String>(
                               value: item,
                               child: Text(item)
@@ -166,11 +168,14 @@ class HomeView extends GetView<HomeController> {
                             borderSide: BorderSide(color: surfaceColor, width: 0.0)
                           ),
                         ),
-                        value: "aa",
-                        items: ["aa", 'bb', 'cc'].map((item) 
+                        value: "Budget",
+                        items: ["Budget", 'bb', 'cc'].map((item) 
                           => DropdownMenuItem<String>(
                               value: item,
-                              child: Text(item)
+                              child: Text(
+                                item,
+                                style: projectTextTheme.subtitle1,
+                              )
                             )
                           ).toList(),
                           onChanged: ((item) {
@@ -179,7 +184,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                     ), 
                     Container(
-                      margin: const EdgeInsets.only(top: 24),
+                      margin: const EdgeInsets.only(top: 16),
                       width: Get.width,
                       height: 60,
                       decoration: shadowDecoration(),

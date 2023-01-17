@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +13,10 @@ class GiftPlannerView extends GetView<GiftPlannerController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             const SizedBox(height: 16),
@@ -43,21 +44,30 @@ class GiftPlannerView extends GetView<GiftPlannerController> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    "Discover things you don't know about",
+                    "Be more organized in your gift-giving",
                     style: projectTextTheme.subtitle2?.copyWith(
                       color: slate500,
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 24),
-                    child: const Divider()
-                  ),
+                  const SizedBox(height: 16),
+                  Divider(color: slate400),
+                  const SizedBox(height: 16),
                 ]
               ),
             )
           ],
         ),
-      )),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){},
+          backgroundColor: secondaryColor,
+          child: Icon(
+            Icons.add,
+            size: 24,
+            color: surfaceColor,
+          ),
+        ),
+      ),
     );
   }
 }

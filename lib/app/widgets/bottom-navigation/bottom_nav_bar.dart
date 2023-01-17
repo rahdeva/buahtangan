@@ -45,7 +45,7 @@ class BottomNavBarWidget extends StatelessWidget {
           ),
           GButton(
             icon: IconlyLight.paper,
-            text: 'Articles',
+            text: 'Article',
             textStyle: projectTextTheme.overline?.copyWith(color: onPrimaryColor),
           ),
           GButton(

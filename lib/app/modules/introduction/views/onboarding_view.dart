@@ -30,29 +30,80 @@ class OnboardingView extends GetView<OnboardingController> {
               ),
               items: controller.data.map(
                 (data) {
-                  return Column(
-                    children: [
-                      Lottie.asset(
-                        data["image"],
-                        width: Get.width * 0.8
-                      ),
-                      const SizedBox(height: 24),
-                      Text(
-                        data["title"],
-                        style: projectTextTheme.headline5?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: surfaceColor
+                  return data["id"] == 2
+                  ? Column(
+                      children: [
+                        const SizedBox(height: 32),
+                        Lottie.asset(
+                          data["image"],
+                          width: Get.width * 0.8
                         ),
-                      ),
-                      const SizedBox(height: 24),
-                      Text(
-                        data["desc"],
-                        style: projectTextTheme.subtitle1?.copyWith(
-                          color: surfaceColor
+                        const SizedBox(height: 28),
+                        Text(
+                          data["title"],
+                          style: projectTextTheme.headline5?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: surfaceColor
+                          ),
                         ),
-                      ),
-                    ],
-                  );
+                        const SizedBox(height: 24),
+                        Text(
+                          data["desc"],
+                          style: projectTextTheme.subtitle1?.copyWith(
+                            color: surfaceColor
+                          ),
+                        ),
+                      ],
+                    )
+                  : data["id"] == 4
+                    ? Column(
+                        children: [
+                          const SizedBox(height: 60),
+                          Lottie.asset(
+                            data["image"],
+                            width: Get.width * 0.6
+                          ),
+                          const SizedBox(height: 42),
+                          Text(
+                            data["title"],
+                            style: projectTextTheme.headline5?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: surfaceColor
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Text(
+                            data["desc"],
+                            style: projectTextTheme.subtitle1?.copyWith(
+                              color: surfaceColor
+                            ),
+                          ),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          const SizedBox(height: 24),
+                          Lottie.asset(
+                            data["image"],
+                            width: Get.width * 0.75
+                          ),
+                          const SizedBox(height: 20),
+                          Text(
+                            data["title"],
+                            style: projectTextTheme.headline5?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: surfaceColor
+                            ),
+                          ),
+                          const SizedBox(height: 24),
+                          Text(
+                            data["desc"],
+                            style: projectTextTheme.subtitle1?.copyWith(
+                              color: surfaceColor
+                            ),
+                          ),
+                        ],
+                      );
                 },
               ).toList(),
             ),
@@ -103,7 +154,7 @@ class OnboardingView extends GetView<OnboardingController> {
             )),
           ),
           child: Text(
-            "Login",
+            "Get Started",
             style: projectTextTheme.button,
           ),
         ),
