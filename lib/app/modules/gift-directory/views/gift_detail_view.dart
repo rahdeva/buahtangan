@@ -20,7 +20,36 @@ class GiftDetailView extends GetView<GiftDetailController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const BackButtonWidget(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const BackButtonWidget(),
+                Container(
+                  margin: const EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: secondaryColor,
+                    boxShadow: [dropShadow()],
+                    borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.favorite_border_rounded,
+                        color: surfaceColor,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        "Add to Favorite",
+                        style: projectTextTheme.subtitle2?.copyWith(
+                          color: onSecondaryColor
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
             Container(
                 width: Get.width,
                 height: Get.height,

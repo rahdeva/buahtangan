@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
@@ -21,10 +22,7 @@ class GiftListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          // Get.toNamed(
-          //   PageName.DETAIL_HOSPITAL, 
-          //   arguments: [mData.slug, false]
-          // );
+          Get.toNamed(Routes.GIFT_DETAIL);
           // AnalyticsService().setCurrentScreen(
           //   screenName: "Hospital Detail",
           //   root: PageName.DETAIL_HOSPITAL,
