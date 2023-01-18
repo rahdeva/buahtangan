@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/modules/setting/widgets/setting_widget.dart';
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,10 @@ class SettingView extends GetView<SettingController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -36,9 +37,9 @@ class SettingView extends GetView<SettingController> {
               //         ),
               //       );
               //     }
-
+    
               //     Map<String, dynamic>? data = snapshot.data!.data();
-
+    
               //     return Column(
               //       children: [
               //         Container(

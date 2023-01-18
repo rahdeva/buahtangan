@@ -47,7 +47,7 @@ class AboutView extends GetView<AboutController> {
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
                                 child: Text(
-                                  "BuahTangan is an application that  allows users to get the gift finder according to user input, see the gift directory, read articles about the gift, and gift planner.",
+                                  "BuahTangan is an application that allows users to get the gift finder according to user input, see the gift directory, read articles about the gift, and gift planner.",
                                   style: projectTextTheme.bodyText1?.copyWith(
                                     color: onSurfaceColor
                                   ),

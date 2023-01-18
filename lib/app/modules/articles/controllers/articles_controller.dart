@@ -5,7 +5,7 @@ class ArticlesController extends GetxController {
   TextEditingController searchC = TextEditingController();
 
   String category = "Latest Tech";
-  String title = "Immerse Project SIC Mobile Blog App";
+  String title = "Immerse Project SIC Mobile Blog App Mobile Blog App";
   String author = "Jimmy Cool";
   String writtenDate = "14/02/2022";
   String articleImage =
