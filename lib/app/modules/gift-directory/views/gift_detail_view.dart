@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/modules/gift-directory/widgets/other_picture_items.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -78,6 +79,22 @@ class GiftDetailView extends GetView<GiftDetailController> {
                           ),
                           fit: BoxFit.cover
                         )
+                      ),
+                    ),
+                    Container(
+                      height: 106,
+                      margin: const EdgeInsets.only(top: 8, bottom: 16),
+                      child: ListView.builder(
+                        // itemCount: data.length > 3 ? 3 : data.length,
+                        itemCount: 3,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          return OtherPictureListItem(
+                            index: index,
+                            // mData: data[index],
+                          );
+                        },
                       ),
                     ),
                   ]
