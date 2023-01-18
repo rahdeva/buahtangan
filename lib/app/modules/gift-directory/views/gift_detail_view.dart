@@ -1,5 +1,6 @@
 import 'package:buahtangan/app/modules/gift-directory/widgets/comment_list_builder.dart';
 import 'package:buahtangan/app/modules/gift-directory/widgets/other_picture_items.dart';
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:buahtangan/app/widgets/dotted_line_widget.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
@@ -18,10 +19,10 @@ class GiftDetailView extends GetView<GiftDetailController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -630,7 +631,8 @@ class GiftDetailView extends GetView<GiftDetailController> {
             )
           ],
         ),
-      )),
+        ),
+      ),
     );
   }
 }
