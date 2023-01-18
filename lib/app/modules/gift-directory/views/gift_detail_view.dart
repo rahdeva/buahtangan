@@ -348,6 +348,35 @@ class GiftDetailView extends GetView<GiftDetailController> {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 24),
+                    InkWell(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Container(
+                        width: 100.w,
+                        decoration: BoxDecoration(
+                          color: tertiaryColor,
+                          boxShadow: [dropShadow()],
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.add,
+                              color: onSurfaceColor
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              "Add to Planner",
+                              style: projectTextTheme.button!.copyWith(
+                                color: onSurfaceColor
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ]
                 ),
             )
