@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/modules/gift-directory/widgets/other_picture_items.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -169,11 +170,52 @@ class GiftDetailView extends GetView<GiftDetailController> {
                             "A music box is a mechanical device that plays a musical tune when a handle or lever is turned. Music boxes come in a variety of shapes and sizes, and can be made of a variety of materials, such as wood, metal, or glass.\n\nGifting someone a music box can be a thoughtful and sentimental gesture. It can be a special keepsake that the recipient can treasure for years to come. A music box can be especially meaningful if it plays a tune that is special to the recipient, such as a song from their childhood, a song that holds special memories, or a tune that represents a special place or occasion.\n\nOverall, it is a good idea to keep the recipient's interests and preferences in mind and choose a music box that you think they will appreciate and enjoy.",
                             textAlign: TextAlign.justify,
                             style: projectTextTheme.bodyText2!.copyWith(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: blackColor
                             ),
                           ),
+                          const SizedBox(height: 24),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    Icons.thumb_up_outlined,
+                                    color: onSurfaceColor,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    "200",
+                                    style: projectTextTheme.caption!.copyWith(
+                                      color: onSurfaceColor
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Icon(
+                                    IconlyLight.chat,
+                                    color: onSurfaceColor,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    "200",
+                                    style: projectTextTheme.caption!.copyWith(
+                                      color: onSurfaceColor
+                                    ),
+                                  )
+                                ],
+                              ),
+                              InkWell(
+                                onTap: (){},
+                                child: Image.asset(
+                                  "assets/images/ic_share.png",
+                                  width: 24,
+                                ),
+                              )
+                            ],
+                          )
                         ]
                       ), 
                     )
