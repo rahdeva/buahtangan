@@ -1,3 +1,5 @@
+import 'package:buahtangan/app/modules/articles/widgets/article_list_builder.dart';
+import 'package:buahtangan/app/modules/gift-directory/widgets/gift_list_builder.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:buahtangan/app/widgets/text-field/search_text_field_widget.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -170,7 +172,7 @@ class GiftDirectoryView extends GetView<GiftDirectoryController> {
                   ),
                   const SizedBox(height: 16),
                   Divider(color: slate400),
-                  const SizedBox(height: 16),
+                  ListGiftBuilder(controller), 
                 ]
               ),
             )
