@@ -1,6 +1,5 @@
 import 'package:buahtangan/app/modules/gift-directory/widgets/other_picture_items.dart';
 import 'package:buahtangan/app/widgets/dotted_line_widget.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -405,6 +404,182 @@ class GiftDetailView extends GetView<GiftDetailController> {
                           totalWidth: 100.w/2 - 88,
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Icon(
+                            Icons.store,
+                            size: 24,
+                            color: onSurfaceColor,
+                          ),
+                        ),
+                        title: Text(
+                          "Jewelry Store",
+                          textAlign: TextAlign.justify,
+                          style: projectTextTheme.bodyText1!.copyWith(
+                            color: onBackgroundColor
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: onSurfaceColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Icon(
+                            Icons.link,
+                            size: 24,
+                            color: onSurfaceColor,
+                          ),
+                        ),
+                        title: Text(
+                          "See on this website",
+                          textAlign: TextAlign.justify,
+                          style: projectTextTheme.bodyText1!.copyWith(
+                            color: onBackgroundColor
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: onSurfaceColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Image.asset(
+                            "assets/images/ic_shopee.png",
+                            width: 24,
+                          ),
+                        ),
+                        title: Text(
+                          "See on Shopee",
+                          textAlign: TextAlign.justify,
+                          style: projectTextTheme.bodyText1!.copyWith(
+                            color: onBackgroundColor
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: onSurfaceColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Image.asset(
+                            "assets/images/ic_tokopedia.png",
+                            width: 24,
+                          ),
+                        ),
+                        title: Text(
+                          "See on Tokopedia",
+                          textAlign: TextAlign.justify,
+                          style: projectTextTheme.bodyText1!.copyWith(
+                            color: onBackgroundColor
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: onSurfaceColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Image.asset(
+                            "assets/images/ic_youtube.png",
+                            width: 24,
+                          ),
+                        ),
+                        title: Text(
+                          "See tutorial on Youtube",
+                          textAlign: TextAlign.justify,
+                          style: projectTextTheme.bodyText1!.copyWith(
+                            color: onBackgroundColor
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: onSurfaceColor,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Image.asset(
+                            "assets/images/ic_tutorial.png",
+                            width: 24,
+                          ),
+                        ),
+                        title: Text(
+                          "See tutorial here",
+                          textAlign: TextAlign.justify,
+                          style: projectTextTheme.bodyText1!.copyWith(
+                            color: onBackgroundColor
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.keyboard_arrow_right_rounded,
+                          color: onSurfaceColor,
+                        ),
+                      ),
                     ),
                   ]
                 ),
