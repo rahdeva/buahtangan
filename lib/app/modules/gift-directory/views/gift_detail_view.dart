@@ -218,7 +218,136 @@ class GiftDetailView extends GetView<GiftDetailController> {
                           )
                         ]
                       ), 
-                    )
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "assets/images/ic_money.png"
+                          ),
+                          const SizedBox(width: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Budget Range",
+                                textAlign: TextAlign.justify,
+                                style: projectTextTheme.bodyText1!.copyWith(
+                                  color: onBackgroundColor
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                "100.000-1.000.000 Rupiah",
+                                textAlign: TextAlign.justify,
+                                style: projectTextTheme.bodyText2!.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: slate500
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "assets/images/ic_event.png"
+                          ),
+                          const SizedBox(width: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Suitable Event",
+                                textAlign: TextAlign.justify,
+                                style: projectTextTheme.bodyText1!.copyWith(
+                                  color: onBackgroundColor
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                "Christmas, Birthday, Valentine, Anniversary",
+                                textAlign: TextAlign.justify,
+                                style: projectTextTheme.bodyText2!.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: slate500
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            "assets/images/ic_receiver.png"
+                          ),
+                          const SizedBox(width: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Suitable Receiver",
+                                textAlign: TextAlign.justify,
+                                style: projectTextTheme.bodyText1!.copyWith(
+                                  color: onBackgroundColor
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                "Her, Him, Couple",
+                                textAlign: TextAlign.justify,
+                                style: projectTextTheme.bodyText2!.copyWith(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w400,
+                                  color: slate500
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
                   ]
                 ),
             )
