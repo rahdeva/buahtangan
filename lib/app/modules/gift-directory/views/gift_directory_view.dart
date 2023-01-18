@@ -5,6 +5,7 @@ import 'package:buahtangan/app/widgets/text-field/search_text_field_widget.dart'
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
 import '../../../themes/decoration.dart';
@@ -25,8 +26,7 @@ class GiftDirectoryView extends GetView<GiftDirectoryController> {
           children: <Widget>[
             const SizedBox(height: 16),
             Container(
-              width: Get.width,
-              height: Get.height,
+              width: 100.w,
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: backgroundColor,

@@ -1,4 +1,6 @@
 import 'package:buahtangan/app/modules/gift-directory/widgets/other_picture_items.dart';
+import 'package:buahtangan/app/widgets/dotted_line_widget.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -376,6 +378,33 @@ class GiftDetailView extends GetView<GiftDetailController> {
                           ],
                         ),
                       ),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        DottedLineWidget(
+                          dashColor: Colors.black,
+                          dashHeight: 2,
+                          dashWidth: 8,
+                          totalWidth: 100.w/2 - 88,
+                        ),
+                        const SizedBox(width: 16),
+                        Text(
+                          "How to Get",
+                          style: projectTextTheme.bodyText1!.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: onBackgroundColor
+                          ),
+                        ),
+                        const SizedBox(width: 16),
+                        DottedLineWidget(
+                          dashColor: Colors.black,
+                          dashHeight: 2,
+                          dashWidth: 8,
+                          totalWidth: 100.w/2 - 88,
+                        ),
+                      ],
                     ),
                   ]
                 ),
