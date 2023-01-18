@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/modules/gift-planner/widgets/planner_list_builder.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class GiftPlannerView extends GetView<GiftPlannerController> {
                   ),
                   const SizedBox(height: 16),
                   Divider(color: slate400),
-                  const SizedBox(height: 16),
+                  ListPlannerBuilder(controller),
                 ]
               ),
             )
