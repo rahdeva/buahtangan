@@ -23,7 +23,7 @@ class HomeView extends GetView<HomeController> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const LogoImageContainer(),
+              LogoImageContainer(),
               const LogoTextContainer(),
               Container(
                 decoration: BoxDecoration(

@@ -127,8 +127,13 @@ class GiftGridItem extends StatelessWidget {
                         children: [
                           Row(
                             children: [
+                              Image.asset(
+                                "assets/images/ic_money.png",
+                                width: 12,
+                              ),
+                              const SizedBox(width: 4),
                               Text(
-                                "12d ago",
+                                "Rp 100k-1000k+",
                                 style: projectTextTheme.bodyText2!.copyWith(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
@@ -139,6 +144,8 @@ class GiftGridItem extends StatelessWidget {
                           ),
                           Icon(
                             Icons.more_horiz_rounded,
+                            size: 12,
+                            color: slate500,
                           )
                         ],
                       ),
