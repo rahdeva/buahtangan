@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -14,10 +15,10 @@ class OnboardingView extends GetView<OnboardingController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: Stack(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: Stack(
           children: [
             CarouselSlider(
               options: CarouselOptions(
@@ -136,26 +137,26 @@ class OnboardingView extends GetView<OnboardingController> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: Container(
-        margin: const EdgeInsets.fromLTRB(40, 0, 40, 40),
-        width: Get.width,
-        height: 60,
-        decoration: shadowDecoration(),
-        child: ElevatedButton(
-          onPressed: () => Get.offAllNamed(Routes.LOGIN),
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(secondaryColor),
-            overlayColor: MaterialStateProperty.all(secondaryVariantColor),
-            foregroundColor: MaterialStateProperty.all(onSecondaryColor),
-            shape: MaterialStateProperty.all<OutlinedBorder>(
-                RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            )),
-          ),
-          child: Text(
-            "Get Started",
-            style: projectTextTheme.button,
+        bottomNavigationBar: Container(
+          margin: const EdgeInsets.fromLTRB(40, 0, 40, 40),
+          width: Get.width,
+          height: 60,
+          decoration: shadowDecoration(),
+          child: ElevatedButton(
+            onPressed: () => Get.offAllNamed(Routes.LOGIN),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(secondaryColor),
+              overlayColor: MaterialStateProperty.all(secondaryVariantColor),
+              foregroundColor: MaterialStateProperty.all(onSecondaryColor),
+              shape: MaterialStateProperty.all<OutlinedBorder>(
+                  RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              )),
+            ),
+            child: Text(
+              "Get Started",
+              style: projectTextTheme.button,
+            ),
           ),
         ),
       ),
