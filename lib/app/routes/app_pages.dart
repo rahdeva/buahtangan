@@ -145,12 +145,12 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PLANNER_ADD,
-      page: () => PlannerAddView(),
+      page: () => const PlannerAddView(),
       binding: PlannerAddBinding(),
     ),
     GetPage(
       name: _Paths.PLANNER_EDIT,
-      page: () => PlannerEditView(),
+      page: () => const PlannerEditView(),
       binding: PlannerEditBinding(),
     ),
   ];
