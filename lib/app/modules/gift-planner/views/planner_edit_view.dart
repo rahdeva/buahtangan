@@ -31,21 +31,21 @@ class PlannerEditView extends GetView<PlannerEditController> {
                   margin: const EdgeInsets.all(24.0),
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
-                    color: secondaryColor,
+                    color: tertiaryColor,
                     boxShadow: [dropShadow()],
                     borderRadius: BorderRadius.circular(15)
                   ),
                   child: Row(
                     children: [
                       Icon(
-                        Icons.edit,
-                        color: onSecondaryColor,
+                        Icons.save,
+                        color: onSurfaceColor,
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        "Edit",
+                        "Save",
                         style: projectTextTheme.subtitle2?.copyWith(
-                          color: onSecondaryColor
+                          color: onSurfaceColor
                         ),
                       ),
                     ],
