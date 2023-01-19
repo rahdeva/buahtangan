@@ -24,6 +24,7 @@ abstract class Routes {
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const ABOUT = _Paths.ABOUT;
   static const ONBOARDING = _Paths.ONBOARDING;
+  static const PLANNER_DETAIL = _Paths.PLANNER_DETAIL;
 }
 
 abstract class _Paths {
@@ -47,4 +48,5 @@ abstract class _Paths {
   static const CHANGE_PASSWORD = '/change-password';
   static const ABOUT = '/about';
   static const ONBOARDING = '/onboarding';
+  static const PLANNER_DETAIL = '/planner-detail';
 }

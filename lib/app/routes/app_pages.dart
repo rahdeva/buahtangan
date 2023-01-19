@@ -1,6 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-// ignore_for_file: constant_identifier_names
-
 import 'package:get/get.dart';
 
 import '../modules/articles/bindings/articles_binding.dart';
@@ -29,9 +26,11 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/bindings/home_result_binding.dart';
 import '../modules/home/views/home_result_view.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/introduction/views/splash_view.dart';
 import '../modules/introduction/bindings/onboarding_binding.dart';
 import '../modules/introduction/views/onboarding_view.dart';
+import '../modules/introduction/views/splash_view.dart';
+import '../modules/gift-planner/bindings/planner_detail_binding.dart';
+import '../modules/gift-planner/views/planner_detail_view.dart';
 import '../modules/setting/bindings/about_binding.dart';
 import '../modules/setting/bindings/change_password_binding.dart';
 import '../modules/setting/bindings/edit_profile_binding.dart';
@@ -40,6 +39,9 @@ import '../modules/setting/views/about_view.dart';
 import '../modules/setting/views/change_password_view.dart';
 import '../modules/setting/views/edit_profile_view.dart';
 import '../modules/setting/views/setting_view.dart';
+
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: constant_identifier_names
 
 part 'app_routes.dart';
 
@@ -148,8 +150,13 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ONBOARDING,
-      page: () => OnboardingView(),
+      page: () => const OnboardingView(),
       binding: OnboardingBinding(),
+    ),
+    GetPage(
+      name: _Paths.PLANNER_DETAIL,
+      page: () => const PlannerDetailView(),
+      binding: PlannerDetailBinding(),
     ),
   ];
 }
