@@ -1,4 +1,6 @@
+import 'package:buahtangan/app/modules/gift-directory/widgets/comment_list_builder.dart';
 import 'package:buahtangan/app/modules/gift-directory/widgets/other_picture_items.dart';
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:buahtangan/app/widgets/dotted_line_widget.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
@@ -17,10 +19,10 @@ class GiftDetailView extends GetView<GiftDetailController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -581,12 +583,56 @@ class GiftDetailView extends GetView<GiftDetailController> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 24),
+                    Container(
+                      width: 100.w,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Comments",
+                        style: projectTextTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: onBackgroundColor
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      width: 100.w,
+                      decoration: BoxDecoration(
+                        color: backgroundColor,
+                        boxShadow: [dropShadow()],
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Icon(
+                            IconlyLight.chat,
+                            color: slate500,
+                          ),
+                        ),
+                        title: TextField(
+                          decoration: const InputDecoration(
+                            hintText: "Add Comment",
+                          ),
+                          style: projectTextTheme.caption!.copyWith(
+                            color: slate500
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.send,
+                          color: slate500,
+                        ),
+                      ),
+                    ),
+                    ListCommentBuilder(controller),
                   ]
                 ),
             )
           ],
         ),
-      )),
+        ),
+      ),
     );
   }
 }

@@ -85,7 +85,50 @@ class SettingView extends GetView<SettingController> {
               //     );
               //   }
               // ),
-              const SizedBox(height: 40),
+              Column(
+                    children: [
+                      Container(
+                        decoration: shadowDecoration(),
+                        margin: const EdgeInsets.all(24.0),
+                        child: Center(
+                          child: Stack(
+                            children: [
+                              const CircleAvatar(
+                                radius: 60,
+                                backgroundImage: NetworkImage(
+                                  "https://ui-avatars.com/api/?size=120&name=Nyoman Charles"
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: CircleAvatar(
+                                  backgroundColor: secondaryColor,
+                                  radius: 15,
+                                  child: IconButton(
+                                    onPressed: () => controller.pickImage(), 
+                                    icon: Icon(
+                                      size: 15,
+                                      Icons.edit,
+                                      color: onSecondaryColor,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Text(
+                        "Nyoman Charles", 
+                        style: projectTextTheme.headline6?.copyWith(
+                          color: onPrimaryColor
+                        ),
+                      ),
+                    ],
+                  ),
+                
+              const SizedBox(height: 24),
               Container(
                 width: Get.width,
                 padding: const EdgeInsets.only(bottom: 50, top: 24),

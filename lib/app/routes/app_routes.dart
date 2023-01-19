@@ -18,12 +18,13 @@ abstract class Routes {
   static const HOME_RESULT = _Paths.HOME_RESULT;
   static const GIFT_DETAIL = _Paths.GIFT_DETAIL;
   static const ARTICLES_DETAIL = _Paths.ARTICLES_DETAIL;
-  static const PLANNER_ADD_PEOPLE = _Paths.PLANNER_ADD_PEOPLE;
-  static const PLANNER_PEOPLE_DETAIL = _Paths.PLANNER_PEOPLE_DETAIL;
   static const EDIT_PROFIL = _Paths.EDIT_PROFIL;
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const ABOUT = _Paths.ABOUT;
   static const ONBOARDING = _Paths.ONBOARDING;
+  static const PLANNER_DETAIL = _Paths.PLANNER_DETAIL;
+  static const PLANNER_ADD = _Paths.PLANNER_ADD;
+  static const PLANNER_EDIT = _Paths.PLANNER_EDIT;
 }
 
 abstract class _Paths {
@@ -41,10 +42,11 @@ abstract class _Paths {
   static const HOME_RESULT = '/home-result';
   static const GIFT_DETAIL = '/gift-detail';
   static const ARTICLES_DETAIL = '/articles-detail';
-  static const PLANNER_ADD_PEOPLE = '/planner-add-people';
-  static const PLANNER_PEOPLE_DETAIL = '/planner-people-detail';
   static const EDIT_PROFIL = '/edit-profil';
   static const CHANGE_PASSWORD = '/change-password';
   static const ABOUT = '/about';
   static const ONBOARDING = '/onboarding';
+  static const PLANNER_DETAIL = '/planner-detail';
+  static const PLANNER_ADD = '/planner-add';
+  static const PLANNER_EDIT = '/planner-edit';
 }

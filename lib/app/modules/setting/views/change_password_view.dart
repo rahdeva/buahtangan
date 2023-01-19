@@ -1,5 +1,7 @@
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
 import '../../../themes/decoration.dart';
@@ -15,17 +17,19 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const BackButtonWidget(),
             Container(
-              width: Get.width,
-              height: Get.height - 100,
+              width: 100.w,
+              constraints: BoxConstraints(
+                minHeight: 90.h,
+              ),
               decoration: whiteContainerDecoration(),
               padding: const EdgeInsets.fromLTRB(40, 60, 40, 0),
               child: Column(
@@ -75,7 +79,8 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
             )
           ],
         ),
-      )),
+        ),
+      ),
     );
   }
 }

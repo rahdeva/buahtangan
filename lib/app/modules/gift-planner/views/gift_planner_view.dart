@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_list_builder.dart';
+import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,11 @@ class GiftPlannerView extends GetView<GiftPlannerController> {
         ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: (){},
+          onPressed: (){
+            Get.toNamed(
+              Routes.PLANNER_ADD
+            );
+          },
           backgroundColor: secondaryColor,
           child: Icon(
             Icons.add,

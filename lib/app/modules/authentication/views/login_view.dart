@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -20,10 +21,10 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryColor,
-      body: SafeArea(
-        child: SizedBox(
+    return ColoredStatusBar(
+      child: Scaffold(
+        backgroundColor: primaryColor,
+        body: SizedBox(
           height: 100.h,
           child: SingleChildScrollView(
             child: Column(
@@ -90,7 +91,7 @@ class LoginView extends GetView<LoginController> {
               ],
             ),
           ),
-        )
+        ),
       ),
     );
   }
