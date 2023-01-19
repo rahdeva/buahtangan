@@ -1,5 +1,5 @@
 import 'package:buahtangan/app/modules/gift-directory/widgets/comment_items.dart';
-import 'package:buahtangan/app/modules/gift-directory/widgets/gift_items.dart';
+import 'package:buahtangan/app/modules/gift-directory/widgets/gift_list_items.dart';
 import 'package:flutter/material.dart';
 
 class ListCommentBuilder extends StatelessWidget {

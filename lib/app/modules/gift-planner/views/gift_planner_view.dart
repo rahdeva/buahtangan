@@ -24,7 +24,6 @@ class GiftPlannerView extends GetView<GiftPlannerController> {
             const SizedBox(height: 16),
             Container(
               width: Get.width,
-              height: Get.height,
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 color: backgroundColor,

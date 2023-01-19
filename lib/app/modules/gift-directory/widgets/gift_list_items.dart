@@ -85,7 +85,7 @@ class GiftListItem extends StatelessWidget {
                               ),
                             ),
                           ),
-                        SizedBox(width: 8,),
+                        const SizedBox(width: 8,),
                         Container(
                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                             decoration: BoxDecoration(
