@@ -1,3 +1,7 @@
+import 'package:buahtangan/app/modules/gift-planner/bindings/planner_add_binding.dart';
+import 'package:buahtangan/app/modules/gift-planner/bindings/planner_edit_binding.dart';
+import 'package:buahtangan/app/modules/gift-planner/views/planner_add_view.dart';
+import 'package:buahtangan/app/modules/gift-planner/views/planner_edit_view.dart';
 import 'package:get/get.dart';
 
 import '../modules/articles/bindings/articles_binding.dart';
@@ -23,10 +27,6 @@ import '../modules/home/views/home_result_view.dart';
 import '../modules/introduction/bindings/onboarding_binding.dart';
 import '../modules/introduction/views/onboarding_view.dart';
 import '../modules/introduction/views/splash_view.dart';
-import '../modules/planner-add/bindings/planner_add_binding.dart';
-import '../modules/planner-add/views/planner_add_view.dart';
-import '../modules/planner-edit/bindings/planner_edit_binding.dart';
-import '../modules/planner-edit/views/planner_edit_view.dart';
 import '../modules/setting/bindings/about_binding.dart';
 import '../modules/setting/bindings/change_password_binding.dart';
 import '../modules/setting/bindings/edit_profile_binding.dart';
