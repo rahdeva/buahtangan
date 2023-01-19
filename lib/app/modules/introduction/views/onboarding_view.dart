@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
@@ -110,8 +111,8 @@ class OnboardingView extends GetView<OnboardingController> {
             ),
             Obx(
               () => Positioned(
-                bottom: 60,
-                width: Get.width,
+                bottom: 5.h,
+                width: 100.w,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: controller.data.asMap().entries.map((entry) {
