@@ -1,10 +1,12 @@
 import 'package:buahtangan/app/modules/setting/widgets/setting_widget.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../routes/app_pages.dart';
@@ -93,11 +95,26 @@ class SettingView extends GetView<SettingController> {
                         child: Center(
                           child: Stack(
                             children: [
-                              const CircleAvatar(
-                                radius: 60,
-                                backgroundImage: NetworkImage(
-                                  "https://ui-avatars.com/api/?size=120&name=Nyoman Charles"
+                              CachedNetworkImage(
+                                imageUrl: "https://ui-avatars.com/api/?size=120&name=Nyoman Charles",
+                                imageBuilder: (context, imageProvider) => CircleAvatar(
+                                  radius: 60,
+                                  backgroundImage: imageProvider,
                                 ),
+                                placeholder: (context, url) => Shimmer.fromColors(
+                                  baseColor: Colors.grey.shade300,
+                                  highlightColor: Colors.white,
+                                  child: const CircleAvatar(
+                                    radius: 60,
+                                    backgroundColor: Colors.white,
+                                  ),
+                                ),
+                                errorWidget: (context, url, error) => const CircleAvatar(
+                                  radius: 60,
+                                  backgroundImage: AssetImage(
+                                    "assets/images/img_square_placeholder.png"
+                                  ),
+                                )
                               ),
                               Positioned(
                                 bottom: 0,
@@ -130,7 +147,7 @@ class SettingView extends GetView<SettingController> {
                 
               const SizedBox(height: 24),
               Container(
-                width: Get.width,
+                width: 100.w,
                 padding: const EdgeInsets.only(bottom: 50, top: 24),
                 decoration: whiteContainerDecoration(),
                 child: Column(
@@ -242,7 +259,7 @@ class SettingView extends GetView<SettingController> {
                               ),
                               const SizedBox(height: 24),
                               Container(
-                                width: Get.width,
+                                width: 100.w,
                                 height: 60,
                                 decoration: shadowDecoration(),
                                 child: ElevatedButton(
@@ -264,7 +281,7 @@ class SettingView extends GetView<SettingController> {
                               ),
                               const SizedBox(height: 24),
                               Container(
-                                width: Get.width,
+                                width: 100.w,
                                 height: 60,
                                 decoration: shadowDecoration(),
                                 child: OutlinedButton(

@@ -24,10 +24,10 @@ Future<void> main() async {
         builder: (context) => MyApp(),
       ),
     );
-    // runApp(MyApp());
   } else {
     runApp(MyApp());
   }
+  // runApp(MyApp());
 }
 
 // ignore: must_be_immutable

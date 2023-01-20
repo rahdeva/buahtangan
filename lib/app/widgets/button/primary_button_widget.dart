@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../themes/text_theme.dart';
 import '../../themes/color_theme.dart';
@@ -26,7 +27,7 @@ class PrimaryButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width,
+      width: 100.w,
       height: 60,
       decoration: shadowDecoration(),
       child: Obx(

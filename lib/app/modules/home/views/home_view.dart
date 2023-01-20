@@ -4,6 +4,7 @@ import 'package:buahtangan/app/widgets/logo-container/logo_text_container.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
@@ -23,7 +24,7 @@ class HomeView extends GetView<HomeController> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              const LogoImageContainer(),
+              LogoImageContainer(),
               const LogoTextContainer(),
               Container(
                 decoration: BoxDecoration(
@@ -31,7 +32,7 @@ class HomeView extends GetView<HomeController> {
                   boxShadow: [dropShadow()],
                   borderRadius: BorderRadius.circular(20)
                 ),
-                width: Get.width,
+                width: 100.w,
                 margin: const EdgeInsets.fromLTRB(40, 0, 50, 40),
                 padding: const EdgeInsets.all(24.0),
                 child: Column(
@@ -185,7 +186,7 @@ class HomeView extends GetView<HomeController> {
                     ), 
                     Container(
                       margin: const EdgeInsets.only(top: 16),
-                      width: Get.width,
+                      width: 100.w,
                       height: 60,
                       decoration: shadowDecoration(),
                       child: ElevatedButton(

@@ -27,7 +27,7 @@ class EditProfileView extends GetView<EditProfileController> {
   //             builder: (context, snapshot) {
   //               if (snapshot.connectionState == ConnectionState.waiting) {
   //                 return SizedBox(
-  //                   height: Get.height,
+  //                   height: 100.h,
   //                   child: const Center(
   //                     child: CircularProgressIndicator(),
   //                   ),
@@ -35,7 +35,7 @@ class EditProfileView extends GetView<EditProfileController> {
   //               }
   //               if (snapshot.data == null) {
   //                 return SizedBox(
-  //                   height: Get.height,
+  //                   height: 100.h,
   //                   child: const Center(
   //                     child: Text("Tidak ada data user."),
   //                   ),
@@ -49,8 +49,8 @@ class EditProfileView extends GetView<EditProfileController> {
   //                   children: <Widget>[
   //                     const BackButtonWidget(),
   //                     Container(
-  //                       width: Get.width,
-  //                       height: Get.height - 100,
+  //                       width: 100.w,
+  //                       height: 100.h - 100,
   //                       decoration: BoxDecoration(
   //                           color: backgroundColor,
   //                           boxShadow: [dropShadow()],
@@ -165,7 +165,7 @@ class EditProfileView extends GetView<EditProfileController> {
   //                         Container(
   //                           margin: const EdgeInsets.fromLTRB(40, 50, 40, 0),
   //                           child: Container(
-  //                             width: Get.width,
+  //                             width: 100.w,
   //                             height: 60,
   //                             decoration: shadowDecoration(),
   //                             child: Obx(

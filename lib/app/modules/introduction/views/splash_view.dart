@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
@@ -33,12 +34,12 @@ class _SplashViewState extends State<SplashView> {
             children: [
               SvgPicture.asset(
                 'assets/images/imagesLogo.svg',
-                width: Get.width * 0.6,
+                width: 100.w * 0.6,
               ),
               const SizedBox(height: 16),
               SvgPicture.asset(
                 'assets/images/textLogo.svg',
-                width: Get.width * 0.6,
+                width: 100.w * 0.6,
               ),
             ],
           ),

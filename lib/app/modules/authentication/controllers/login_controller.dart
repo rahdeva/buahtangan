@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sizer/sizer.dart';
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
 import '../../../themes/decoration.dart';
@@ -179,7 +180,7 @@ class LoginController extends GetxController {
           ),
           const SizedBox(height: 40),
           Container(
-            width: Get.width,
+            width: 100.w,
             height: 60,
             decoration: shadowDecoration(),
             child: ElevatedButton(
@@ -201,7 +202,7 @@ class LoginController extends GetxController {
           ),
           const SizedBox(height: 24),
           Container(
-            width: Get.width,
+            width: 100.w,
             height: 60,
             decoration: shadowDecoration(),
             child: OutlinedButton(

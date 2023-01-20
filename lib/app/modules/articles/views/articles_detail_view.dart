@@ -1,9 +1,11 @@
 import 'package:buahtangan/app/modules/articles/widgets/comment_list_builder.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
@@ -46,11 +48,32 @@ class ArticlesDetailView extends GetView<ArticlesDetailController> {
                       decoration: BoxDecoration(
                         boxShadow: [dropShadow()],
                         borderRadius: BorderRadius.circular(15),
-                        image: const DecorationImage(
-                          image: NetworkImage(
-                            "https://picsum.photos/300/300",
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl: "https://picsum.photos/300/300",
+                        imageBuilder: (context, imageProvider) => Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              image: imageProvider,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                          fit: BoxFit.cover
+                        ),
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: Colors.grey.shade300,
+                          highlightColor: Colors.white,
+                          child: Container(
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Image.asset(
+                          "assets/images/img_rectangle_placeholder.png",
+                          fit: BoxFit.cover,
                         )
                       ),
                     ),
