@@ -23,8 +23,6 @@ class HomeView extends GetView<HomeController> {
       child: Scaffold(
         backgroundColor: primaryColor,
         body: SmartRefresher(
-          enablePullUp: true,
-          enablePullDown: true,
           controller: controller.refreshController,
           onRefresh: controller.refreshPage,
           child: SingleChildScrollView(
