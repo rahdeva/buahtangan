@@ -4,6 +4,7 @@ import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:buahtangan/app/widgets/text-field/search_text_field_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../themes/color_theme.dart';
@@ -21,7 +22,7 @@ class ArticlesView extends GetView<ArticlesController> {
         backgroundColor: primaryColor,
         body: SingleChildScrollView(
           child: Container(
-            width: Get.width,
+            width: 100.w,
             padding: const EdgeInsets.all(24),
             margin: const EdgeInsets.only(top: 16),
             decoration: BoxDecoration(

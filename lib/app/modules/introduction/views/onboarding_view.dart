@@ -23,7 +23,7 @@ class OnboardingView extends GetView<OnboardingController> {
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                height: Get.height,
+                height: 100.h,
                 autoPlay: true,
                 viewportFraction: 1.0,
                 enlargeCenterPage: false,
@@ -38,7 +38,7 @@ class OnboardingView extends GetView<OnboardingController> {
                         const SizedBox(height: 32),
                         Lottie.asset(
                           data["image"],
-                          width: Get.width * 0.8
+                          width: 100.w * 0.8
                         ),
                         const SizedBox(height: 28),
                         Text(
@@ -63,7 +63,7 @@ class OnboardingView extends GetView<OnboardingController> {
                           const SizedBox(height: 60),
                           Lottie.asset(
                             data["image"],
-                            width: Get.width * 0.6
+                            width: 100.w * 0.6
                           ),
                           const SizedBox(height: 42),
                           Text(
@@ -87,7 +87,7 @@ class OnboardingView extends GetView<OnboardingController> {
                           const SizedBox(height: 24),
                           Lottie.asset(
                             data["image"],
-                            width: Get.width * 0.75
+                            width: 100.w * 0.75
                           ),
                           const SizedBox(height: 20),
                           Text(
@@ -140,7 +140,7 @@ class OnboardingView extends GetView<OnboardingController> {
         ),
         bottomNavigationBar: Container(
           margin: const EdgeInsets.fromLTRB(40, 0, 40, 40),
-          width: Get.width,
+          width: 100.w,
           height: 60,
           decoration: shadowDecoration(),
           child: ElevatedButton(

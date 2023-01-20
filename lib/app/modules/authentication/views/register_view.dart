@@ -1,6 +1,7 @@
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
 import '../../../themes/text_theme.dart';
@@ -26,7 +27,7 @@ class RegisterView extends GetView<RegisterController> {
           children: <Widget>[
             const BackButtonWidget(),
             Container(
-              width: Get.width,
+              width: 100.w,
               padding: const EdgeInsets.fromLTRB(40, 60, 40, 60),
               decoration: whiteContainerDecoration(),
               child: Column(

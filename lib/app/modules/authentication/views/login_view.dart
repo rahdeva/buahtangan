@@ -78,7 +78,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                     const SizedBox(height: 16),
                     Container(
-                      width: Get.width,
+                      width: 100.w,
                       height: 60,
                       decoration: BoxDecoration(
                         color: backgroundColor,

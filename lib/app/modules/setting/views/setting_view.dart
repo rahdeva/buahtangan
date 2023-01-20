@@ -147,7 +147,7 @@ class SettingView extends GetView<SettingController> {
                 
               const SizedBox(height: 24),
               Container(
-                width: Get.width,
+                width: 100.w,
                 padding: const EdgeInsets.only(bottom: 50, top: 24),
                 decoration: whiteContainerDecoration(),
                 child: Column(
@@ -259,7 +259,7 @@ class SettingView extends GetView<SettingController> {
                               ),
                               const SizedBox(height: 24),
                               Container(
-                                width: Get.width,
+                                width: 100.w,
                                 height: 60,
                                 decoration: shadowDecoration(),
                                 child: ElevatedButton(
@@ -281,7 +281,7 @@ class SettingView extends GetView<SettingController> {
                               ),
                               const SizedBox(height: 24),
                               Container(
-                                width: Get.width,
+                                width: 100.w,
                                 height: 60,
                                 decoration: shadowDecoration(),
                                 child: OutlinedButton(

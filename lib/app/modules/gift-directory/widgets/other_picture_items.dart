@@ -18,7 +18,7 @@ class OtherPictureListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height,
+      height: 100.h,
       margin: EdgeInsets.fromLTRB(index == 0 ? 0 : 16, 8, 0, 8),
       child: InkWell(
         onTap: () {

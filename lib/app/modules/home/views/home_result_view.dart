@@ -1,6 +1,7 @@
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
 import '../../../themes/decoration.dart';
@@ -23,8 +24,8 @@ class HomeResultView extends GetView<HomeResultController> {
           children: <Widget>[
             const BackButtonWidget(),
             Container(
-                width: Get.width,
-                height: Get.height,
+                width: 100.w,
+                height: 100.h,
                 decoration: BoxDecoration(
                   color: backgroundColor,
                   boxShadow: [dropShadow()],
