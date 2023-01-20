@@ -2,8 +2,10 @@ import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 class PlannerListItem extends StatelessWidget {
@@ -52,9 +54,32 @@ class PlannerListItem extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
-                    child: Image.network(
-                      "https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-                      fit: BoxFit.cover,
+                    child: CachedNetworkImage(
+                      imageUrl: "https://picsum.photos/400/400",
+                      imageBuilder: (context, imageProvider) => Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.white,
+                        child: Container(
+                          width: 100.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Image.asset(
+                        "assets/images/img_square_placeholder.png",
+                        fit: BoxFit.cover,
+                      )
                     ),
                   ),
                 ),
