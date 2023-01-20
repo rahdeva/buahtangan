@@ -6,6 +6,7 @@ import 'package:buahtangan/app/widgets/text-field/search_text_field_widget.dart'
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
@@ -22,165 +23,169 @@ class GiftDirectoryView extends GetView<GiftDirectoryController> {
     return ColoredStatusBar(
       child: Scaffold(
         backgroundColor: primaryColor,
-        body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            const SizedBox(height: 16),
-            Container(
-              width: 100.w,
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                boxShadow: [dropShadow()],
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30), 
-                  topRight: Radius.circular(30), 
-                )
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Gift Directory",
-                              style: projectTextTheme.headline6?.copyWith(
-                              color: onBackgroundColor,
-                              fontWeight: FontWeight.bold
+        body: SmartRefresher(
+          controller: controller.refreshController,
+          onRefresh: controller.refreshPage,
+          child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              const SizedBox(height: 16),
+              Container(
+                width: 100.w,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: backgroundColor,
+                  boxShadow: [dropShadow()],
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(30), 
+                    topRight: Radius.circular(30), 
+                  )
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Gift Directory",
+                                style: projectTextTheme.headline6?.copyWith(
+                                color: onBackgroundColor,
+                                fontWeight: FontWeight.bold
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            "Discover gifts you might like",
-                            style: projectTextTheme.subtitle2?.copyWith(
-                              color: slate500,
+                            const SizedBox(height: 8),
+                            Text(
+                              "Discover gifts you might like",
+                              style: projectTextTheme.subtitle2?.copyWith(
+                                color: slate500,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      InkWell(
-                        onTap: (){},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: surfaceColor,
-                            boxShadow: [dropShadow()],
-                            borderRadius: BorderRadius.circular(200)
-                          ),
-                          padding: const EdgeInsets.fromLTRB(12, 14, 12, 10),
-                          child: Icon(
-                            IconlyBold.heart,
-                            size: 24,
-                            color: secondaryVariantColor,
-                          ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  SearchTextFieldWidget(
-                    // controller : controller,
-                    searchC: controller.searchC, 
-                    hintText: "Search an Article", 
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Sort by",
-                            style: projectTextTheme.bodyText2?.copyWith(
-                              fontWeight: FontWeight.w500,
-                              color: onSurfaceColor,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Container(
-                            width: 160,
+                        InkWell(
+                          onTap: (){},
+                          child: Container(
                             decoration: BoxDecoration(
                               color: surfaceColor,
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [dropShadow()]
+                              boxShadow: [dropShadow()],
+                              borderRadius: BorderRadius.circular(200)
                             ),
-                            child: DropdownButtonFormField<String>(
-                              decoration: InputDecoration(
-                                hoverColor: surfaceColor,
-                                fillColor: surfaceColor,
-                                focusColor: primaryColor,
-                                isDense: true,
-                                filled: true,
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4), 
-                                labelStyle: projectTextTheme.caption?.copyWith(color: slate500),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: primaryColor, width: 0.0)
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                                ),
+                            padding: const EdgeInsets.fromLTRB(12, 14, 12, 10),
+                            child: Icon(
+                              IconlyBold.heart,
+                              size: 24,
+                              color: secondaryVariantColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    SearchTextFieldWidget(
+                      // controller : controller,
+                      searchC: controller.searchC, 
+                      hintText: "Search an Article", 
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Sort by",
+                              style: projectTextTheme.bodyText2?.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: onSurfaceColor,
                               ),
-                              value: "Newest",
-                              items: ["Newest", 'bb', 'cc'].map((item) 
-                                => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: projectTextTheme.caption?.copyWith(color: slate500),
+                            ),
+                            const SizedBox(width: 8),
+                            Container(
+                              width: 160,
+                              decoration: BoxDecoration(
+                                color: surfaceColor,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [dropShadow()]
+                              ),
+                              child: DropdownButtonFormField<String>(
+                                decoration: InputDecoration(
+                                  hoverColor: surfaceColor,
+                                  fillColor: surfaceColor,
+                                  focusColor: primaryColor,
+                                  isDense: true,
+                                  filled: true,
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4), 
+                                  labelStyle: projectTextTheme.caption?.copyWith(color: slate500),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide(color: primaryColor, width: 0.0)
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide: BorderSide(color: surfaceColor, width: 0.0)
+                                  ),
+                                ),
+                                value: "Newest",
+                                items: ["Newest", 'bb', 'cc'].map((item) 
+                                  => DropdownMenuItem<String>(
+                                      value: item,
+                                      child: Text(
+                                        item,
+                                        style: projectTextTheme.caption?.copyWith(color: slate500),
+                                      )
                                     )
-                                  )
-                                ).toList(),
-                                onChanged: ((item) {
-                                  item = item.toString();
-                                })
+                                  ).toList(),
+                                  onChanged: ((item) {
+                                    item = item.toString();
+                                  })
+                                ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: (){},
+                              child: Icon(
+                                IconlyLight.infoSquare,
+                                color: onSurfaceColor,
                               ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: (){},
-                            child: Icon(
-                              IconlyLight.infoSquare,
-                              color: onSurfaceColor,
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          InkWell(
-                            onTap: (){},
-                            child: Icon(
-                              Icons.grid_view_outlined,
-                              color: onSurfaceColor,
+                            const SizedBox(width: 8),
+                            InkWell(
+                              onTap: (){},
+                              child: Icon(
+                                Icons.grid_view_outlined,
+                                color: onSurfaceColor,
+                              ),
                             ),
-                          ),
-                          // InkWell(
-                          //   onTap: (){},
-                          //   child: Icon(
-                          //     Icons.format_list_bulleted_rounded,
-                          //     color: onSurfaceColor,
-                          //   ),
-                          // ),
-                        ],
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Divider(color: slate400),
-                  // ListGiftBuilder(controller), 
-                  const SizedBox(height: 16),
-                  GridGiftBuilder(controller), 
-                ]
-              ),
-            )
-          ],
-        ),
+                            // InkWell(
+                            //   onTap: (){},
+                            //   child: Icon(
+                            //     Icons.format_list_bulleted_rounded,
+                            //     color: onSurfaceColor,
+                            //   ),
+                            // ),
+                          ],
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Divider(color: slate400),
+                    // ListGiftBuilder(controller), 
+                    const SizedBox(height: 16),
+                    GridGiftBuilder(controller), 
+                  ]
+                ),
+              )
+            ],
+          ),
+          ),
         ),
       ),
     );
