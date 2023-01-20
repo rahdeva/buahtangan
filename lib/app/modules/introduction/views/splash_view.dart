@@ -34,12 +34,12 @@ class _SplashViewState extends State<SplashView> {
             children: [
               SvgPicture.asset(
                 'assets/images/imagesLogo.svg',
-                width: 100.w * 0.6,
+                width: 100.w * 0.5,
               ),
               const SizedBox(height: 16),
               SvgPicture.asset(
                 'assets/images/textLogo.svg',
-                width: 100.w * 0.6,
+                width: 100.w * 0.5,
               ),
             ],
           ),
