@@ -29,6 +29,7 @@ class ArticlesView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Container(
                   width: 100.w,
+                  constraints: BoxConstraints(minHeight: 90.h),
                   padding: const EdgeInsets.all(24),
                   margin: const EdgeInsets.only(top: 16),
                   decoration: BoxDecoration(

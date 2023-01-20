@@ -31,7 +31,7 @@ class FavoritesView extends StatelessWidget {
                   const BackButtonWidget(),
                   Container(
                       width: 100.w,
-                      height: 100.h,
+                      constraints: BoxConstraints(minHeight: 90.h),
                       decoration: BoxDecoration(
                         color: backgroundColor,
                         boxShadow: [dropShadow()],

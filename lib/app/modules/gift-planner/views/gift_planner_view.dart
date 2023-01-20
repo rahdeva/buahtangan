@@ -31,6 +31,7 @@ class GiftPlannerView extends StatelessWidget {
                   const SizedBox(height: 16),
                   Container(
                     width: 100.w,
+                    constraints: BoxConstraints(minHeight: 90.h),
                     padding: const EdgeInsets.all(24),
                     decoration: BoxDecoration(
                       color: backgroundColor,

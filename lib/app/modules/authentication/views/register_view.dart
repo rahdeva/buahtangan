@@ -30,6 +30,7 @@ class RegisterView extends StatelessWidget {
                 const BackButtonWidget(),
                 Container(
                   width: 100.w,
+                  constraints: BoxConstraints(minHeight: 90.h),
                   padding: const EdgeInsets.fromLTRB(40, 60, 40, 60),
                   decoration: whiteContainerDecoration(),
                   child: Column(

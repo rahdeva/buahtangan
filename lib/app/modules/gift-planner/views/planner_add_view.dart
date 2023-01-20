@@ -30,9 +30,7 @@ class PlannerAddView extends StatelessWidget {
                 const BackButtonWidget(),
                 Container(
                     width: 100.w,
-                    constraints: BoxConstraints(
-                      minHeight: 90.h
-                    ),
+                    constraints: BoxConstraints(minHeight: 90.h),
                     decoration: BoxDecoration(
                       color: backgroundColor,
                       boxShadow: [dropShadow()],
