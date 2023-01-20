@@ -57,6 +57,7 @@ class ArticleListItem extends StatelessWidget {
                       imageUrl: "https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
                       imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
                             image: imageProvider,
                             fit: BoxFit.cover,
