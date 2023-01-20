@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class GiftDirectoryController extends GetxController {
+  static GiftDirectoryController find = Get.find();
   TextEditingController searchC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
 

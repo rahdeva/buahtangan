@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class GiftPlannerController extends GetxController {
+  static GiftPlannerController find = Get.find();
   RefreshController refreshController = RefreshController(initialRefresh: false);
 
   void refreshPage() async {

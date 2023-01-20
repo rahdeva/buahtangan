@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomeController extends GetxController {
+  static HomeController find = Get.find();
   RefreshController refreshController = RefreshController(initialRefresh: false);
 
   void refreshPage() async {

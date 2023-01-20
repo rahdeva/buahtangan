@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../routes/app_pages.dart';
 
 class ChangePasswordController extends GetxController {
+  static ChangePasswordController find = Get.find();
   RxBool isLoading = false.obs;
   RxBool isHidden1 = true.obs;
   RxBool isHidden2 = true.obs;

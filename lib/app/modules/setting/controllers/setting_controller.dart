@@ -9,8 +9,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../routes/app_pages.dart';
 
 class SettingController extends GetxController {
-  RefreshController refreshController = RefreshController(initialRefresh: false);
   static SettingController find = Get.find();
+  RefreshController refreshController = RefreshController(initialRefresh: false);
   TextEditingController searchC = TextEditingController();
   TextEditingController reviewC = TextEditingController();
   String searchKeyword = "";

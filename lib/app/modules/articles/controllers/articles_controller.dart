@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ArticlesController extends GetxController {
+  static ArticlesController find = Get.find();
   TextEditingController searchC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
 
