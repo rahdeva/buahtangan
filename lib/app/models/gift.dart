@@ -1,17 +1,17 @@
 // To parse this JSON data, do
 //
-//     final article = articleFromJson(jsonString);
+//     final gift = giftFromJson(jsonString);
 
 // ignore_for_file: prefer_if_null_operators
 
 import 'dart:convert';
 
-Article articleFromJson(String str) => Article.fromJson(json.decode(str));
+Gift giftFromJson(String str) => Gift.fromJson(json.decode(str));
 
-String articleToJson(Article data) => json.encode(data.toJson());
+String giftToJson(Gift data) => json.encode(data.toJson());
 
-class Article {
-    Article({
+class Gift {
+    Gift({
         required this.id,
         required this.createdAt,
         required this.slug,
@@ -45,7 +45,7 @@ class Article {
     int? commentCount;
     List<Comment>? comments;
 
-    factory Article.fromJson(Map<String, dynamic> json) => Article(
+    factory Gift.fromJson(Map<String, dynamic> json) => Gift(
         id: json["id"] == null ? null : json["id"],
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         slug: json["slug"] == null ? null : json["slug"],

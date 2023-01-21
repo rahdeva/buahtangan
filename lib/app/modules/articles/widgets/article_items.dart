@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/article.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
@@ -10,13 +11,13 @@ import 'package:sizer/sizer.dart';
 
 class ArticleListItem extends StatelessWidget {
   final int index;
-  // final Hospital mData;
+  final Article mData;
   final controller;
 
   const ArticleListItem({
     Key? key, 
     required this.index, 
-    // required this.mData,
+    required this.mData,
     this.controller, 
   }) : super(key: key);
 
@@ -90,7 +91,7 @@ class ArticleListItem extends StatelessWidget {
                     SizedBox(
                       width: 100.w - 220,
                       child: Text(
-                        controller.title,
+                        mData.title ?? "-",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.justify,
