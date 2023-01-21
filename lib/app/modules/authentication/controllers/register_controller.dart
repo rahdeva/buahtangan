@@ -5,6 +5,7 @@ import '../../../routes/app_pages.dart';
 import '../../../widgets/snackbar/show_snackbar.dart';
 
 class RegisterController extends GetxController {
+  static RegisterController find = Get.find();
   RxBool isLoading = false.obs;
   RxBool isHidden = true.obs;
   RxBool isHidden2 = true.obs;

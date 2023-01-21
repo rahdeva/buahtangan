@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../routes/app_pages.dart';
 
 class EditProfileController extends GetxController {
+  static EditProfileController find = Get.find();
   RxBool isLoading = false.obs;
   RxBool isHidden = true.obs;
   RxBool isHidden2 = true.obs;

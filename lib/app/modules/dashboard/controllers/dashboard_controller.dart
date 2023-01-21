@@ -8,6 +8,7 @@ import '../../../modules/home/views/home_view.dart';
 import '../../../modules/setting/views/setting_view.dart';
 
 class DashboardController extends GetxController {
+  static DashboardController find = Get.find();
   var tabIndex = 0;
   
   void changeNavBar(int index) {

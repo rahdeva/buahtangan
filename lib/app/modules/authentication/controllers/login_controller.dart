@@ -11,6 +11,7 @@ import '../../../themes/text_theme.dart';
 import '../../../modules/authentication/provider/login_provider.dart';
 
 class LoginController extends GetxController {
+  static LoginController find = Get.find();
   RxBool isLoading = false.obs;
   RxBool rememberme = false.obs;
   RxBool isHidden = true.obs;

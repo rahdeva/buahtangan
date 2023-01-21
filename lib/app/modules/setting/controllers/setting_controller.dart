@@ -5,16 +5,25 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as s;
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../../routes/app_pages.dart';
 
 class SettingController extends GetxController {
   static SettingController find = Get.find();
+  RefreshController refreshController = RefreshController(initialRefresh: false);
   TextEditingController searchC = TextEditingController();
   TextEditingController reviewC = TextEditingController();
   String searchKeyword = "";
   double rating = 3;
   int maxLength = 200;
   RxString reviewResult = "".obs;
+
+  void refreshPage() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    refreshController.refreshCompleted();
+  }
 
   FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseFirestore firestore = FirebaseFirestore.instance;
