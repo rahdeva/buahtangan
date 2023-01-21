@@ -12,6 +12,22 @@ String plannerToJson(Planner data) => json.encode(data.toJson());
 
 class Planner {
     Planner({
+        required this.plannerData,
+    });
+
+    List<PlannerData>? plannerData;
+
+    factory Planner.fromJson(Map<String, dynamic> json) => Planner(
+        plannerData: json["plannerData"] == null ? null : List<PlannerData>.from(json["plannerData"].map((x) => PlannerData.fromJson(x))),
+    );
+
+    Map<String, dynamic> toJson() => {
+        "plannerData": plannerData == null ? null : List<dynamic>.from(plannerData!.map((x) => x.toJson())),
+    };
+}
+
+class PlannerData {
+    PlannerData({
         required this.id,
         required this.createdAt,
         required this.pictureUrl,
@@ -37,7 +53,7 @@ class Planner {
     String? notes;
     List<String>? giftSlugs;
 
-    factory Planner.fromJson(Map<String, dynamic> json) => Planner(
+    factory PlannerData.fromJson(Map<String, dynamic> json) => PlannerData(
         id: json["id"] == null ? null : json["id"],
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         pictureUrl: json["pictureURL"] == null ? null : json["pictureURL"],
