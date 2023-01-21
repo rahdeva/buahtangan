@@ -21,6 +21,7 @@ class Article {
         required this.budgetRange,
         required this.suitableEvent,
         required this.suitableReceiver,
+        required this.howToGet,
         required this.likeCount,
         required this.commentCount,
         required this.comments,
@@ -37,6 +38,7 @@ class Article {
     String budgetRange;
     List<String> suitableEvent;
     List<String> suitableReceiver;
+    HowToGet howToGet;
     int likeCount;
     int commentCount;
     List<Comment> comments;
@@ -53,6 +55,7 @@ class Article {
         budgetRange: json["budgetRange"],
         suitableEvent: List<String>.from(json["suitableEvent"].map((x) => x)),
         suitableReceiver: List<String>.from(json["suitableReceiver"].map((x) => x)),
+        howToGet: HowToGet.fromJson(json["howToGet"]),
         likeCount: json["likeCount"],
         commentCount: json["commentCount"],
         comments: List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),
@@ -70,6 +73,7 @@ class Article {
         "budgetRange": budgetRange,
         "suitableEvent": List<dynamic>.from(suitableEvent.map((x) => x)),
         "suitableReceiver": List<dynamic>.from(suitableReceiver.map((x) => x)),
+        "howToGet": howToGet.toJson(),
         "likeCount": likeCount,
         "commentCount": commentCount,
         "comments": List<dynamic>.from(comments.map((x) => x.toJson())),
@@ -97,5 +101,41 @@ class Comment {
         "userName": userName,
         "comment": comment,
         "date": date.toIso8601String(),
+    };
+}
+
+class HowToGet {
+    HowToGet({
+        required this.offlineStoreText,
+        required this.onlineStoreSpecialUrl,
+        required this.shopeeUrl,
+        required this.tokopediaUrl,
+        required this.youtubeTutorialUrl,
+        required this.tutorialArticleSlug,
+    });
+
+    String offlineStoreText;
+    String onlineStoreSpecialUrl;
+    String shopeeUrl;
+    String tokopediaUrl;
+    String youtubeTutorialUrl;
+    String tutorialArticleSlug;
+
+    factory HowToGet.fromJson(Map<String, dynamic> json) => HowToGet(
+        offlineStoreText: json["offlineStoreText"],
+        onlineStoreSpecialUrl: json["onlineStoreSpecialURL"],
+        shopeeUrl: json["shopeeURL"],
+        tokopediaUrl: json["tokopediaURL"],
+        youtubeTutorialUrl: json["youtubeTutorialURL"],
+        tutorialArticleSlug: json["tutorialArticleSlug"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "offlineStoreText": offlineStoreText,
+        "onlineStoreSpecialURL": onlineStoreSpecialUrl,
+        "shopeeURL": shopeeUrl,
+        "tokopediaURL": tokopediaUrl,
+        "youtubeTutorialURL": youtubeTutorialUrl,
+        "tutorialArticleSlug": tutorialArticleSlug,
     };
 }
