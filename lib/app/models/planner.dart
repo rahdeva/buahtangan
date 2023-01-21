@@ -2,6 +2,8 @@
 //
 //     final planner = plannerFromJson(jsonString);
 
+// ignore_for_file: prefer_if_null_operators
+
 import 'dart:convert';
 
 Planner plannerFromJson(String str) => Planner.fromJson(json.decode(str));
@@ -23,43 +25,43 @@ class Planner {
         required this.giftSlugs,
     });
 
-    int id;
-    DateTime createdAt;
-    String pictureUrl;
-    String receiver;
-    DateTime date;
-    String event;
-    String budget;
-    DateTime notifDate;
-    String messages;
-    String notes;
-    List<String> giftSlugs;
+    int? id;
+    DateTime? createdAt;
+    String? pictureUrl;
+    String? receiver;
+    DateTime? date;
+    String? event;
+    String? budget;
+    DateTime? notifDate;
+    String? messages;
+    String? notes;
+    List<String>? giftSlugs;
 
     factory Planner.fromJson(Map<String, dynamic> json) => Planner(
-        id: json["id"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        pictureUrl: json["pictureURL"],
-        receiver: json["receiver"],
-        date: DateTime.parse(json["date"]),
-        event: json["event"],
-        budget: json["budget"],
-        notifDate: DateTime.parse(json["notifDate"]),
-        messages: json["messages"],
-        notes: json["notes"],
-        giftSlugs: List<String>.from(json["giftSlugs"].map((x) => x)),
+        id: json["id"] == null ? null : json["id"],
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        pictureUrl: json["pictureURL"] == null ? null : json["pictureURL"],
+        receiver: json["receiver"] == null ? null : json["receiver"],
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        event: json["event"] == null ? null : json["event"],
+        budget: json["budget"] == null ? null : json["budget"],
+        notifDate: json["notifDate"] == null ? null : DateTime.parse(json["notifDate"]),
+        messages: json["messages"] == null ? null : json["messages"],
+        notes: json["notes"] == null ? null : json["notes"],
+        giftSlugs: json["giftSlugs"] == null ? null : List<String>.from(json["giftSlugs"].map((x) => x)),
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
-        "createdAt": createdAt.toIso8601String(),
-        "pictureURL": pictureUrl,
-        "receiver": receiver,
-        "date": date.toIso8601String(),
-        "event": event,
-        "budget": budget,
-        "notifDate": notifDate.toIso8601String(),
-        "messages": messages,
-        "notes": notes,
-        "giftSlugs": List<dynamic>.from(giftSlugs.map((x) => x)),
+        "id": id == null ? null : json,
+        "createdAt": createdAt == null ? null :createdAt!.toIso8601String(),
+        "pictureURL": pictureUrl == null ? null : pictureUrl,
+        "receiver": receiver == null ? null : receiver,
+        "date": date == null ? null : date!.toIso8601String(),
+        "event": event == null ? null : event,
+        "budget": budget == null ? null : budget,
+        "notifDate": notifDate == null ? null : notifDate!.toIso8601String(),
+        "messages": messages == null ? null : messages,
+        "notes": notes == null ? null : notes,
+        "giftSlugs": giftSlugs == null ? null : List<dynamic>.from(giftSlugs!.map((x) => x)),
     };
 }
