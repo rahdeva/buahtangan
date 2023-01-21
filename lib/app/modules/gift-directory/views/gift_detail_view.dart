@@ -40,7 +40,6 @@ class GiftDetailView extends StatelessWidget {
                       const BackButtonWidget(),
                       Container(
                         margin: const EdgeInsets.all(24.0),
-                        constraints: BoxConstraints(minHeight: 90.h),
                         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                         decoration: BoxDecoration(
                           color: secondaryColor,
@@ -67,6 +66,7 @@ class GiftDetailView extends StatelessWidget {
                   ),
                   Container(
                       width: 100.w,
+                      constraints: BoxConstraints(minHeight: 90.h),
                       decoration: BoxDecoration(
                         color: backgroundColor,
                         boxShadow: [dropShadow()],

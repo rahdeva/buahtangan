@@ -10,7 +10,6 @@ import 'app/routes/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'app/helpers/utils.dart';
-// import '../app/themes/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,17 +18,17 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  if (kDebugMode) {
-    runApp(
-      DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (context) => MyApp(),
-      ),
-    );
-  } else {
-    runApp(MyApp());
-  }
-  // runApp(MyApp());
+  // if (kDebugMode) {
+  //   runApp(
+  //     DevicePreview(
+  //       enabled: !kReleaseMode,
+  //       builder: (context) => MyApp(),
+  //     ),
+  //   );
+  // } else {
+  //   runApp(MyApp());
+  // }
+  runApp(MyApp());
 }
 
 // ignore: must_be_immutable
@@ -66,7 +65,7 @@ class MyApp extends StatelessWidget {
             child: GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: "BuahTangan",
-              initialRoute: snap.data != null ? Routes.DASHBOARD :AppPages.INITIAL,
+              initialRoute: snap.data != null ? Routes.DASHBOARD : AppPages.INITIAL,
               getPages: AppPages.routes,
               locale: const Locale('id', 'ID'),
               fallbackLocale: const Locale('id', 'ID'),
@@ -76,9 +75,6 @@ class MyApp extends StatelessWidget {
                   child: child ?? Container(),
                 );
               },
-              // theme: AppTheme.light,
-              // darkTheme: AppTheme.dark,
-              // themeMode: ThemeMode.system,
             ),
           );
         });
