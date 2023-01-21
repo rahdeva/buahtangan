@@ -2,6 +2,8 @@
 //
 //     final user = userFromJson(jsonString);
 
+// ignore_for_file: prefer_if_null_operators
+
 import 'dart:convert';
 
 User userFromJson(String str) => User.fromJson(json.decode(str));
@@ -21,37 +23,37 @@ class User {
         required this.giftLiked,
     });
 
-    String uid;
-    DateTime createdAt;
-    String name;
-    String email;
-    String phone;
-    String profile;
-    List<String> articleLiked;
-    List<String> giftFavourited;
-    List<String> giftLiked;
+    String? uid;
+    DateTime? createdAt;
+    String? name;
+    String? email;
+    String? phone;
+    String? profile;
+    List<String>? articleLiked;
+    List<String>? giftFavourited;
+    List<String>? giftLiked;
 
     factory User.fromJson(Map<String, dynamic> json) => User(
-        uid: json["uid"],
-        createdAt: DateTime.parse(json["createdAt"]),
-        name: json["name"],
-        email: json["email"],
-        phone: json["phone"],
-        profile: json["profile"],
-        articleLiked: List<String>.from(json["articleLiked"].map((x) => x)),
-        giftFavourited: List<String>.from(json["giftFavourited"].map((x) => x)),
-        giftLiked: List<String>.from(json["giftLiked"].map((x) => x)),
+        uid: json["uid"] == null ? null : json["uid"],
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        name: json["name"] == null ? null : json["name"],
+        email: json["email"] == null ? null : json["email"],
+        phone: json["phone"] == null ? null : json["phone"],
+        profile: json["profile"] == null ? null : json["profile"],
+        articleLiked: json["articleLiked"] == null ? null : List<String>.from(json["articleLiked"].map((x) => x)),
+        giftFavourited: json["giftFavourited"] == null ? null : List<String>.from(json["giftFavourited"].map((x) => x)),
+        giftLiked: json["giftLiked"] == null ? null : List<String>.from(json["giftLiked"].map((x) => x)),
     );
 
     Map<String, dynamic> toJson() => {
-        "uid": uid,
-        "createdAt": createdAt.toIso8601String(),
-        "name": name,
-        "email": email,
-        "phone": phone,
-        "profile": profile,
-        "articleLiked": List<dynamic>.from(articleLiked.map((x) => x)),
-        "giftFavourited": List<dynamic>.from(giftFavourited.map((x) => x)),
-        "giftLiked": List<dynamic>.from(giftLiked.map((x) => x)),
+        "uid": uid == null ? null : uid,
+        "createdAt": createdAt == null ? null : createdAt!.toIso8601String(),
+        "name": name == null ? null : name,
+        "email": email == null ? null : email,
+        "phone": phone == null ? null : phone,
+        "profile": profile == null ? null : profile,
+        "articleLiked": articleLiked == null ? null : List<dynamic>.from(articleLiked!.map((x) => x)),
+        "giftFavourited": giftFavourited == null ? null : List<dynamic>.from(giftFavourited!.map((x) => x)),
+        "giftLiked": giftLiked == null ? null : List<dynamic>.from(giftLiked!.map((x) => x)),
     };
 }
