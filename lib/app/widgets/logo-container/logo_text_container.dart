@@ -18,7 +18,7 @@ class LogoTextContainer extends StatelessWidget {
         boxShadow: [dropShadow()],
         borderRadius: BorderRadius.circular(20)
       ),
-      margin: const EdgeInsets.fromLTRB(24, 0, 24, 12),
+      margin: const EdgeInsets.fromLTRB(24, 8, 24, 12),
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
       child: SvgPicture.asset(
         "assets/images/textLogo.svg",
