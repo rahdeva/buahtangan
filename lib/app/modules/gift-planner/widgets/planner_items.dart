@@ -27,7 +27,8 @@ class PlannerListItem extends StatelessWidget {
     return InkWell(
         onTap: () {
           Get.toNamed(
-            Routes.PLANNER_DETAIL
+            Routes.PLANNER_DETAIL,
+            arguments: {"id": mData.id}
           );
           // AnalyticsService().setCurrentScreen(
           //   screenName: "Hospital Detail",

@@ -28,7 +28,7 @@ class ArticleListItem extends StatelessWidget {
         onTap: () {
           Get.toNamed(
             Routes.ARTICLES_DETAIL,
-            arguments: mData.slug
+            arguments: {'slug': mData.slug}
           );
           // AnalyticsService().setCurrentScreen(
           //   screenName: "Hospital Detail",
