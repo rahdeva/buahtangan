@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/avatar.dart';
 import 'package:buahtangan/app/models/planner.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -35,4 +36,50 @@ class PlannerDetailController extends GetxController {
     }
     return null;
   }
+
+  Future<List<Avatar>> getAvatars() async {
+    final docUser = FirebaseFirestore.instance.collection('avatars').orderBy("id");
+    final snapshot = await docUser.get();
+    return snapshot.docs.map(
+      (doc) => Avatar.fromJson(doc.data())
+    ).toList();
+  }
+
+  // return GetBuilder<PlannerDetailController>(
+  //     builder: (controller) {
+  //       return Scaffold(
+  //         body: FutureBuilder<List<Avatar>>(
+  //           future: controller.getAvatars(),
+  //           builder: (context, snapshot) {
+  //             if(snapshot.hasData){
+  //               final avatarList = snapshot.data!;
+  //               return ListView.builder(
+  //                 itemCount: avatarList.length,
+  //                 itemBuilder: ((context, index) {
+  //                   final avatarObj = avatarList[index];
+  //                   return Row(
+  //                     children: [
+  //                       SizedBox(
+  //                         height: 100,
+  //                         width: 100,
+  //                         child: Image.network(
+  //                           avatarObj.avatarUrl ?? "-"
+  //                         ),
+  //                       ),
+  //                       Text(
+  //                         avatarObj.id.toString(),
+  //                       )
+  //                     ],
+  //                   );
+  //                 })
+  //               );
+  //             }
+  //             else{
+  //               return const CircularProgressIndicator();
+  //             }
+  //           },
+  //         )
+  //       );
+  //     }
+  //   );
 }

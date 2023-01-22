@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/avatar.dart';
 import 'package:buahtangan/app/models/planner.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
