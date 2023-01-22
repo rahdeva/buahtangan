@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/models/article.dart';
+import 'package:buahtangan/app/modules/articles/controllers/articles_controller.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
@@ -12,13 +13,13 @@ import 'package:sizer/sizer.dart';
 class ArticleListItem extends StatelessWidget {
   final int index;
   final Article mData;
-  final controller;
+  final ArticlesController controller;
 
   const ArticleListItem({
     Key? key, 
     required this.index, 
     required this.mData,
-    this.controller, 
+    required this.controller, 
   }) : super(key: key);
 
   @override
@@ -26,7 +27,8 @@ class ArticleListItem extends StatelessWidget {
     return InkWell(
         onTap: () {
           Get.toNamed(
-            Routes.ARTICLES_DETAIL
+            Routes.ARTICLES_DETAIL,
+            arguments: mData.slug
           );
           // AnalyticsService().setCurrentScreen(
           //   screenName: "Hospital Detail",
