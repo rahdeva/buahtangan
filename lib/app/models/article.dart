@@ -6,6 +6,8 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 Article articleFromJson(String str) => Article.fromJson(json.decode(str));
 
 String articleToJson(Article data) => json.encode(data.toJson());
@@ -41,13 +43,13 @@ class Article {
 
     factory Article.fromJson(Map<String, dynamic> json) => Article(
         id: json["id"] == null ? null : json["id"],
-        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
+        createdAt: json["createdAt"] == null ? null : (json["createdAt"] as Timestamp).toDate(),
         slug: json["slug"]  == null ? null : json["slug"],
         pictureUrl: json["pictureURL"]  == null ? null : json["pictureURL"],
         title: json["title"]  == null ? null : json["title"],
         author: json["author"]  == null ? null : json["author"],
         readTime: json["readTime"]  == null ? null : json["readTime"],
-        publishedAt: json["publishedAt"] == null ? null : DateTime.parse(json["publishedAt"]),
+        publishedAt: json["publishedAt"] == null ? null : (json["publishedAt"] as Timestamp).toDate(),
         likeCount: json["likeCount"]  == null ? null : json["likeCount"],
         commentCount: json["commentCount"]  == null ? null : json["commentCount"],
         content: json["content"]  == null ? null : json["content"],
@@ -84,7 +86,7 @@ class Comment {
     factory Comment.fromJson(Map<String, dynamic> json) => Comment(
         userName: json["userName"] == null ? null : json["userName"],
         comment: json["comment"] == null ? null : json["comment"],
-        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        date: json["date"] == null ? null : (json["date"] as Timestamp).toDate(),
     );
 
     Map<String, dynamic> toJson() => {

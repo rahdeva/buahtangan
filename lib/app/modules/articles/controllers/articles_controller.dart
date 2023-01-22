@@ -1,3 +1,5 @@
+import 'package:buahtangan/app/models/article.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -6,12 +8,24 @@ class ArticlesController extends GetxController {
   static ArticlesController find = Get.find();
   TextEditingController searchC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
+  List<Article> dataList = [];
 
   void refreshPage() async {
     // monitor network fetch
     await Future.delayed(Duration(milliseconds: 1000));
     // if failed,use refreshFailed()
     refreshController.refreshCompleted();
+  }
+
+  Stream<List<Article>> getArticles() {
+    return FirebaseFirestore.instance
+      .collection('articles')
+      .snapshots()
+      .map(
+        (snapshot) => snapshot.docs.map(
+          (doc) => Article.fromJson(doc.data())
+        ).toList()
+      );
   }
 
   String category = "Latest Tech";

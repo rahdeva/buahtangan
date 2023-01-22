@@ -37,7 +37,7 @@ class HomeView extends GetView<HomeController> {
                     borderRadius: BorderRadius.circular(20)
                   ),
                   width: 100.w,
-                  margin: const EdgeInsets.fromLTRB(40, 0, 50, 40),
+                  margin: const EdgeInsets.fromLTRB(40, 16, 50, 40),
                   padding: const EdgeInsets.all(24.0),
                   child: Column(
                     children: [

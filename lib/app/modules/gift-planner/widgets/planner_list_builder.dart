@@ -1,4 +1,6 @@
+import 'package:buahtangan/app/models/planner.dart';
 import 'package:buahtangan/app/modules/articles/widgets/article_items.dart';
+import 'package:buahtangan/app/modules/gift-planner/controllers/gift_planner_controller.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_items.dart';
 import 'package:flutter/material.dart';
 
@@ -8,22 +10,32 @@ class ListPlannerBuilder extends StatelessWidget {
     Key? key, 
   }) : super(key: key);
 
-  final controller;
+  final GiftPlannerController controller;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        // itemCount: controller.dataList.length,
-        itemCount: 10,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) {
-          return PlannerListItem(
-            index: index,
-            // mData: controller.dataList[index],
-            controller: controller,
-          );
-        },
-      );
+    return FutureBuilder<Planner?>(
+      future: controller.getPlanner(),
+      builder: (context, snapshot) {
+        if(snapshot.hasData){
+          final planner = snapshot.data!;
+          print(planner.plannerData!.length);
+          return ListView.builder(
+              itemCount: planner.plannerData!.length,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return PlannerListItem(
+                  index: index,
+                  mData: planner.plannerData![index],
+                  controller: controller,
+                );
+              },
+            );
+        } else{
+          return const CircularProgressIndicator();
+        }
+      }
+    );
   }
 }

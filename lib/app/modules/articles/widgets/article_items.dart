@@ -1,3 +1,5 @@
+import 'package:buahtangan/app/models/article.dart';
+import 'package:buahtangan/app/modules/articles/controllers/articles_controller.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
@@ -10,14 +12,14 @@ import 'package:sizer/sizer.dart';
 
 class ArticleListItem extends StatelessWidget {
   final int index;
-  // final Hospital mData;
-  final controller;
+  final Article mData;
+  final ArticlesController controller;
 
   const ArticleListItem({
     Key? key, 
     required this.index, 
-    // required this.mData,
-    this.controller, 
+    required this.mData,
+    required this.controller, 
   }) : super(key: key);
 
   @override
@@ -25,7 +27,8 @@ class ArticleListItem extends StatelessWidget {
     return InkWell(
         onTap: () {
           Get.toNamed(
-            Routes.ARTICLES_DETAIL
+            Routes.ARTICLES_DETAIL,
+            arguments: {'slug': mData.slug}
           );
           // AnalyticsService().setCurrentScreen(
           //   screenName: "Hospital Detail",
@@ -90,7 +93,7 @@ class ArticleListItem extends StatelessWidget {
                     SizedBox(
                       width: 100.w - 220,
                       child: Text(
-                        controller.title,
+                        mData.title ?? "-",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.justify,
