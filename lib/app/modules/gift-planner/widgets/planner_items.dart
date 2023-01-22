@@ -1,3 +1,5 @@
+import 'package:buahtangan/app/models/planner.dart';
+import 'package:buahtangan/app/modules/gift-planner/controllers/gift_planner_controller.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
@@ -10,14 +12,14 @@ import 'package:sizer/sizer.dart';
 
 class PlannerListItem extends StatelessWidget {
   final int index;
-  // final Hospital mData;
-  final controller;
+  final PlannerData mData;
+  final GiftPlannerController controller;
 
   const PlannerListItem({
     Key? key, 
     required this.index, 
-    // required this.mData,
-    this.controller, 
+    required this.mData,
+    required this.controller, 
   }) : super(key: key);
 
   @override
@@ -91,7 +93,7 @@ class PlannerListItem extends StatelessWidget {
                     SizedBox(
                       width: 100.w - 165,
                       child: Text(
-                        "Jack Kahuna Laguna",
+                        mData.receiver ?? "-",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.justify,

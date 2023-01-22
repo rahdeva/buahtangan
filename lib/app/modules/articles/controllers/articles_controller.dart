@@ -17,30 +17,8 @@ class ArticlesController extends GetxController {
     refreshController.refreshCompleted();
   }
 
-  // Stream<List<Article>> getArticles(){
-  //   // var test = FirebaseFirestore.instance
-  //   //   .collection('articles')
-  //   //   .snapshots();
-  //   // final allData = 
-  //   //   test.map(
-  //   //     (snapshot) => snapshot.docs.map(
-  //   //       (doc) => Article.fromJson(doc.data())
-  //   //     ).toList()
-  //   //   );
-  //   // print("allData");
-  //   // print(allData.length);
-  //   // print(allData.forEach((element) { print(element[0].title);}));
-  //   return FirebaseFirestore.instance
-  //     .collection('articles')
-  //     .snapshots()
-  //     .map(
-  //       (snapshot) => snapshot.docs.map(
-  //         (doc) => Article.fromJson(doc.data())
-  //       ).toList()
-  //     );
-  // }
-
-  Stream<List<Article>> getArticles() => FirebaseFirestore.instance
+  Stream<List<Article>> getArticles() {
+    return FirebaseFirestore.instance
       .collection('articles')
       .snapshots()
       .map(
@@ -48,6 +26,7 @@ class ArticlesController extends GetxController {
           (doc) => Article.fromJson(doc.data())
         ).toList()
       );
+  }
 
   String category = "Latest Tech";
   String title = "Immerse Project SIC Mobile Blog App Mobile Blog App";
