@@ -31,28 +31,32 @@ class PlannerEditView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const BackButtonWidget(),
-                    Container(
-                      margin: const EdgeInsets.all(24.0),
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      decoration: BoxDecoration(
-                        color: tertiaryColor,
-                        boxShadow: [dropShadow()],
-                        borderRadius: BorderRadius.circular(15)
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.save,
-                            color: onSurfaceColor,
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            "Save",
-                            style: projectTextTheme.subtitle2?.copyWith(
-                              color: onSurfaceColor
+                    InkWell(
+                      onTap: (){},
+                      borderRadius: BorderRadius.circular(15),
+                      child: Container(
+                        margin: const EdgeInsets.all(24.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        decoration: BoxDecoration(
+                          color: tertiaryColor,
+                          boxShadow: [dropShadow()],
+                          borderRadius: BorderRadius.circular(15)
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.save,
+                              color: onSurfaceColor,
                             ),
-                          ),
-                        ],
+                            const SizedBox(width: 8),
+                            Text(
+                              "Save",
+                              style: projectTextTheme.subtitle2?.copyWith(
+                                color: onSurfaceColor
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     )
                   ],

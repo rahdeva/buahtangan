@@ -154,6 +154,9 @@ class SettingView extends StatelessWidget {
                     const SizedBox(height: 24),
                     Container(
                       width: 100.w,
+                      constraints: BoxConstraints(
+                        minHeight: 62.h,
+                      ),
                       padding: const EdgeInsets.only(bottom: 50, top: 24),
                       decoration: whiteContainerDecoration(),
                       child: Column(
