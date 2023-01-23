@@ -33,8 +33,9 @@ class PlannerDisableTextFieldWidget extends StatelessWidget {
           fillColor: surfaceColor,
           isDense: true,
           contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          labelStyle: projectTextTheme.subtitle1?.copyWith(
-            color: onSurfaceColor
+          labelStyle: projectTextTheme.bodyText2?.copyWith(
+            fontWeight: FontWeight.w500,
+            color: slate500
           ),
           border: OutlineInputBorder(
             borderSide: BorderSide.none,

@@ -6,7 +6,6 @@ import 'package:buahtangan/app/modules/gift-planner/widgets/planner_disable_text
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_label_text_field_widget.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -72,7 +71,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: "Event",
+                                    hintText: planner?.event ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Budget"
@@ -80,7 +79,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: "Budget",
+                                    hintText: planner?.budget ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Messages"
@@ -88,7 +87,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: "Messages",
+                                    hintText: planner?.messages ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notes"
@@ -96,7 +95,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: "Notes",
+                                    hintText: planner?.notes ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notification"
@@ -104,7 +103,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: "Notification",
+                                    hintText: planner?.notifDate.toString() ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Gift List"

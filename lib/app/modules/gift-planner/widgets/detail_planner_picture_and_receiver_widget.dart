@@ -61,6 +61,8 @@ class DetailPlannerPictureAndReceiverWidget extends StatelessWidget {
           child: Text(
             planner?.receiver ?? "-",
             style: projectTextTheme.subtitle1!.copyWith(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
               color: onSurfaceColor
             ),
           ),
