@@ -3,6 +3,7 @@ import 'package:buahtangan/app/modules/gift-planner/widgets/back_and_edit_button
 import 'package:buahtangan/app/modules/gift-planner/widgets/detail_planner_picture_and_receiver_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/empty_gift_list_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_disable_text_field_widget.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/planner_label_text_field_widget.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
@@ -57,92 +58,58 @@ class PlannerDetailView extends StatelessWidget {
                                   DetailPlannerPictureAndReceiverWidget(
                                     planner: planner
                                   ),
-                                  const SizedBox(height: 24),
-                                  Text(
-                                    "Date",
-                                    style: projectTextTheme.subtitle1?.copyWith(
-                                      color: onSurfaceColor,
-                                    ),
-                                  ),
                                   const SizedBox(height: 8),
+                                  const 
+                                  PlannerLabelTextField(labelText: "Date"),
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: "Date",
+                                    hintText: planner?.date.toString() ?? "-",
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    "Event",
-                                    style: projectTextTheme.subtitle1?.copyWith(
-                                      color: onSurfaceColor,
-                                    ),
+                                  const PlannerLabelTextField(
+                                    labelText: "Event"
                                   ),
-                                  const SizedBox(height: 8),
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
                                     hintText: "Event",
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    "Budget",
-                                    style: projectTextTheme.subtitle1?.copyWith(
-                                      color: onSurfaceColor,
-                                    ),
+                                  const PlannerLabelTextField(
+                                    labelText: "Budget"
                                   ),
-                                  const SizedBox(height: 8),
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
                                     hintText: "Budget",
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    "Messages",
-                                    style: projectTextTheme.subtitle1?.copyWith(
-                                      color: onSurfaceColor,
-                                    ),
+                                  const PlannerLabelTextField(
+                                    labelText: "Messages"
                                   ),
-                                  const SizedBox(height: 8),
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
                                     hintText: "Messages",
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    "Notes",
-                                    style: projectTextTheme.subtitle1?.copyWith(
-                                      color: onSurfaceColor,
-                                    ),
+                                  const PlannerLabelTextField(
+                                    labelText: "Notes"
                                   ),
-                                  const SizedBox(height: 8),
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
                                     hintText: "Notes",
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    "Notification",
-                                    style: projectTextTheme.subtitle1?.copyWith(
-                                      color: onSurfaceColor,
-                                    ),
+                                  const PlannerLabelTextField(
+                                    labelText: "Notification"
                                   ),
-                                  const SizedBox(height: 8),
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
                                     hintText: "Notification",
                                   ),
-                                  const SizedBox(height: 16),
-                                  Text(
-                                    "Gift List",
-                                    style: projectTextTheme.subtitle1?.copyWith(
-                                      color: onSurfaceColor,
-                                    ),
+                                  const PlannerLabelTextField(
+                                    labelText: "Gift List"
                                   ),
-                                  const SizedBox(height: 16),
+                                  const SizedBox(height: 8),
                                   const EmptyGiftListWidget(),
                                 ]
                               ),
