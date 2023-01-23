@@ -21,7 +21,7 @@ class BackAndEditButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           onTap: (){
             Get.toNamed(
-              Routes.PLANNER_ADD
+              Routes.PLANNER_EDIT
             );
           },
           child: Container(
