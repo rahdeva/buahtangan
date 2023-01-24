@@ -85,6 +85,7 @@ class LoginView extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: backgroundColor,
                             boxShadow: [dropShadow()],
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           child: ElevatedButton(
                             onPressed: () => controller.loginGoogle(),

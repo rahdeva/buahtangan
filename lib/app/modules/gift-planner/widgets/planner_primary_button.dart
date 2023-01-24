@@ -6,12 +6,18 @@ import 'package:sizer/sizer.dart';
 
 class PlannerPrimaryButton extends StatelessWidget {
   const PlannerPrimaryButton({
-    Key? key,
+    Key? key, 
+    required this.buttonText,
+    required this.onTap, 
   }) : super(key: key);
+
+  final String buttonText;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       borderRadius: BorderRadius.circular(15),
       child: Container(
         width: 100.w,
@@ -30,7 +36,7 @@ class PlannerPrimaryButton extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             Text(
-              "Add Receiver",
+              buttonText,
               style: projectTextTheme.button!.copyWith(
                 color: onSurfaceColor
               ),
