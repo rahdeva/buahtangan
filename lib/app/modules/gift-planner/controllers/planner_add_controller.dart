@@ -55,28 +55,37 @@ class PlannerAddController extends GetxController {
   //   }
   // }
 
-  void createNewPlanner() async {
+  Future createNewPlanner() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
-    String plannerId = getRandomGeneratedId();
-    // PlannerData planner = PlannerData(
-    //   id: 2, 
-    //   createdAt: DateTime.now(), 
-    //   pictureUrl: "https://picsum.photos/500/500", 
-    //   receiver: "Jack Kahuna Laguna", 
-    //   date: DateTime.now(), 
-    //   event: "Birthday", 
-    //   budget: "100.000-100.000.000", 
-    //   notifDate: DateTime.now(), 
-    //   messages: "Give him a surprise", 
-    //   notes: "He is good surfer", 
-    //   giftSlugs: []
-    // );
+    debugPrint(uid);
+    final docPlanner = FirebaseFirestore.instance.collection("planners").doc(uid).collection("plannerData").doc();
+    debugPrint(docPlanner.id);
+    final planner = Planner(
+      id: docPlanner.id, 
+      createdAt: DateTime.now(), 
+      pictureUrl: "https://picsum.photos/500/500", 
+      receiver: "Jack Kahuna Laguna", 
+      date: DateTime.now(), 
+      event: "Birthday", 
+      budget: "100.000-100.000.000", 
+      notifDate: DateTime.now(), 
+      messages: "Give him a surprise", 
+      notes: "He is good surfer", 
+      giftSlugs: [
+        "test-gift",
+        "test-gift2"
+      ]
+    );
+
+    final json = planner.toJson();
+    await docPlanner.set(json);
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
+    );
     // try{
-    //   // await FirebaseFirestore.instance.collection("planners").doc(uid).update({
-    //   //   "plannerData": FieldValue.arrayUnion(planner.toJson())
-    //   // });
-    //   await FirebaseFirestore.instance.collection("planners").doc(uid).collection(plannerId).doc()
+      
     // }
     // catch(e){
     //   showSnackbar(

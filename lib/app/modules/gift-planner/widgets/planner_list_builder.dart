@@ -14,7 +14,6 @@ class ListPlannerBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return CircularProgressIndicator();
     return StreamBuilder<List<Planner>>(
       stream: controller.getPlanner(),
       builder: (context, snapshot) {

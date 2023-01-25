@@ -126,7 +126,9 @@ class PlannerAddView extends StatelessWidget {
                         const AddGiftFromDirectoryButton(),
                         const SizedBox(height: 40),
                         PlannerPrimaryButton(
-                          onTap: () => controller.createNewPlanner(),
+                          onTap: () {
+                            controller.createNewPlanner();
+                          },
                           buttonText: "Add Receiver",
                         ),
                       ]
