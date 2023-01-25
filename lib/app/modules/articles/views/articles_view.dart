@@ -139,7 +139,7 @@ class ArticlesView extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: (){
-
+                      controller.updatePlanner();
                     }, 
                     icon: Icon(Icons.edit)
                   ),

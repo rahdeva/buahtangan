@@ -63,38 +63,39 @@ class ArticlesController extends GetxController {
     );
   }
 
-  // Future updatePlanner() async {
-  //   FirebaseAuth auth = FirebaseAuth.instance;
-  //   String uid = auth.currentUser!.uid;
-  //   final docPlanner = FirebaseFirestore.instance
-  //     .collection("articles")
-  //     .doc(uid)
-  //     .collection("plannerData")
-  //     .doc(id);
-  //   final planner = Planner(
-  //     id: docPlanner.id, 
-  //     createdAt: DateTime.now(), 
-  //     pictureUrl: "https://picsum.photos/500/500", 
-  //     receiver: "Jack Kahuna Update", 
-  //     date: DateTime.now(), 
-  //     event: "Birthday", 
-  //     budget: "100.000-100.000.000", 
-  //     notifDate: DateTime.now(), 
-  //     messages: "Give him a surprise", 
-  //     notes: "He is good surfer", 
-  //     giftSlugs: [
-  //       "test-gift",
-  //       "test-gift2"
-  //     ]
-  //   );
+  Future updatePlanner() async {
+    const slug = "new-article";
+    final docArticle = FirebaseFirestore.instance
+      .collection("articles")
+      .doc(slug);
+    final article = Article(
+      id: 3, 
+      createdAt: DateTime.now(),
+      slug: slug, 
+      pictureUrl: "https://picsum.photos/500/500", 
+      title: "New Article Update", 
+      author: "Ngurah", 
+      readTime: "1,", 
+      publishedAt: DateTime.now(),
+      likeCount: 100, 
+      commentCount: 100, 
+      content: "Ini adalah konten", 
+      comments: [
+        Comment(
+          userName: "John", 
+          comment: "Mantap", 
+          date: DateTime.now(),
+        )
+      ]
+    );
 
-  //   final json = planner.toJson();
-  //   await docPlanner.update(json);
-  //   showSnackbar(
-  //     "Work!", "Work!",
-  //     const Icon(Icons.close_rounded, color: Colors.red)
-  //   );
-  // }
+    final json = article.toJson();
+    await docArticle.update(json);
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
+    );
+  }
 
   // Future deletePlanner() async {
   //   FirebaseAuth auth = FirebaseAuth.instance;
