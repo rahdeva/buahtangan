@@ -8,8 +8,11 @@ import 'package:get/get.dart';
 
 class BackAndEditButton extends StatelessWidget {
   const BackAndEditButton({
-    Key? key,
+    Key? key, 
+    required this.plannerId,
   }) : super(key: key);
+
+  final String plannerId;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,8 @@ class BackAndEditButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           onTap: (){
             Get.toNamed(
-              Routes.PLANNER_EDIT
+              Routes.PLANNER_EDIT,
+              arguments: {"id": plannerId}
             );
           },
           child: Container(

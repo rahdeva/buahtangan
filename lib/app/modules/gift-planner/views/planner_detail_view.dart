@@ -37,7 +37,9 @@ class PlannerDetailView extends StatelessWidget {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const BackAndEditButton(),
+                          BackAndEditButton(
+                            plannerId: planner.id ?? "",
+                          ),
                           Container(
                               width: 100.w,
                               constraints: BoxConstraints(minHeight: 90.h),
