@@ -145,7 +145,7 @@ class ArticlesView extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: (){
-                      
+                      controller.deletePlanner();
                     }, 
                     icon: Icon(Icons.delete)
                   ),

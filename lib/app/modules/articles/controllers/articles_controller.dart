@@ -97,20 +97,17 @@ class ArticlesController extends GetxController {
     );
   }
 
-  // Future deletePlanner() async {
-  //   FirebaseAuth auth = FirebaseAuth.instance;
-  //   String uid = auth.currentUser!.uid;
-  //   final docPlanner = FirebaseFirestore.instance
-  //     .collection("articles")
-  //     .doc(uid)
-  //     .collection("plannerData")
-  //     .doc(id);
-  //   await docPlanner.delete();
-  //   showSnackbar(
-  //     "Work!", "Work!",
-  //     const Icon(Icons.close_rounded, color: Colors.red)
-  //   );
-  // }
+  Future deletePlanner() async {
+    const slug = "new-article-2";
+    final docArticle = FirebaseFirestore.instance
+      .collection("articles")
+      .doc(slug);
+    await docArticle.delete();
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
+    );
+  }
 
   String category = "Latest Tech";
   String title = "Immerse Project SIC Mobile Blog App Mobile Blog App";
