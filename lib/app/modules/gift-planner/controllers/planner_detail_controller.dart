@@ -10,7 +10,7 @@ class PlannerDetailController extends GetxController {
   static PlannerDetailController find = Get.find();
   TextEditingController testC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
-  late final int id;
+  late final String id;
 
   @override
   void onInit() {
@@ -28,7 +28,11 @@ class PlannerDetailController extends GetxController {
   Future<Planner?> getPlannerDetail() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
-    final docUser = FirebaseFirestore.instance.collection('planners').doc(uid);
+    final docUser = FirebaseFirestore.instance
+      .collection('planners')
+      .doc(uid)
+      .collection("plannerData")
+      .doc(id);
     final snapshot = await docUser.get();
 
     if(snapshot.exists){

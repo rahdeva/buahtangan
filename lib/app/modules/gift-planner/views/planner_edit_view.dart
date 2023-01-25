@@ -32,7 +32,9 @@ class PlannerEditView extends StatelessWidget {
                   children: [
                     const BackButtonWidget(),
                     InkWell(
-                      onTap: (){},
+                      onTap: (){
+                        controller.updatePlanner();
+                      },
                       borderRadius: BorderRadius.circular(15),
                       child: Container(
                         margin: const EdgeInsets.all(24.0),
@@ -327,11 +329,14 @@ class PlannerEditView extends StatelessWidget {
                         ),
                         const SizedBox(height: 40),
                         InkWell(
+                          onTap: () {
+                            controller.deletePlanner();
+                          },
                           borderRadius: BorderRadius.circular(15),
                           child: Container(
                             width: 100.w,
                             decoration: BoxDecoration(
-                              color: tertiaryColor,
+                              color: secondaryColor,
                               boxShadow: [dropShadow()],
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -340,14 +345,14 @@ class PlannerEditView extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.add,
-                                  color: onSurfaceColor
+                                  Icons.delete,
+                                  color: surfaceColor
                                 ),
                                 const SizedBox(width: 8),
                                 Text(
-                                  "Add Receiver",
+                                  "Delete Receiver",
                                   style: projectTextTheme.button!.copyWith(
-                                    color: onSurfaceColor
+                                    color: surfaceColor
                                   ),
                                 ),
                               ],

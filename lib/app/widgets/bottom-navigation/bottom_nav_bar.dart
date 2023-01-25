@@ -28,7 +28,7 @@ class BottomNavBarWidget extends StatelessWidget {
         hoverColor: primaryColor,
         activeColor: onPrimaryColor,
         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-        tabMargin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
+        tabMargin: const EdgeInsets.symmetric(vertical: 10.0),
         duration: const Duration(milliseconds: 400),
         tabBackgroundColor: primaryColor,
         color: onBackgroundColor,

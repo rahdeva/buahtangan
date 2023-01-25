@@ -13,7 +13,7 @@ class DetailPlannerPictureAndReceiverWidget extends StatelessWidget {
     required this.planner,
   }) : super(key: key);
 
-  final PlannerData? planner;
+  final Planner? planner;
 
   @override
   Widget build(BuildContext context) {

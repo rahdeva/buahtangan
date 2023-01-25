@@ -1,6 +1,7 @@
 import 'package:buahtangan/app/models/article.dart';
+import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -8,7 +9,7 @@ class ArticlesController extends GetxController {
   static ArticlesController find = Get.find();
   TextEditingController searchC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
-  List<Article> dataList = [];
+  // List<Article> dataList = [];
 
   void refreshPage() async {
     // monitor network fetch
@@ -26,6 +27,86 @@ class ArticlesController extends GetxController {
           (doc) => Article.fromJson(doc.data())
         ).toList()
       );
+  }
+
+  Future createNewArticle() async {
+    const slug = "new-article";
+    final docArticle = FirebaseFirestore.instance
+      .collection("articles")
+      .doc(slug);
+    final article = Article(
+      id: 3, 
+      createdAt: DateTime.now(),
+      slug: slug, 
+      pictureUrl: "https://picsum.photos/500/500", 
+      title: "New Article", 
+      author: "Ngurah", 
+      readTime: "1,", 
+      publishedAt: DateTime.now(),
+      likeCount: 100, 
+      commentCount: 100, 
+      content: "Ini adalah konten", 
+      comments: [
+        Comment(
+          userName: "John", 
+          comment: "Mantap", 
+          date: DateTime.now(),
+        )
+      ]
+    );
+
+    final json = article.toJson();
+    await docArticle.set(json);
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
+    );
+  }
+
+  Future updatePlanner() async {
+    const slug = "new-article";
+    final docArticle = FirebaseFirestore.instance
+      .collection("articles")
+      .doc(slug);
+    final article = Article(
+      id: 3, 
+      createdAt: DateTime.now(),
+      slug: slug, 
+      pictureUrl: "https://picsum.photos/500/500", 
+      title: "New Article Update", 
+      author: "Ngurah", 
+      readTime: "1,", 
+      publishedAt: DateTime.now(),
+      likeCount: 100, 
+      commentCount: 100, 
+      content: "Ini adalah konten", 
+      comments: [
+        Comment(
+          userName: "John", 
+          comment: "Mantap", 
+          date: DateTime.now(),
+        )
+      ]
+    );
+
+    final json = article.toJson();
+    await docArticle.update(json);
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
+    );
+  }
+
+  Future deletePlanner() async {
+    const slug = "new-article-2";
+    final docArticle = FirebaseFirestore.instance
+      .collection("articles")
+      .doc(slug);
+    await docArticle.delete();
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
+    );
   }
 
   String category = "Latest Tech";

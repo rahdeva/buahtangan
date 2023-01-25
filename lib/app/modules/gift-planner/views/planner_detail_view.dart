@@ -33,11 +33,13 @@ class PlannerDetailView extends StatelessWidget {
                   future: controller.getPlannerDetail(),
                   builder: (context, snapshot) {
                     if(snapshot.hasData){
-                      final planner = snapshot.data!.plannerData?[controller.id-1];
+                      final planner = snapshot.data!;
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const BackAndEditButton(),
+                          BackAndEditButton(
+                            plannerId: planner.id ?? "",
+                          ),
                           Container(
                               width: 100.w,
                               constraints: BoxConstraints(minHeight: 90.h),
@@ -63,7 +65,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner?.date.toString() ?? "-",
+                                    hintText: planner.date.toString(),
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Event"
@@ -71,7 +73,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner?.event ?? "-",
+                                    hintText: planner.event ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Budget"
@@ -79,7 +81,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner?.budget ?? "-",
+                                    hintText: planner.budget ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Messages"
@@ -87,7 +89,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner?.messages ?? "-",
+                                    hintText: planner.messages ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notes"
@@ -95,7 +97,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner?.notes ?? "-",
+                                    hintText: planner.notes ?? "-",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notification"
@@ -103,7 +105,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner?.notifDate.toString() ?? "-",
+                                    hintText: planner.notifDate.toString(),
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Gift List"

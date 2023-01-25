@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/helpers/id_generator.dart';
 import 'package:buahtangan/app/models/planner.dart';
 import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -54,11 +55,14 @@ class PlannerAddController extends GetxController {
   //   }
   // }
 
-  void createNewPlanner() async {
+  Future createNewPlanner() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
-    PlannerData planner = PlannerData(
-      id: 2, 
+    debugPrint(uid);
+    final docPlanner = FirebaseFirestore.instance.collection("planners").doc(uid).collection("plannerData").doc();
+    debugPrint(docPlanner.id);
+    final planner = Planner(
+      id: docPlanner.id, 
       createdAt: DateTime.now(), 
       pictureUrl: "https://picsum.photos/500/500", 
       receiver: "Jack Kahuna Laguna", 
@@ -68,12 +72,20 @@ class PlannerAddController extends GetxController {
       notifDate: DateTime.now(), 
       messages: "Give him a surprise", 
       notes: "He is good surfer", 
-      giftSlugs: []
+      giftSlugs: [
+        "test-gift",
+        "test-gift2"
+      ]
+    );
+
+    final json = planner.toJson();
+    await docPlanner.set(json);
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
     );
     // try{
-    //   await FirebaseFirestore.instance.collection("planners").doc(uid).update({
-    //     "plannerData": FieldValue.arrayUnion(planner.toJson())
-    //   });
+      
     // }
     // catch(e){
     //   showSnackbar(
