@@ -52,28 +52,12 @@ class PlannerEditController extends GetxController {
   Future deletePlanner() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
-    debugPrint(uid);
-    final docPlanner = FirebaseFirestore.instance.collection("planners").doc(uid).collection("plannerData").doc();
-    debugPrint(docPlanner.id);
-    final planner = Planner(
-      id: docPlanner.id, 
-      createdAt: DateTime.now(), 
-      pictureUrl: "https://picsum.photos/500/500", 
-      receiver: "Jack Kahuna Laguna", 
-      date: DateTime.now(), 
-      event: "Birthday", 
-      budget: "100.000-100.000.000", 
-      notifDate: DateTime.now(), 
-      messages: "Give him a surprise", 
-      notes: "He is good surfer", 
-      giftSlugs: [
-        "test-gift",
-        "test-gift2"
-      ]
-    );
-
-    final json = planner.toJson();
-    await docPlanner.set(json);
+    final docPlanner = FirebaseFirestore.instance
+      .collection("planners")
+      .doc(uid)
+      .collection("plannerData")
+      .doc(id);
+    await docPlanner.delete();
     showSnackbar(
       "Work!", "Work!",
       const Icon(Icons.close_rounded, color: Colors.red)
