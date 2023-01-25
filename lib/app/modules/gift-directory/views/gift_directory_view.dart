@@ -190,6 +190,32 @@ class GiftDirectoryView extends StatelessWidget {
               ),
               ),
             ),
+            floatingActionButton: Container(
+              width: 100.w,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: (){
+                      controller.createNewGift();
+                    }, 
+                    icon: Icon(Icons.add)
+                  ),
+                  IconButton(
+                    onPressed: (){
+                      controller.updateGift();
+                    }, 
+                    icon: Icon(Icons.edit)
+                  ),
+                  IconButton(
+                    onPressed: (){
+                      controller.deleteGift();
+                    }, 
+                    icon: Icon(Icons.delete)
+                  ),
+                ],
+              ),
+            ),
           ),
         );
       }

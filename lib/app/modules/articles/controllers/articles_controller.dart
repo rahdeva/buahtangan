@@ -63,7 +63,7 @@ class ArticlesController extends GetxController {
     );
   }
 
-  Future updatePlanner() async {
+  Future updateArticle() async {
     const slug = "new-article";
     final docArticle = FirebaseFirestore.instance
       .collection("articles")
@@ -97,7 +97,7 @@ class ArticlesController extends GetxController {
     );
   }
 
-  Future deletePlanner() async {
+  Future deleteArticle() async {
     const slug = "new-article-2";
     final docArticle = FirebaseFirestore.instance
       .collection("articles")
