@@ -12,7 +12,7 @@ import 'package:sizer/sizer.dart';
 
 class PlannerListItem extends StatelessWidget {
   final int index;
-  final PlannerData mData;
+  final Planner mData;
   final GiftPlannerController controller;
 
   const PlannerListItem({

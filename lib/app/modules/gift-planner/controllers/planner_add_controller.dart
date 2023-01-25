@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/helpers/id_generator.dart';
 import 'package:buahtangan/app/models/planner.dart';
 import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -57,23 +58,25 @@ class PlannerAddController extends GetxController {
   void createNewPlanner() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
-    PlannerData planner = PlannerData(
-      id: 2, 
-      createdAt: DateTime.now(), 
-      pictureUrl: "https://picsum.photos/500/500", 
-      receiver: "Jack Kahuna Laguna", 
-      date: DateTime.now(), 
-      event: "Birthday", 
-      budget: "100.000-100.000.000", 
-      notifDate: DateTime.now(), 
-      messages: "Give him a surprise", 
-      notes: "He is good surfer", 
-      giftSlugs: []
-    );
+    String plannerId = getRandomGeneratedId();
+    // PlannerData planner = PlannerData(
+    //   id: 2, 
+    //   createdAt: DateTime.now(), 
+    //   pictureUrl: "https://picsum.photos/500/500", 
+    //   receiver: "Jack Kahuna Laguna", 
+    //   date: DateTime.now(), 
+    //   event: "Birthday", 
+    //   budget: "100.000-100.000.000", 
+    //   notifDate: DateTime.now(), 
+    //   messages: "Give him a surprise", 
+    //   notes: "He is good surfer", 
+    //   giftSlugs: []
+    // );
     // try{
-    //   await FirebaseFirestore.instance.collection("planners").doc(uid).update({
-    //     "plannerData": FieldValue.arrayUnion(planner.toJson())
-    //   });
+    //   // await FirebaseFirestore.instance.collection("planners").doc(uid).update({
+    //   //   "plannerData": FieldValue.arrayUnion(planner.toJson())
+    //   // });
+    //   await FirebaseFirestore.instance.collection("planners").doc(uid).collection(plannerId).doc()
     // }
     // catch(e){
     //   showSnackbar(

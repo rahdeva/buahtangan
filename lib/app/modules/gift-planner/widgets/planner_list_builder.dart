@@ -14,20 +14,20 @@ class ListPlannerBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Planner?>(
-      future: controller.getPlanner(),
+    // return CircularProgressIndicator();
+    return StreamBuilder<List<Planner>>(
+      stream: controller.getPlanner(),
       builder: (context, snapshot) {
         if(snapshot.hasData){
           final planner = snapshot.data!;
-          print(planner.plannerData!.length);
           return ListView.builder(
-              itemCount: planner.plannerData!.length,
+              itemCount: planner.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 return PlannerListItem(
                   index: index,
-                  mData: planner.plannerData![index],
+                  mData: planner[index],
                   controller: controller,
                 );
               },

@@ -15,15 +15,19 @@ class GiftPlannerController extends GetxController {
     refreshController.refreshCompleted();
   }
 
-  Future<Planner?> getPlanner() async {
+  Stream<List<Planner>> getPlanner() {
     FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
-    final docUser = FirebaseFirestore.instance.collection('planners').doc(uid);
-    final snapshot = await docUser.get();
 
-    if(snapshot.exists){
-      return Planner.fromJson(snapshot.data()!);
-    }
-    return null;
+    return FirebaseFirestore.instance
+      .collection('planners')
+      .doc(uid)
+      .collection("plannerData")
+      .snapshots()
+      .map(
+        (snapshot) => snapshot.docs.map(
+          (doc) => Planner.fromJson(doc.data())
+        ).toList()
+      );
   }
 }
