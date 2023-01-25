@@ -126,6 +126,33 @@ class ArticlesView extends StatelessWidget {
                 )
               ),
             ),
+            floatingActionButton: Container(
+              width: 100.w,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: (){
+                      controller.createNewArticle();
+                    }, 
+                    icon: Icon(Icons.add)
+                  ),
+                  IconButton(
+                    onPressed: (){
+
+                    }, 
+                    icon: Icon(Icons.edit)
+                  ),
+                  IconButton(
+                    onPressed: (){
+                      
+                    }, 
+                    icon: Icon(Icons.delete)
+                  ),
+                ],
+              ),
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           ),
         );
       }

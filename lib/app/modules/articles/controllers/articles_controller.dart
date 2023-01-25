@@ -1,6 +1,7 @@
 import 'package:buahtangan/app/models/article.dart';
+import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -8,7 +9,7 @@ class ArticlesController extends GetxController {
   static ArticlesController find = Get.find();
   TextEditingController searchC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
-  List<Article> dataList = [];
+  // List<Article> dataList = [];
 
   void refreshPage() async {
     // monitor network fetch
@@ -27,6 +28,88 @@ class ArticlesController extends GetxController {
         ).toList()
       );
   }
+
+  Future createNewArticle() async {
+    const slug = "new-article";
+    final docArticle = FirebaseFirestore.instance
+      .collection("articles")
+      .doc(slug);
+    final article = Article(
+      id: 3, 
+      createdAt: DateTime.now(),
+      slug: slug, 
+      pictureUrl: "https://picsum.photos/500/500", 
+      title: "New Article", 
+      author: "Ngurah", 
+      readTime: "1,", 
+      publishedAt: DateTime.now(),
+      likeCount: 100, 
+      commentCount: 100, 
+      content: "Ini adalah konten", 
+      comments: [
+        Comment(
+          userName: "John", 
+          comment: "Mantap", 
+          date: DateTime.now(),
+        )
+      ]
+    );
+
+    final json = article.toJson();
+    await docArticle.set(json);
+    showSnackbar(
+      "Work!", "Work!",
+      const Icon(Icons.close_rounded, color: Colors.red)
+    );
+  }
+
+  // Future updatePlanner() async {
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //   String uid = auth.currentUser!.uid;
+  //   final docPlanner = FirebaseFirestore.instance
+  //     .collection("articles")
+  //     .doc(uid)
+  //     .collection("plannerData")
+  //     .doc(id);
+  //   final planner = Planner(
+  //     id: docPlanner.id, 
+  //     createdAt: DateTime.now(), 
+  //     pictureUrl: "https://picsum.photos/500/500", 
+  //     receiver: "Jack Kahuna Update", 
+  //     date: DateTime.now(), 
+  //     event: "Birthday", 
+  //     budget: "100.000-100.000.000", 
+  //     notifDate: DateTime.now(), 
+  //     messages: "Give him a surprise", 
+  //     notes: "He is good surfer", 
+  //     giftSlugs: [
+  //       "test-gift",
+  //       "test-gift2"
+  //     ]
+  //   );
+
+  //   final json = planner.toJson();
+  //   await docPlanner.update(json);
+  //   showSnackbar(
+  //     "Work!", "Work!",
+  //     const Icon(Icons.close_rounded, color: Colors.red)
+  //   );
+  // }
+
+  // Future deletePlanner() async {
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //   String uid = auth.currentUser!.uid;
+  //   final docPlanner = FirebaseFirestore.instance
+  //     .collection("articles")
+  //     .doc(uid)
+  //     .collection("plannerData")
+  //     .doc(id);
+  //   await docPlanner.delete();
+  //   showSnackbar(
+  //     "Work!", "Work!",
+  //     const Icon(Icons.close_rounded, color: Colors.red)
+  //   );
+  // }
 
   String category = "Latest Tech";
   String title = "Immerse Project SIC Mobile Blog App Mobile Blog App";
