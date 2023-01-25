@@ -41,13 +41,13 @@ class Planner {
 
     factory Planner.fromJson(Map<String, dynamic> json) => Planner(
         id: json["id"] == null ? null : json["id"],
-        createdAt: json["createdAt"] == null ? null : (json["createdAt"] as Timestamp).toDate(),
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         pictureUrl: json["pictureURL"] == null ? null : json["pictureURL"],
         receiver: json["receiver"] == null ? null : json["receiver"],
-        date: json["date"] == null ? null : (json["date"] as Timestamp).toDate(),
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
         event: json["event"] == null ? null : json["event"],
         budget: json["budget"] == null ? null : json["budget"],
-        notifDate: json["notifDate"] == null ? null : (json["notifDate"] as Timestamp).toDate(),
+        notifDate: json["notifDate"] == null ? null : DateTime.parse(json["notifDate"]),
         messages: json["messages"] == null ? null : json["messages"],
         notes: json["notes"] == null ? null : json["notes"],
         giftSlugs: json["giftSlugs"] == null ? null : List<String>.from(json["giftSlugs"].map((x) => x)),
