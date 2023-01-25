@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/models/gift.dart';
+import 'package:buahtangan/app/modules/gift-directory/controllers/gift_directory_controller.dart';
 import 'package:buahtangan/app/modules/gift-directory/widgets/gift_grid_items.dart';
 import 'package:buahtangan/app/modules/gift-directory/widgets/gift_list_items.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class GridGiftBuilder extends StatelessWidget {
     Key? key, 
   }) : super(key: key);
 
-  final controller;
+  final GiftDirectoryController controller;
 
   @override
   Widget build(BuildContext context) {

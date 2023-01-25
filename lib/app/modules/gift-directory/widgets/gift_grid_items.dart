@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/models/gift.dart';
+import 'package:buahtangan/app/modules/gift-directory/controllers/gift_directory_controller.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
@@ -12,13 +13,13 @@ import 'package:sizer/sizer.dart';
 class GiftGridItem extends StatelessWidget {
   final int index;
   final Gift mData;
-  final controller;
+  final GiftDirectoryController controller;
 
   const GiftGridItem({
     Key? key, 
     required this.index, 
     required this.mData,
-    this.controller, 
+    required this.controller, 
   }) : super(key: key);
 
   @override
