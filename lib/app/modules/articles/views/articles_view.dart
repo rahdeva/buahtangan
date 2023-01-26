@@ -139,20 +139,19 @@ class ArticlesView extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: (){
-                      controller.updatePlanner();
+                      controller.updateArticle();
                     }, 
                     icon: Icon(Icons.edit)
                   ),
                   IconButton(
                     onPressed: (){
-                      controller.deletePlanner();
+                      controller.deleteArticle();
                     }, 
                     icon: Icon(Icons.delete)
                   ),
                 ],
               ),
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           ),
         );
       }

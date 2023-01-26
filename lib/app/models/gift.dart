@@ -49,7 +49,7 @@ class Gift {
 
     factory Gift.fromJson(Map<String, dynamic> json) => Gift(
         id: json["id"] == null ? null : json["id"],
-        createdAt: json["createdAt"] == null ? null : (json["createdAt"] as Timestamp).toDate(),
+        createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         slug: json["slug"] == null ? null : json["slug"],
         pictureUrl: json["pictureURL"] == null ? null : json["pictureURL"],
         title: json["title"] == null ? null : json["title"],
@@ -98,7 +98,7 @@ class Comment {
     factory Comment.fromJson(Map<String, dynamic> json) => Comment(
         userName: json["userName"] == null ? null : json["userName"],
         comment: json["comment"] == null ? null : json["comment"],
-        date: json["date"] == null ? null : (json["date"] as Timestamp).toDate(),
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
     );
 
     Map<String, dynamic> toJson() => {
