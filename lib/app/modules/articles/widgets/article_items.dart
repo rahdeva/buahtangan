@@ -96,7 +96,6 @@ class ArticleListItem extends StatelessWidget {
                         mData.title ?? "-",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.justify,
                         style: projectTextTheme.bodyText1!.copyWith(
                           fontWeight: FontWeight.w600,
                           color: onSurfaceColor
