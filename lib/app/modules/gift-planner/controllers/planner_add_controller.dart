@@ -1,4 +1,3 @@
-import 'package:buahtangan/app/helpers/id_generator.dart';
 import 'package:buahtangan/app/models/planner.dart';
 import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,6 +11,7 @@ class PlannerAddController extends GetxController {
   TextEditingController messagesC = TextEditingController();
   TextEditingController notesC = TextEditingController();
   TextEditingController testC = TextEditingController();
+  RxString avatar = "".obs;
 
   // void register() async {
   //   if (nameC.text.isNotEmpty && phoneC.text.isNotEmpty && emailC.text.isNotEmpty && passC.text.isNotEmpty && passC2.text.isNotEmpty) {
