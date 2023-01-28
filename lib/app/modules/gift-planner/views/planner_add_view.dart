@@ -1,4 +1,3 @@
-import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_directory_button.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_favorites_button.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/add_planner_picture_receiver.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/date_picker_widget.dart';
@@ -8,7 +7,6 @@ import 'package:buahtangan/app/modules/gift-planner/widgets/planner_primary_butt
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_text_field_widget.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:buahtangan/app/widgets/button/back_button.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:buahtangan/app/widgets/dropdown/dropdown_widget.dart';
@@ -92,7 +90,7 @@ class PlannerAddView extends StatelessWidget {
                           labelText: "Messages"
                         ),
                         PlannerTextFieldWidget(
-                          controller: controller.testC,
+                          controller: controller.messagesC,
                           keyboardType: TextInputType.name,
                           hintText: "Messages",
                         ),
@@ -100,7 +98,7 @@ class PlannerAddView extends StatelessWidget {
                           labelText: "Notes"
                         ),
                         PlannerTextFieldWidget(
-                          controller: controller.testC,
+                          controller: controller.notesC,
                           keyboardType: TextInputType.name,
                           hintText: "Notes",
                         ),

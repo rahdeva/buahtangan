@@ -27,7 +27,7 @@ class DropdownWidget extends StatelessWidget {
       child: DropdownButtonFormField(
         decoration: InputDecoration(
           isDense: true,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide.none
