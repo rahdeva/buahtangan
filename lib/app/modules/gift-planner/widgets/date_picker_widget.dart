@@ -1,4 +1,5 @@
-import 'package:buahtangan/app/modules/gift-planner/controllers/planner_add_controller.dart';
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
@@ -12,7 +13,7 @@ class DatePickerWidget extends StatelessWidget {
     required this.controller,
   }) : super(key: key);
 
-  final PlannerAddController controller;
+  final controller;
 
   @override
   Widget build(BuildContext context) {

@@ -28,11 +28,11 @@ class PlannerAddView extends StatelessWidget {
           child: Scaffold(
             backgroundColor: primaryColor,
             body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                const BackButtonWidget(),
-                Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  const BackButtonWidget(),
+                  Container(
                     width: 100.w,
                     constraints: BoxConstraints(minHeight: 90.h),
                     decoration: BoxDecoration(
@@ -151,9 +151,9 @@ class PlannerAddView extends StatelessWidget {
                         ),
                       ]
                     ),
-                )
-              ],
-            ),
+                  )
+                ],
+              ),
             ),
           ),
         );

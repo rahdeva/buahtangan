@@ -1,17 +1,23 @@
+import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_directory_button.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_favorites_button.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/back_and_save_button.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/date_picker_widget.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/edit_planner_picture_receiver.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/empty_gift_list_widget.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/planner_label_text_field_widget.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/planner_text_field_widget.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
-import 'package:buahtangan/app/widgets/button/back_button.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
-import 'package:buahtangan/app/widgets/text-field/text_field_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:buahtangan/app/widgets/dropdown/dropdown_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:get/get.dart';
 
 import '../controllers/planner_edit_controller.dart';
+import '../widgets/planner_primary_button.dart';
 
 class PlannerEditView extends StatelessWidget {
   const PlannerEditView({super.key});
@@ -24,46 +30,13 @@ class PlannerEditView extends StatelessWidget {
           child: Scaffold(
             backgroundColor: primaryColor,
             body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const BackButtonWidget(),
-                    InkWell(
-                      onTap: (){
-                        controller.updatePlanner();
-                      },
-                      borderRadius: BorderRadius.circular(15),
-                      child: Container(
-                        margin: const EdgeInsets.all(24.0),
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: tertiaryColor,
-                          boxShadow: [dropShadow()],
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.save,
-                              color: onSurfaceColor,
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              "Save",
-                              style: projectTextTheme.subtitle2?.copyWith(
-                                color: onSurfaceColor
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  BackAndSaveButton(
+                    controller: controller,
+                  ),
+                  Container(
                     width: 100.w,
                     constraints: BoxConstraints(minHeight: 90.h),
                     decoration: BoxDecoration(
@@ -79,291 +52,115 @@ class PlannerEditView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Stack(
-                              clipBehavior: Clip.none,
-                              children: [
-                                Container(
-                                  height: 100,
-                                  width: 100,
-                                  decoration: BoxDecoration(
-                                    boxShadow: [dropShadow()],
-                                    borderRadius: BorderRadius.circular(15),
-                                  ),
-                                  child: CachedNetworkImage(
-                                    imageUrl: "https://picsum.photos/300/300",
-                                    imageBuilder: (context, imageProvider) => Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        image: DecorationImage(
-                                          image: imageProvider,
-                                          fit: BoxFit.cover,
-                                        ),
+                        EditPlannerPictureReceiver(
+                          controller: controller,
+                        ),
+                        const SizedBox(height: 8),
+                        const PlannerLabelTextField(
+                          labelText: "Date"
+                        ),
+                        DatePickerWidget(
+                          controller: controller,
+                        ),
+                        const PlannerLabelTextField(
+                          labelText: "Event"
+                        ),
+                        DropdownWidget(
+                          dropdownValue: controller.eventValue.value,
+                          items: controller.eventItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.eventValue.value = newValue!,
+                        ),
+                        const PlannerLabelTextField(
+                          labelText: "Budget"
+                        ),
+                        DropdownWidget(
+                          dropdownValue: controller.budgetValue.value,
+                          items: controller.budgetItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.budgetValue.value = newValue!,
+                        ),
+                        const PlannerLabelTextField(
+                          labelText: "Messages"
+                        ),
+                        PlannerTextFieldWidget(
+                          controller: controller.messagesC,
+                          keyboardType: TextInputType.name,
+                          hintText: "Messages",
+                        ),
+                        const PlannerLabelTextField(
+                          labelText: "Notes"
+                        ),
+                        PlannerTextFieldWidget(
+                          controller: controller.notesC,
+                          keyboardType: TextInputType.name,
+                          hintText: "Notes",
+                        ),
+                        const PlannerLabelTextField(
+                          labelText: "Notification"
+                        ),
+                        DropdownWidget(
+                          dropdownValue: controller.notifValue.value,
+                          items: controller.notifItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.notifValue.value = newValue!,
+                        ),
+                        const PlannerLabelTextField(
+                          labelText: "Gift List"
+                        ),
+                        Obx(
+                          () => controller.giftsSlugs.first.isEmpty
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  const EmptyGiftListWidget(),
+                                  const SizedBox(height: 16),
+                                  const AddGiftFromFavoritesButton(),
+                                  const SizedBox(height: 8),
+                                  Center(
+                                    child: Text(
+                                      "Or",
+                                      style: projectTextTheme.caption!.copyWith(
+                                        color: onBackgroundColor
                                       ),
                                     ),
-                                    placeholder: (context, url) => Shimmer.fromColors(
-                                      baseColor: Colors.grey.shade300,
-                                      highlightColor: Colors.white,
-                                      child: Container(
-                                        width: 100.w,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(15),
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                    errorWidget: (context, url, error) => Image.asset(
-                                      "assets/images/img_square_placeholder.png",
-                                      fit: BoxFit.cover,
-                                    )
                                   ),
-                                ),
-                                Positioned(
-                                    bottom: -4,
-                                    right: -4,
-                                    child: CircleAvatar(
-                                      backgroundColor: secondaryColor,
-                                      radius: 12,
-                                      child: IconButton(
-                                        onPressed: (){},
-                                        icon: Icon(
-                                          size: 9,
-                                          Icons.edit,
-                                          color: onSecondaryColor,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                              ],
-                            ),
-                            const SizedBox(width: 24),
-                            SizedBox(
-                              width: 100.w - 100 - 48 - 24,
-                              child: TextField(
-                                decoration: const InputDecoration(
-                                  hintText: "Name",
-                                ),
-                                style: projectTextTheme.caption!.copyWith(
-                                  color: slate500
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24),
-                        Text(
-                          "Date",
-                          style: projectTextTheme.subtitle1?.copyWith(
-                            color: onSurfaceColor,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Date",
-                          hintText: "Your Date...",
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Event",
-                          style: projectTextTheme.subtitle1?.copyWith(
-                            color: onSurfaceColor,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Event",
-                          hintText: "Your Event...",
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Budget",
-                          style: projectTextTheme.subtitle1?.copyWith(
-                            color: onSurfaceColor,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Budget",
-                          hintText: "Your Budget...",
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Messages",
-                          style: projectTextTheme.subtitle1?.copyWith(
-                            color: onSurfaceColor,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Messages",
-                          hintText: "Your Messages...",
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Notes",
-                          style: projectTextTheme.subtitle1?.copyWith(
-                            color: onSurfaceColor,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Notes",
-                          hintText: "Your Notes...",
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Notification",
-                          style: projectTextTheme.subtitle1?.copyWith(
-                            color: onSurfaceColor,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Notification",
-                          hintText: "Your Notification...",
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Gift List",
-                          style: projectTextTheme.subtitle1?.copyWith(
-                            color: onSurfaceColor,
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/ic_empty_box.png"
-                            ),
-                            const SizedBox(width: 16),
-                            Text(
-                              "No gifts have been added yet",
-                              style: projectTextTheme.bodyText2?.copyWith(
-                                fontWeight: FontWeight.w500,
-                                color: slate500,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                        InkWell(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            width: 100.w,
-                            decoration: BoxDecoration(
-                              color: slate500,
-                              boxShadow: [dropShadow()],
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.add,
-                                  color: surfaceColor
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  "Add gift from favorites",
-                                  style: projectTextTheme.bodyText2!.copyWith(
-                                    color: surfaceColor
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Center(
-                          child: Text(
-                            "Or",
-                            style: projectTextTheme.caption!.copyWith(
-                              color: onBackgroundColor
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        InkWell(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            width: 100.w,
-                            decoration: BoxDecoration(
-                              color: slate500,
-                              boxShadow: [dropShadow()],
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(
-                                  Icons.add,
-                                  color: surfaceColor
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  "Add gift from directory",
-                                  style: projectTextTheme.bodyText2!.copyWith(
-                                    color: surfaceColor
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                                  const SizedBox(height: 8),
+                                  const AddGiftFromDirectoryButton(),
+                                ],
+                              )
+                            : Text(controller.giftsSlugs.first)
                         ),
                         const SizedBox(height: 40),
-                        InkWell(
+                        PlannerPrimaryButton(
                           onTap: () {
                             controller.deletePlanner();
                           },
-                          borderRadius: BorderRadius.circular(15),
-                          child: Container(
-                            width: 100.w,
-                            decoration: BoxDecoration(
-                              color: secondaryColor,
-                              boxShadow: [dropShadow()],
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.delete,
-                                  color: surfaceColor
-                                ),
-                                const SizedBox(width: 8),
-                                Text(
-                                  "Delete Receiver",
-                                  style: projectTextTheme.button!.copyWith(
-                                    color: surfaceColor
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          buttonText: "Delete Receiver",
+                          containerColor: secondaryColor,
+                          icon: Icons.delete,
+                          textButtonColor: surfaceColor,
                         ),
                       ]
                     ),
-                )
-              ],
-            ),
+                  )
+                ],
+              ),
             ),
           ),
         );
