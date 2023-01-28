@@ -8,6 +8,7 @@ import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sizer/sizer.dart';
 
@@ -60,12 +61,11 @@ class PlannerDetailView extends StatelessWidget {
                                     planner: planner
                                   ),
                                   const SizedBox(height: 8),
-                                  const 
-                                  PlannerLabelTextField(labelText: "Date"),
+                                  const PlannerLabelTextField(labelText: "Date"),
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner.date.toString(),
+                                    hintText: DateFormat("dd MMMM yyyy").format(planner.date ?? DateTime.now()),
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Event"
@@ -87,7 +87,7 @@ class PlannerDetailView extends StatelessWidget {
                                     labelText: "Messages"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
+                                    controller: controller.test2C,
                                     keyboardType: TextInputType.name,
                                     hintText: planner.messages ?? "-",
                                   ),
@@ -105,7 +105,7 @@ class PlannerDetailView extends StatelessWidget {
                                   PlannerDisableTextFieldWidget(
                                     controller: controller.testC,
                                     keyboardType: TextInputType.name,
-                                    hintText: planner.notifDate.toString(),
+                                    hintText: DateFormat("dd MMMM yyyy").format(planner.date ?? DateTime.now()),
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Gift List"

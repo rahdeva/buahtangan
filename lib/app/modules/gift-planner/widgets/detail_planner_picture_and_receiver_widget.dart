@@ -32,9 +32,10 @@ class DetailPlannerPictureAndReceiverWidget extends StatelessWidget {
             imageBuilder: (context, imageProvider) => Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
+                color: surfaceColor,
                 image: DecorationImage(
                   image: imageProvider,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitHeight,
                 ),
               ),
             ),

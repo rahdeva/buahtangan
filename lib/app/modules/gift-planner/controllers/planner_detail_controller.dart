@@ -9,6 +9,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 class PlannerDetailController extends GetxController {
   static PlannerDetailController find = Get.find();
   TextEditingController testC = TextEditingController();
+  TextEditingController test2C = TextEditingController(text: "Give him a surprise and other things that he like and love so much");
   RefreshController refreshController = RefreshController(initialRefresh: false);
   late final String id;
 
