@@ -84,8 +84,10 @@ class AddPlannerPictureReceiver extends StatelessWidget {
             decoration: const InputDecoration(
               hintText: "Name",
             ),
+            minLines: 1,
+            maxLines: 2,
             style: projectTextTheme.caption!.copyWith(
-              color: slate500
+              color: onBackgroundColor
             ),
           ),
         ),

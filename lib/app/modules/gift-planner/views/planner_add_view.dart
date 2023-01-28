@@ -3,6 +3,7 @@ import 'package:buahtangan/app/modules/gift-planner/widgets/add_planner_picture_
 import 'package:buahtangan/app/modules/gift-planner/widgets/empty_gift_list_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_label_text_field_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_primary_button.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/planner_text_field_widget.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
@@ -56,55 +57,49 @@ class PlannerAddView extends StatelessWidget {
                         const PlannerLabelTextField(
                           labelText: "Date"
                         ),
-                        TextFieldWidget(
+                        PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          labelText: "Date",
                           hintText: "Your Date...",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Event"
                         ),
-                        TextFieldWidget(
+                        PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          labelText: "Event",
                           hintText: "Your Event...",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Budget"
                         ),
-                        TextFieldWidget(
+                        PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          labelText: "Budget",
                           hintText: "Your Budget...",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Messages"
                         ),
-                        TextFieldWidget(
+                        PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          labelText: "Messages",
                           hintText: "Your Messages...",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Notes"
                         ),
-                        TextFieldWidget(
+                        PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          labelText: "Notes",
                           hintText: "Your Notes...",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Notification"
                         ),
-                        TextFieldWidget(
+                        PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          labelText: "Notification",
                           hintText: "Your Notification...",
                         ),
                         const PlannerLabelTextField(
