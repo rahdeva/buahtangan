@@ -5,6 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+// import 'dart:io';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:firebase_storage/firebase_storage.dart' as s;
 
 class PlannerAddController extends GetxController {
   static PlannerAddController find = Get.find();
@@ -13,6 +16,7 @@ class PlannerAddController extends GetxController {
   TextEditingController notesC = TextEditingController();
   TextEditingController testC = TextEditingController();
   RxString avatar = "".obs;
+  // XFile? image;
 
   // void register() async {
   //   if (nameC.text.isNotEmpty && phoneC.text.isNotEmpty && emailC.text.isNotEmpty && passC.text.isNotEmpty && passC2.text.isNotEmpty) {
@@ -103,4 +107,24 @@ class PlannerAddController extends GetxController {
       (doc) => Avatar.fromJson(doc.data())
     ).toList();
   }
+
+  // void pickImage() async {
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //   s.FirebaseStorage storage = s.FirebaseStorage.instance;
+  //   final ImagePicker picker = ImagePicker();
+  //   String uid = auth.currentUser!.uid;
+  //   // Pick an image
+  //   image = await picker.pickImage(source: ImageSource.gallery);
+
+  //   if (image != null) {
+  //     Get.snackbar("Berhasil!", "Mohon tunggu sesaat untuk update foto profile");
+      
+  //     String ext = image!.name.split(".").last;
+  //     await storage.ref(uid).child("profile.$ext").putFile(File(image!.path));
+
+  //     String profileUrl = await storage.ref(uid).child("profile.$ext").getDownloadURL();
+
+  //     await FirebaseFirestore.instance.collection("users").doc(uid).update({"profile": profileUrl});  
+  //   }
+  // }
 }

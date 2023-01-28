@@ -30,7 +30,7 @@ Future avatarPictureBottomSheet(
                       )),
                   Expanded(
                     child: Text(
-                      "Add your Picture or Choose Avatar",
+                      "Choose Avatar",
                       style: projectTextTheme.bodyText2!.copyWith(
                         color: onBackgroundColor
                       )
