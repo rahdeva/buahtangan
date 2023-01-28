@@ -1,17 +1,16 @@
-import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_directory_button.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_favorites_button.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/add_planner_picture_receiver.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/date_picker_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/empty_gift_list_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_label_text_field_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_primary_button.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/planner_text_field_widget.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:buahtangan/app/widgets/button/back_button.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
-import 'package:buahtangan/app/widgets/text-field/text_field_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:buahtangan/app/widgets/dropdown/dropdown_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:get/get.dart';
@@ -56,74 +55,93 @@ class PlannerAddView extends StatelessWidget {
                         const PlannerLabelTextField(
                           labelText: "Date"
                         ),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Date",
-                          hintText: "Your Date...",
+                        DatePickerWidget(
+                          controller: controller,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Event"
                         ),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Event",
-                          hintText: "Your Event...",
+                        DropdownWidget(
+                          dropdownValue: controller.eventValue.value,
+                          items: controller.eventItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.eventValue.value = newValue!,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Budget"
                         ),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Budget",
-                          hintText: "Your Budget...",
+                        DropdownWidget(
+                          dropdownValue: controller.budgetValue.value,
+                          items: controller.budgetItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.budgetValue.value = newValue!,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Messages"
                         ),
-                        TextFieldWidget(
-                          controller: controller.testC,
+                        PlannerTextFieldWidget(
+                          controller: controller.messagesC,
                           keyboardType: TextInputType.name,
-                          labelText: "Messages",
-                          hintText: "Your Messages...",
+                          hintText: "Messages",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Notes"
                         ),
-                        TextFieldWidget(
-                          controller: controller.testC,
+                        PlannerTextFieldWidget(
+                          controller: controller.notesC,
                           keyboardType: TextInputType.name,
-                          labelText: "Notes",
-                          hintText: "Your Notes...",
+                          hintText: "Notes",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Notification"
                         ),
-                        TextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Notification",
-                          hintText: "Your Notification...",
+                        DropdownWidget(
+                          dropdownValue: controller.notifValue.value,
+                          items: controller.notifItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.notifValue.value = newValue!,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Gift List"
                         ),
-                        const EmptyGiftListWidget(),
-                        const SizedBox(height: 16),
-                        const AddGiftFromDirectoryButton(),
-                        const SizedBox(height: 8),
-                        Center(
-                          child: Text(
-                            "Or",
-                            style: projectTextTheme.caption!.copyWith(
-                              color: onBackgroundColor
-                            ),
-                          ),
+                        Obx(
+                          () => controller.giftsSlugs.first.isEmpty
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: const [
+                                  EmptyGiftListWidget(),
+                                  SizedBox(height: 16),
+                                  AddGiftFromFavoritesButton(),
+                                ],
+                              )
+                            : Text(controller.giftsSlugs.first)
                         ),
-                        const SizedBox(height: 8),
-                        const AddGiftFromDirectoryButton(),
+                        // const SizedBox(height: 8),
+                        // Center(
+                        //   child: Text(
+                        //     "Or",
+                        //     style: projectTextTheme.caption!.copyWith(
+                        //       color: onBackgroundColor
+                        //     ),
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 8),
+                        // const AddGiftFromDirectoryButton(),
                         const SizedBox(height: 40),
                         PlannerPrimaryButton(
                           onTap: () {

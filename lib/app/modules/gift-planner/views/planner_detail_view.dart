@@ -113,7 +113,7 @@ class PlannerDetailView extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 8),
                                   Obx(
-                                    () => controller.giftsSlugs.isEmpty
+                                    () => controller.giftsSlugs.first.isEmpty
                                       ? const EmptyGiftListWidget()
                                       : Text(controller.giftsSlugs.first)
                                   )
@@ -124,7 +124,7 @@ class PlannerDetailView extends StatelessWidget {
                       );
                     }
                     else{
-                      return const CircularProgressIndicator();
+                      return const Center(child: CircularProgressIndicator());
                     }
                   }
                 ),

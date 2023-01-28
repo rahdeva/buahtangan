@@ -9,13 +9,13 @@ class PlannerTextFieldWidget extends StatelessWidget {
     Key? key,
     required this.controller,
     required this.keyboardType,
-    required this.labelText,
+    this.maxLines,
     required this.hintText,
   }) : super(key: key);
 
   final TextEditingController controller;
   final TextInputType keyboardType;
-  final String labelText;
+  final int? maxLines;
   final String hintText;
 
   @override
@@ -25,20 +25,22 @@ class PlannerTextFieldWidget extends StatelessWidget {
         boxShadow: [dropShadow()],
       ),
       child: TextField(
-        style: projectTextTheme.subtitle1,
+        style: projectTextTheme.bodyText2?.copyWith(
+          fontWeight: FontWeight.w500,
+          color: slate500
+        ),
         controller: controller,
         keyboardType: keyboardType,
         autocorrect: false,
+        maxLines: maxLines,
         decoration: InputDecoration(
-          labelText: labelText,
           hintText: hintText,
           hoverColor: surfaceColor,
           fillColor: surfaceColor,
           focusColor: primaryColor,
           isDense: true,
           filled: true,
-          contentPadding: const EdgeInsets.all(20), 
-          labelStyle: projectTextTheme.subtitle1?.copyWith(color: onSurfaceColor),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(color: primaryColor, width: 0.0)
