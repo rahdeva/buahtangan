@@ -5,6 +5,7 @@ import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
@@ -31,45 +32,47 @@ class AddPlannerPictureReceiver extends StatelessWidget {
                 boxShadow: [dropShadow()],
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: controller.avatar.value == ""
-                ? Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                        image: AssetImage(
-                          "assets/images/img_square_placeholder.png",
-                        ),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                : CachedNetworkImage(
-                    imageUrl: "https://picsum.photos/300/300",
-                    imageBuilder: (context, imageProvider) => Container(
+              child: Obx(
+                () => controller.avatar.value == ""
+                  ? Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: imageProvider,
+                        image: const DecorationImage(
+                          image: AssetImage(
+                            "assets/images/img_square_placeholder.png",
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
-                    ),
-                    placeholder: (context, url) => Shimmer.fromColors(
-                      baseColor: Colors.grey.shade300,
-                      highlightColor: Colors.white,
-                      child: Container(
-                        width: 100.w,
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: "https://picsum.photos/300/300",
+                      imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Colors.white,
+                          image: DecorationImage(
+                            image: imageProvider,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
+                      placeholder: (context, url) => Shimmer.fromColors(
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.white,
+                        child: Container(
+                          width: 100.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Image.asset(
+                        "assets/images/img_square_placeholder.png",
+                        fit: BoxFit.cover,
+                      )
                     ),
-                    errorWidget: (context, url, error) => Image.asset(
-                      "assets/images/img_square_placeholder.png",
-                      fit: BoxFit.cover,
-                    )
-                  ),
+              ),
             ),
             Positioned(
                 bottom: -4,

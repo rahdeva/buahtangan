@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/avatar.dart';
 import 'package:buahtangan/app/models/planner.dart';
 import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -93,5 +94,13 @@ class PlannerAddController extends GetxController {
     //     const Icon(Icons.close_rounded, color: Colors.red)
     //   );
     // }
+  }
+
+  Future<List<Avatar>> getAvatars() async {
+    final docUser = FirebaseFirestore.instance.collection('avatars').orderBy("id");
+    final snapshot = await docUser.get();
+    return snapshot.docs.map(
+      (doc) => Avatar.fromJson(doc.data())
+    ).toList();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/modules/gift-planner/controllers/planner_add_controller.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/avatar_grid_builder.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:buahtangan/app/widgets/bottom-sheet/bottom_sheet_widget.dart';
@@ -38,7 +39,7 @@ Future avatarPictureBottomSheet(
                 ],
               ),
               const SizedBox(height: 16),
-              
+              AvatarGridBuilder(controller)
             ],
           ),
         ),
