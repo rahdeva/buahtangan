@@ -9,13 +9,14 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class PlannerDetailController extends GetxController {
   static PlannerDetailController find = Get.find();
+  RefreshController refreshController = RefreshController(initialRefresh: false);
   TextEditingController dateC = TextEditingController();
   TextEditingController eventC = TextEditingController();
   TextEditingController budgetC = TextEditingController();
   TextEditingController messagesC = TextEditingController();
   TextEditingController notesC = TextEditingController();
   TextEditingController notifC = TextEditingController();
-  RefreshController refreshController = RefreshController(initialRefresh: false);
+  RxList giftsSlugs = [].obs;
   late final String id;
 
   @override
@@ -54,6 +55,7 @@ class PlannerDetailController extends GetxController {
     messagesC.text = planner.messages ?? "-";
     notesC.text = planner.notes ?? "-";
     notifC.text = DateFormat("dd MMMM yyyy").format(planner.notifDate ?? DateTime.now());
+    giftsSlugs.value = planner.giftSlugs ?? [];
   }
 
   Future<List<Avatar>> getAvatars() async {

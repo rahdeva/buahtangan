@@ -112,7 +112,11 @@ class PlannerDetailView extends StatelessWidget {
                                     labelText: "Gift List"
                                   ),
                                   const SizedBox(height: 8),
-                                  const EmptyGiftListWidget(),
+                                  Obx(
+                                    () => controller.giftsSlugs == []
+                                      ? const EmptyGiftListWidget()
+                                      : Text(controller.giftsSlugs.first)
+                                  )
                                 ]
                               ),
                           )
