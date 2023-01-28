@@ -57,14 +57,49 @@ class PlannerAddView extends StatelessWidget {
                         const PlannerLabelTextField(
                           labelText: "Date"
                         ),
-                        PlannerTextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          hintText: "Your Date...",
+                        Container(
+                          width: 100.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: surfaceColor,
+                            boxShadow: [dropShadow()],
+                          ),
+                          child: Obx(
+                            () => InkWell(
+                              onTap: () => controller.pickDate(context),
+                              child: ListTile(
+                                dense: true,
+                                contentPadding : const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+                                title: Text(
+                                  controller.dateResult.value,
+                                  style: projectTextTheme.bodyText2?.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                    color: slate500
+                                  ),
+                                ),
+                                trailing: Icon(
+                                  Icons.date_range_rounded,
+                                  size: 20,
+                                  color: onSurfaceColor,
+                                )
+                              ),
+                            ),
+                          ),
                         ),
                         const PlannerLabelTextField(
                           labelText: "Event"
                         ),
+                        // DropdownFilterWidget(
+                        //   filterValue: controller.filterValue.value,
+                        //   items: controller.filterItems.map((String item) {
+                        //     return DropdownMenuItem(
+                        //       value: item,
+                        //       child: Text("  $item"),
+                        //     );
+                        //   }).toList(),
+                        //   onChanged: (String? newValue) =>
+                        //       controller.filterValue.value = newValue!,
+                        // ),
                         PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,

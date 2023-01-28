@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 // import 'dart:io';
 // import 'package:image_picker/image_picker.dart';
 // import 'package:firebase_storage/firebase_storage.dart' as s;
@@ -16,6 +17,8 @@ class PlannerAddController extends GetxController {
   TextEditingController notesC = TextEditingController();
   TextEditingController testC = TextEditingController();
   RxString avatar = "".obs;
+  final dateResult = "Date".obs;
+  late DateTime date;
   // XFile? image;
 
   // void register() async {
@@ -107,6 +110,21 @@ class PlannerAddController extends GetxController {
       (doc) => Avatar.fromJson(doc.data())
     ).toList();
   }
+
+  Future pickDate(BuildContext context) async {
+    Get.focusScope?.unfocus();
+    final newDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(DateTime.now().year - 100),
+      lastDate: DateTime(DateTime.now().year + 1),
+    );
+
+    if (newDate == null) return;
+    date = newDate;
+    dateResult.value = DateFormat("dd MMMM yyyy").format(date);
+  }
+  
 
   // void pickImage() async {
   //   FirebaseAuth auth = FirebaseAuth.instance;
