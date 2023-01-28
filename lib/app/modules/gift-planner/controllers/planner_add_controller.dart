@@ -154,6 +154,7 @@ class PlannerAddController extends GetxController {
 
       final json = planner.toJson();
       await docPlanner.set(json);
+      
       Get.back();
       showSnackbar(
         "Success!",
