@@ -58,14 +58,16 @@ class PlannerListItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     child: CachedNetworkImage(
-                      imageUrl: "https://picsum.photos/400/400",
+                      imageUrl: mData.pictureUrl ?? "",
                       imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
+                          color: surfaceColor,
                           image: DecorationImage(
                             image: imageProvider,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitHeight,
                           ),
+                          boxShadow: [dropShadow()]
                         ),
                       ),
                       placeholder: (context, url) => Shimmer.fromColors(
@@ -97,7 +99,6 @@ class PlannerListItem extends StatelessWidget {
                         mData.receiver ?? "-",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.justify,
                         style: projectTextTheme.bodyText1!.copyWith(
                           fontWeight: FontWeight.w600,
                           color: onSurfaceColor
