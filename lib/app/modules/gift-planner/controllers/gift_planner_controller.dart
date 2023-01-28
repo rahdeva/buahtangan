@@ -23,6 +23,7 @@ class GiftPlannerController extends GetxController {
       .collection('planners')
       .doc(uid)
       .collection("plannerData")
+      .orderBy("date")
       .snapshots()
       .map(
         (snapshot) => snapshot.docs.map(

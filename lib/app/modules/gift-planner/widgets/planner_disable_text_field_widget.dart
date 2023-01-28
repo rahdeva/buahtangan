@@ -23,10 +23,14 @@ class PlannerDisableTextFieldWidget extends StatelessWidget {
       ),
       child: TextField(
         readOnly: true,
-        style: projectTextTheme.subtitle1,
+        style: projectTextTheme.bodyText2?.copyWith(
+          fontWeight: FontWeight.w500,
+          color: slate500
+        ),
         controller: controller,
         keyboardType: keyboardType,
         autocorrect: false,
+        maxLines: null,
         decoration: InputDecoration(
           hintText: hintText,
           filled: true,

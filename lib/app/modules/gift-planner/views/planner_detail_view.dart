@@ -8,6 +8,7 @@ import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sizer/sizer.dart';
 
@@ -34,6 +35,7 @@ class PlannerDetailView extends StatelessWidget {
                   builder: (context, snapshot) {
                     if(snapshot.hasData){
                       final planner = snapshot.data!;
+                      controller.fillDataTextController(planner);
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -60,58 +62,61 @@ class PlannerDetailView extends StatelessWidget {
                                     planner: planner
                                   ),
                                   const SizedBox(height: 8),
-                                  const 
-                                  PlannerLabelTextField(labelText: "Date"),
+                                  const PlannerLabelTextField(labelText: "Date"),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.date.toString(),
+                                    controller: controller.dateC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Date",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Event"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.event ?? "-",
+                                    controller: controller.eventC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Event",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Budget"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.budget ?? "-",
+                                    controller: controller.budgetC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Budget",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Messages"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.messages ?? "-",
+                                    controller: controller.messagesC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Messages",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notes"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.notes ?? "-",
+                                    controller: controller.notesC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Notes",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notification"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.notifDate.toString(),
+                                    controller: controller.notifC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Notification",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Gift List"
                                   ),
                                   const SizedBox(height: 8),
-                                  const EmptyGiftListWidget(),
+                                  Obx(
+                                    () => controller.giftsSlugs.isEmpty
+                                      ? const EmptyGiftListWidget()
+                                      : Text(controller.giftsSlugs.first)
+                                  )
                                 ]
                               ),
                           )
