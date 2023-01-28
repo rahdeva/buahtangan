@@ -46,13 +46,14 @@ class AddPlannerPictureReceiver extends StatelessWidget {
                       ),
                     )
                   : CachedNetworkImage(
-                      imageUrl: "https://picsum.photos/300/300",
+                      imageUrl: controller.avatar.value,
                       imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
+                          color: surfaceColor,
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
                             image: imageProvider,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitHeight,
                           ),
                         ),
                       ),

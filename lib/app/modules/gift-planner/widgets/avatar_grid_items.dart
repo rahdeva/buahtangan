@@ -28,7 +28,8 @@ class AvatarGridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(Routes.GIFT_DETAIL);
+        controller.avatar.value = mData.avatarUrl ?? "";
+        Get.back();
         // AnalyticsService().setCurrentScreen(
         //   screenName: "Hospital Detail",
         //   root: PageName.DETAIL_HOSPITAL,
@@ -37,8 +38,6 @@ class AvatarGridItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15.0),
       child: Container(
         width: 100.w,
-        // constraints: const BoxConstraints(maxHeight: 300, minHeight: 100),
-        // height: 148,
         decoration: BoxDecoration(
           color: surfaceColor,
           borderRadius: BorderRadius.circular(15),

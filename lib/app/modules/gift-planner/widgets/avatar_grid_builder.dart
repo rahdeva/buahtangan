@@ -34,20 +34,26 @@ class AvatarGridBuilder extends StatelessWidget {
             itemCount: avatarList.length,
             itemBuilder: (context, index) {
               return index == 0 
-              ? Container(
-                  width: 100.w,
-                  decoration: BoxDecoration(
-                    color: surfaceColor,
-                    borderRadius: BorderRadius.circular(15),
-                    image: const DecorationImage(
-                      image: AssetImage(
-                        "assets/images/img_add_image.png",
+              ? InkWell(
+                onTap: (){
+                  
+                },
+                borderRadius: BorderRadius.circular(15),
+                child: Container(
+                    width: 100.w,
+                    decoration: BoxDecoration(
+                      color: surfaceColor,
+                      borderRadius: BorderRadius.circular(15),
+                      image: const DecorationImage(
+                        image: AssetImage(
+                          "assets/images/img_add_image.png",
+                        ),
+                        fit: BoxFit.fitHeight,
                       ),
-                      fit: BoxFit.fitHeight,
+                      boxShadow: [dropShadow()]
                     ),
-                    boxShadow: [dropShadow()]
                   ),
-                )
+              )
               : AvatarGridItem(
                   index: index,
                   mData: avatarList[index],
