@@ -12,10 +12,10 @@ import 'package:intl/intl.dart';
 
 class PlannerAddController extends GetxController {
   static PlannerAddController find = Get.find();
-  TextEditingController nameC = TextEditingController();
+  TextEditingController receiverC = TextEditingController();
   TextEditingController messagesC = TextEditingController();
   TextEditingController notesC = TextEditingController();
-  RxList giftsSlugs = [].obs;
+  RxList<String> giftsSlugs = [""].obs;
   RxString avatar = "".obs;
   final dateResult = "Date".obs;
   late DateTime date;
@@ -91,46 +91,6 @@ class PlannerAddController extends GetxController {
   //   }
   // }
 
-  Future createNewPlanner() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    String uid = auth.currentUser!.uid;
-    debugPrint(uid);
-    final docPlanner = FirebaseFirestore.instance.collection("planners").doc(uid).collection("plannerData").doc();
-    debugPrint(docPlanner.id);
-    final planner = Planner(
-      id: docPlanner.id, 
-      createdAt: DateTime.now(), 
-      pictureUrl: "https://picsum.photos/500/500", 
-      receiver: "Jack Kahuna Laguna", 
-      date: DateTime.now(), 
-      event: "Birthday", 
-      budget: "100.000-100.000.000", 
-      notifDate: DateTime.now(), 
-      messages: "Give him a surprise", 
-      notes: "He is good surfer", 
-      giftSlugs: [
-        "test-gift",
-        "test-gift2"
-      ]
-    );
-
-    final json = planner.toJson();
-    await docPlanner.set(json);
-    showSnackbar(
-      "Work!", "Work!",
-      const Icon(Icons.close_rounded, color: Colors.red)
-    );
-    // try{
-      
-    // }
-    // catch(e){
-    //   showSnackbar(
-    //     "Terjadi Kesalahan!", e.toString(),
-    //     const Icon(Icons.close_rounded, color: Colors.red)
-    //   );
-    // }
-  }
-
   Future<List<Avatar>> getAvatars() async {
     final docUser = FirebaseFirestore.instance.collection('avatars').orderBy("id");
     final snapshot = await docUser.get();
@@ -153,6 +113,67 @@ class PlannerAddController extends GetxController {
     dateResult.value = DateFormat("dd MMMM yyyy").format(date);
   }
   
+  Future<void> createNewPlanner() async {
+    Get.focusScope?.unfocus();
+    Get.dialog(
+      const Center(child: CircularProgressIndicator()),
+      barrierDismissible: false,
+      useSafeArea: false,
+    );
+    FirebaseAuth auth = FirebaseAuth.instance;
+    String uid = auth.currentUser!.uid;
+    if (
+      receiverC.text.isNotEmpty &&
+      dateResult.value != "Date" &&
+      eventValue.value != "" &&
+      budgetValue.value != "" &&
+      messagesC.text.isNotEmpty &&
+      notesC.text.isNotEmpty &&
+      notifValue.value != ""
+    ) {
+      final docPlanner = FirebaseFirestore.instance
+        .collection("planners")
+        .doc(uid)
+        .collection("plannerData")
+        .doc();
+      final planner = Planner(
+        id: docPlanner.id, 
+        createdAt: DateTime.now(), 
+        pictureUrl: avatar.value == ""
+          ? "https://ui-avatars.com/api/?size=120&name=${receiverC.text}"
+          : avatar.value, 
+        receiver: receiverC.text, 
+        date: date, 
+        event: eventValue.value, 
+        budget: budgetValue.value, 
+        notifDate: DateTime.now(), 
+        messages: messagesC.text, 
+        notes: notesC.text, 
+        giftSlugs: giftsSlugs
+      );
+
+      final json = planner.toJson();
+      await docPlanner.set(json);
+      Get.back();
+      showSnackbar(
+        "Success!",
+        "Your profile has been updated",
+        const Icon(
+          Icons.check_circle_outline_rounded,
+          color: Colors.green
+        )
+      );
+    } else {
+      Get.back();
+      showSnackbar(
+        "Oops!", "All of the input must be filled",
+        const Icon(
+          Icons.close_rounded, 
+          color: Colors.red
+        )
+      );
+    }
+  }
 
   // void pickImage() async {
   //   FirebaseAuth auth = FirebaseAuth.instance;

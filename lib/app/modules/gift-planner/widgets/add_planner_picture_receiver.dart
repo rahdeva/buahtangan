@@ -100,7 +100,7 @@ class AddPlannerPictureReceiver extends StatelessWidget {
         SizedBox(
           width: 100.w - 100 - 48 - 24,
           child: TextField(
-            controller: controller.nameC,
+            controller: controller.receiverC,
             decoration: const InputDecoration(
               hintText: "Name",
             ),

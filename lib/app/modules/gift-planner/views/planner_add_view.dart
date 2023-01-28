@@ -120,7 +120,7 @@ class PlannerAddView extends StatelessWidget {
                           labelText: "Gift List"
                         ),
                         Obx(
-                          () => controller.giftsSlugs.isEmpty
+                          () => controller.giftsSlugs.first.isEmpty
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: const [
