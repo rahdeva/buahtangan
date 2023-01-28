@@ -7,6 +7,7 @@ import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
@@ -108,7 +109,9 @@ class PlannerListItem extends StatelessWidget {
                     SizedBox(
                       width: 100.w - 165,
                       child: Text(
-                        "Valentine",
+                        mData.event ?? "-",
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: projectTextTheme.bodyText2!.copyWith(
                           color: onSurfaceColor
                         ),
@@ -117,7 +120,9 @@ class PlannerListItem extends StatelessWidget {
                     SizedBox(
                       width: 100.w - 165,
                       child: Text(
-                        "14 February 2023",
+                        DateFormat("dd MMMM yyyy").format(mData.date ?? DateTime.now()),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: projectTextTheme.bodyText2!.copyWith(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,

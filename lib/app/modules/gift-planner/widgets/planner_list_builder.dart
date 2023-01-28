@@ -19,17 +19,17 @@ class ListPlannerBuilder extends StatelessWidget {
         if(snapshot.hasData){
           final planner = snapshot.data!;
           return ListView.builder(
-              itemCount: planner.length,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return PlannerListItem(
-                  index: index,
-                  mData: planner[index],
-                  controller: controller,
-                );
-              },
-            );
+            itemCount: planner.length,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) {
+              return PlannerListItem(
+                index: index,
+                mData: planner[index],
+                controller: controller,
+              );
+            },
+          );
         } else{
           return const CircularProgressIndicator();
         }
