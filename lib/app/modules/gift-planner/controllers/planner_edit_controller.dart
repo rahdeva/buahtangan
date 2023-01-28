@@ -144,9 +144,14 @@ class PlannerEditController extends GetxController {
       .collection("plannerData")
       .doc(id);
     await docPlanner.delete();
+    Get.back();
     showSnackbar(
-      "Work!", "Work!",
-      const Icon(Icons.close_rounded, color: Colors.red)
+      "Success!",
+      "Your profile has been updated",
+      const Icon(
+        Icons.check_circle_outline_rounded,
+        color: Colors.green
+      )
     );
   }
 }
