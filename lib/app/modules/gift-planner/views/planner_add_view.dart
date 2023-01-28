@@ -1,5 +1,6 @@
 import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_directory_button.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/add_planner_picture_receiver.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/date_picker_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/empty_gift_list_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_label_text_field_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/planner_primary_button.dart';
@@ -9,10 +10,7 @@ import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:buahtangan/app/widgets/button/back_button.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
-import 'package:buahtangan/app/widgets/text-field/text_field_widget.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 import 'package:get/get.dart';
@@ -57,34 +55,8 @@ class PlannerAddView extends StatelessWidget {
                         const PlannerLabelTextField(
                           labelText: "Date"
                         ),
-                        Container(
-                          width: 100.w,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: surfaceColor,
-                            boxShadow: [dropShadow()],
-                          ),
-                          child: Obx(
-                            () => InkWell(
-                              onTap: () => controller.pickDate(context),
-                              child: ListTile(
-                                dense: true,
-                                contentPadding : const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
-                                title: Text(
-                                  controller.dateResult.value,
-                                  style: projectTextTheme.bodyText2?.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                    color: slate500
-                                  ),
-                                ),
-                                trailing: Icon(
-                                  Icons.date_range_rounded,
-                                  size: 20,
-                                  color: onSurfaceColor,
-                                )
-                              ),
-                            ),
-                          ),
+                        DatePickerWidget(
+                          controller: controller,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Event"
