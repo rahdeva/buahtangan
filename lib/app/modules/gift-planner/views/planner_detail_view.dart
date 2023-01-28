@@ -35,6 +35,7 @@ class PlannerDetailView extends StatelessWidget {
                   builder: (context, snapshot) {
                     if(snapshot.hasData){
                       final planner = snapshot.data!;
+                      controller.fillDataTextController(planner);
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -63,49 +64,49 @@ class PlannerDetailView extends StatelessWidget {
                                   const SizedBox(height: 8),
                                   const PlannerLabelTextField(labelText: "Date"),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: DateFormat("dd MMMM yyyy").format(planner.date ?? DateTime.now()),
+                                    controller: controller.dateC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Date",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Event"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.event ?? "-",
+                                    controller: controller.eventC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Event",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Budget"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.budget ?? "-",
+                                    controller: controller.budgetC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Budget",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Messages"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.test2C,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.messages ?? "-",
+                                    controller: controller.messagesC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Messages",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notes"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: planner.notes ?? "-",
+                                    controller: controller.notesC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Notes",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Notification"
                                   ),
                                   PlannerDisableTextFieldWidget(
-                                    controller: controller.testC,
-                                    keyboardType: TextInputType.name,
-                                    hintText: DateFormat("dd MMMM yyyy").format(planner.date ?? DateTime.now()),
+                                    controller: controller.notifC,
+                                    keyboardType: TextInputType.none,
+                                    hintText: "Notification",
                                   ),
                                   const PlannerLabelTextField(
                                     labelText: "Gift List"

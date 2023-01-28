@@ -4,12 +4,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class PlannerDetailController extends GetxController {
   static PlannerDetailController find = Get.find();
-  TextEditingController testC = TextEditingController();
-  TextEditingController test2C = TextEditingController(text: "Give him a surprise and other things that he like and love so much");
+  TextEditingController dateC = TextEditingController();
+  TextEditingController eventC = TextEditingController();
+  TextEditingController budgetC = TextEditingController();
+  TextEditingController messagesC = TextEditingController();
+  TextEditingController notesC = TextEditingController();
+  TextEditingController notifC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
   late final String id;
 
@@ -40,6 +45,15 @@ class PlannerDetailController extends GetxController {
       return Planner.fromJson(snapshot.data()!);
     }
     return null;
+  }
+
+  void fillDataTextController(Planner planner) {
+    dateC.text = DateFormat("dd MMMM yyyy").format(planner.date ?? DateTime.now());
+    eventC.text = planner.event ?? "-";
+    budgetC.text = planner.budget ?? "-";
+    messagesC.text = planner.messages ?? "-";
+    notesC.text = planner.notes ?? "-";
+    notifC.text = DateFormat("dd MMMM yyyy").format(planner.notifDate ?? DateTime.now());
   }
 
   Future<List<Avatar>> getAvatars() async {
