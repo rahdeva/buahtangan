@@ -19,6 +19,34 @@ class PlannerAddController extends GetxController {
   RxString avatar = "".obs;
   final dateResult = "Date".obs;
   late DateTime date;
+  var eventValue = 'Birthday'.obs;
+  var eventItems = [
+    'Birthday',
+    'Christmas',
+    'Valentine',
+    'Anniversary',
+  ];
+  var budgetValue = '100.000'.obs;
+  var budgetItems = [
+    '0',
+    '50.000',
+    '100.000',
+    '150.000',
+    '100.000+',
+    '200.000+',
+    '300.000+',
+    '400.000+',
+    '500.000+',
+  ];
+  var notifValue = '1 day before'.obs;
+  var notifItems = [
+    'D-Day',
+    '1 day before',
+    '3 days before',
+    '7 days before',
+    '14 days before',
+    '30 days before',
+  ];
   // XFile? image;
 
   // void register() async {

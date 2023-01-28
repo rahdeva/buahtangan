@@ -10,6 +10,7 @@ import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:buahtangan/app/widgets/button/back_button.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
+import 'package:buahtangan/app/widgets/dropdown/dropdown_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -61,29 +62,30 @@ class PlannerAddView extends StatelessWidget {
                         const PlannerLabelTextField(
                           labelText: "Event"
                         ),
-                        // DropdownFilterWidget(
-                        //   filterValue: controller.filterValue.value,
-                        //   items: controller.filterItems.map((String item) {
-                        //     return DropdownMenuItem(
-                        //       value: item,
-                        //       child: Text("  $item"),
-                        //     );
-                        //   }).toList(),
-                        //   onChanged: (String? newValue) =>
-                        //       controller.filterValue.value = newValue!,
-                        // ),
-                        PlannerTextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          hintText: "Your Event...",
+                        DropdownWidget(
+                          dropdownValue: controller.eventValue.value,
+                          items: controller.eventItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.eventValue.value = newValue!,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Budget"
                         ),
-                        PlannerTextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          hintText: "Your Budget...",
+                        DropdownWidget(
+                          dropdownValue: controller.budgetValue.value,
+                          items: controller.budgetItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.budgetValue.value = newValue!,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Messages"
@@ -91,7 +93,7 @@ class PlannerAddView extends StatelessWidget {
                         PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          hintText: "Your Messages...",
+                          hintText: "Messages",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Notes"
@@ -99,15 +101,21 @@ class PlannerAddView extends StatelessWidget {
                         PlannerTextFieldWidget(
                           controller: controller.testC,
                           keyboardType: TextInputType.name,
-                          hintText: "Your Notes...",
+                          hintText: "Notes",
                         ),
                         const PlannerLabelTextField(
                           labelText: "Notification"
                         ),
-                        PlannerTextFieldWidget(
-                          controller: controller.testC,
-                          keyboardType: TextInputType.name,
-                          hintText: "Your Notification...",
+                        DropdownWidget(
+                          dropdownValue: controller.notifValue.value,
+                          items: controller.notifItems.map((String item) {
+                            return DropdownMenuItem(
+                              value: item,
+                              child: Text(item),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) 
+                            => controller.notifValue.value = newValue!,
                         ),
                         const PlannerLabelTextField(
                           labelText: "Gift List"
