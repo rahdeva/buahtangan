@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_directory_button.dart';
+import 'package:buahtangan/app/modules/gift-planner/widgets/add_gift_from_favorites_button.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/add_planner_picture_receiver.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/date_picker_widget.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/empty_gift_list_widget.dart';
@@ -120,20 +121,29 @@ class PlannerAddView extends StatelessWidget {
                         const PlannerLabelTextField(
                           labelText: "Gift List"
                         ),
-                        const EmptyGiftListWidget(),
-                        const SizedBox(height: 16),
-                        const AddGiftFromDirectoryButton(),
-                        const SizedBox(height: 8),
-                        Center(
-                          child: Text(
-                            "Or",
-                            style: projectTextTheme.caption!.copyWith(
-                              color: onBackgroundColor
-                            ),
-                          ),
+                        Obx(
+                          () => controller.giftsSlugs.isEmpty
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: const [
+                                  EmptyGiftListWidget(),
+                                  SizedBox(height: 16),
+                                  AddGiftFromFavoritesButton(),
+                                ],
+                              )
+                            : Text(controller.giftsSlugs.first)
                         ),
-                        const SizedBox(height: 8),
-                        const AddGiftFromDirectoryButton(),
+                        // const SizedBox(height: 8),
+                        // Center(
+                        //   child: Text(
+                        //     "Or",
+                        //     style: projectTextTheme.caption!.copyWith(
+                        //       color: onBackgroundColor
+                        //     ),
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 8),
+                        // const AddGiftFromDirectoryButton(),
                         const SizedBox(height: 40),
                         PlannerPrimaryButton(
                           onTap: () {

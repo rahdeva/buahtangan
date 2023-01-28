@@ -16,6 +16,7 @@ class PlannerAddController extends GetxController {
   TextEditingController messagesC = TextEditingController();
   TextEditingController notesC = TextEditingController();
   TextEditingController testC = TextEditingController();
+  RxList giftsSlugs = [].obs;
   RxString avatar = "".obs;
   final dateResult = "Date".obs;
   late DateTime date;
