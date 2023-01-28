@@ -1,11 +1,8 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:buahtangan/app/models/avatar.dart';
-import 'package:buahtangan/app/models/gift.dart';
-import 'package:buahtangan/app/modules/gift-directory/controllers/gift_directory_controller.dart';
-import 'package:buahtangan/app/modules/gift-planner/controllers/planner_add_controller.dart';
-import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
-import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,7 +12,7 @@ import 'package:sizer/sizer.dart';
 class AvatarGridItem extends StatelessWidget {
   final int index;
   final Avatar mData;
-  final PlannerAddController controller;
+  final controller;
 
   const AvatarGridItem({
     Key? key, 

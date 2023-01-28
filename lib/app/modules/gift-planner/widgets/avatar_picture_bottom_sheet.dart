@@ -1,4 +1,3 @@
-import 'package:buahtangan/app/modules/gift-planner/controllers/planner_add_controller.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/avatar_grid_builder.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
@@ -8,7 +7,7 @@ import 'package:get/get.dart';
 
 Future avatarPictureBottomSheet(
   BuildContext context, {
-  required PlannerAddController controller,
+  required controller,
 }) {
   return showBarBottomSheet(context, builder: (_) {
     return SafeArea(

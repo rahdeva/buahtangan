@@ -9,10 +9,16 @@ class PlannerPrimaryButton extends StatelessWidget {
     Key? key, 
     required this.buttonText,
     required this.onTap, 
+    this.containerColor, 
+    this.icon, 
+    this.textButtonColor, 
   }) : super(key: key);
 
   final String buttonText;
   final Function() onTap;
+  final Color? containerColor;
+  final IconData? icon;
+  final Color? textButtonColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,7 @@ class PlannerPrimaryButton extends StatelessWidget {
       child: Container(
         width: 100.w,
         decoration: BoxDecoration(
-          color: tertiaryColor,
+          color: containerColor ?? tertiaryColor,
           boxShadow: [dropShadow()],
           borderRadius: BorderRadius.circular(15),
         ),
@@ -31,14 +37,14 @@ class PlannerPrimaryButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.add,
+              icon ?? Icons.add,
               color: onSurfaceColor
             ),
             const SizedBox(width: 8),
             Text(
               buttonText,
               style: projectTextTheme.button!.copyWith(
-                color: onSurfaceColor
+                color: textButtonColor ?? onSurfaceColor
               ),
             ),
           ],

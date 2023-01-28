@@ -1,5 +1,6 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:buahtangan/app/models/avatar.dart';
-import 'package:buahtangan/app/modules/gift-planner/controllers/planner_add_controller.dart';
 import 'package:buahtangan/app/modules/gift-planner/widgets/avatar_grid_items.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class AvatarGridBuilder extends StatelessWidget {
     Key? key, 
   }) : super(key: key);
 
-  final PlannerAddController controller;
+  final controller;
 
   @override
   Widget build(BuildContext context) {

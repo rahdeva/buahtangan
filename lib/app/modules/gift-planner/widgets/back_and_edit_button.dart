@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/planner.dart';
 import 'package:buahtangan/app/routes/app_pages.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
@@ -9,10 +10,10 @@ import 'package:get/get.dart';
 class BackAndEditButton extends StatelessWidget {
   const BackAndEditButton({
     Key? key, 
-    required this.plannerId,
+    required this.planner,
   }) : super(key: key);
 
-  final String plannerId;
+  final Planner planner;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class BackAndEditButton extends StatelessWidget {
           onTap: (){
             Get.toNamed(
               Routes.PLANNER_EDIT,
-              arguments: {"id": plannerId}
+              arguments: {"planner": planner}
             );
           },
           child: Container(

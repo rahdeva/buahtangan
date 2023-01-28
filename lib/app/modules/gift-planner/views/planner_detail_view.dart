@@ -40,7 +40,7 @@ class PlannerDetailView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           BackAndEditButton(
-                            plannerId: planner.id ?? "",
+                            planner: planner,
                           ),
                           Container(
                               width: 100.w,
