@@ -1,13 +1,13 @@
 import 'package:buahtangan/app/models/article.dart';
 import 'package:buahtangan/app/modules/articles/widgets/comment_list_builder.dart';
+import 'package:buahtangan/app/modules/articles/widgets/detail_article_contents.dart';
+import 'package:buahtangan/app/modules/articles/widgets/detail_article_picture.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../themes/color_theme.dart';
@@ -56,9 +56,9 @@ class ArticlesDetailView extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  ArticlePicture(article: article),
+                                  DetailArticlePicture(article: article),
                                   const SizedBox(height: 24),
-                                  ArticleContents(article: article),
+                                  DetailArticleContents(article: article),
                                   const SizedBox(height: 24),
                                   Container(
                                     width: 100.w,
@@ -101,7 +101,10 @@ class ArticlesDetailView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  ListCommentBuilder(controller),
+                                  ListCommentBuilder(
+                                    controller: controller,
+                                    comments: article.comments ?? []
+                                  ),
                                 ]
                               )
                             ),
