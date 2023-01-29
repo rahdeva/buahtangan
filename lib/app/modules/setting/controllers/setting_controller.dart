@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:buahtangan/app/models/userData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -31,10 +32,26 @@ class SettingController extends GetxController {
   
   XFile? image;
 
-  Stream<DocumentSnapshot<Map<String, dynamic>>> streamProfile() async* {
+  // Stream<DocumentSnapshot<Map<String, dynamic>>> streamProfile() async* {
+  //   String uid = auth.currentUser!.uid;
+
+  //   yield* firestore.collection("users").doc(uid).snapshots();
+  // }
+
+  Stream<DocumentSnapshot<UserData>> getProfile() {
+    FirebaseAuth auth = FirebaseAuth.instance;
     String uid = auth.currentUser!.uid;
 
-    yield* firestore.collection("users").doc(uid).snapshots();
+    return FirebaseFirestore.instance
+      .collection('users')
+      .doc(uid)
+      .withConverter<UserData>(
+          fromFirestore: (snapshot, _) => UserData.fromJson(snapshot.data()!),
+          toFirestore: (user, _) => user.toJson(),
+        )
+      .snapshots(
+        includeMetadataChanges: true,
+      );
   }
 
   void pickImage() async {
