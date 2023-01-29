@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,31 +10,77 @@ class ChangePasswordController extends GetxController {
   RxBool isHidden1 = true.obs;
   RxBool isHidden2 = true.obs;
   RxBool isHidden3 = true.obs;
-  TextEditingController curentPassC = TextEditingController();
+  TextEditingController currentPassC = TextEditingController();
   TextEditingController newPassC = TextEditingController();
   TextEditingController confirmNewPassC = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
   void updatePassword() async {
-    if (newPassC.text.isNotEmpty && confirmNewPassC.text.isNotEmpty) {
+    var user = FirebaseAuth.instance.currentUser!;
+    if (currentPassC.text.isNotEmpty && newPassC.text.isNotEmpty && confirmNewPassC.text.isNotEmpty) {
       if (newPassC.text == confirmNewPassC.text) {
-        try {
+        var validate = await validatePassword(currentPassC.text);
+        if(validate == true){
+          // try {
+          //   isLoading.value = true;
+          //   await user.updatePassword(newPassC.text);
+          //   isLoading.value = false;
+          //   Get.offAllNamed(Routes.SETTING);
+          //   showSnackbar(
+          //     "Success!", "Your password has been changed",
+          //     const Icon(Icons.check_circle_outline_rounded, color: Colors.green)
+          //   );
+          // } catch (e) {
+          //   isLoading.value = false;
+          //   showSnackbar(
+          //     e.toString(), "Your current password is not correct",
+          //     const Icon(Icons.close_rounded, color: Colors.red)
+          //   );
+          // }
           isLoading.value = true;
-          await auth.currentUser!.updatePassword(newPassC.text);
+          await user.updatePassword(newPassC.text);
           isLoading.value = false;
           Get.offAllNamed(Routes.SETTING);
-          Get.snackbar("Berhasil!", "Password Anda telah berhasil diganti.");
-        } catch (e) {
-          isLoading.value = false;
-          Get.snackbar("Oops!", "Tidak dapat update password.");
+          showSnackbar(
+            "Success!", "Your password has been changed",
+            const Icon(Icons.check_circle_outline_rounded, color: Colors.green)
+          );
+        }
+        else{
+          showSnackbar(
+            "Oops!", "Your current password is not correct",
+            const Icon(Icons.close_rounded, color: Colors.red)
+          );
         }
       }
       else{
-        Get.snackbar("Oops!", "Mohon perhatikan kembali password yang Anda masukkan.");
+        showSnackbar(
+          "Oops!", "The password doesn't match! Enter the same password",
+          const Icon(Icons.close_rounded, color: Colors.red)
+        );
       }
     } else {
-      Get.snackbar("Oops!", "Semua field harus diisi.");
+      showSnackbar(
+        "Oops!", "All of the input must be filled",
+        const Icon(Icons.close_rounded, color: Colors.red)
+      );
+    }
+  }
+  
+  Future<bool> validatePassword(String password) async {
+    var user = FirebaseAuth.instance.currentUser!;
+    var authCredentials = EmailAuthProvider.credential(
+      email: user.email!, 
+      password: password
+    );
+    try {
+      var authResult = await user.reauthenticateWithCredential(
+        authCredentials
+      );
+      return authResult.user != null;
+    } catch (e) {
+      return false;
     }
   }
 }
