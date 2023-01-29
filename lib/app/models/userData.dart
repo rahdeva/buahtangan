@@ -12,15 +12,15 @@ String userDataToJson(UserData data) => json.encode(data.toJson());
 
 class UserData {
     UserData({
-        required this.uid,
-        required this.createdAt,
-        required this.name,
-        required this.email,
-        required this.phone,
-        required this.profile,
-        required this.articleLiked,
-        required this.giftFavourited,
-        required this.giftLiked,
+        this.uid,
+        this.createdAt,
+        this.name,
+        this.email,
+        this.phone,
+        this.profile,
+        this.articleLiked,
+        this.giftFavourited,
+        this.giftLiked,
     });
 
     String? uid;
