@@ -1,6 +1,7 @@
 import 'package:buahtangan/app/modules/articles/widgets/article_list_builder.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
+import 'package:buahtangan/app/widgets/dropdown/dropdown_widget.dart';
 import 'package:buahtangan/app/widgets/text-field/search_text_field_widget.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -83,38 +84,18 @@ class ArticlesView extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [dropShadow()]
                             ),
-                            child: DropdownButtonFormField<String>(
-                              decoration: InputDecoration(
-                                hoverColor: surfaceColor,
-                                fillColor: surfaceColor,
-                                focusColor: primaryColor,
-                                isDense: true,
-                                filled: true,
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4), 
-                                labelStyle: projectTextTheme.caption?.copyWith(color: slate500),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: primaryColor, width: 0.0)
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: surfaceColor, width: 0.0)
-                                ),
-                              ),
-                              value: "Newest",
-                              items: ["Newest", 'bb', 'cc'].map((item) 
-                                => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: projectTextTheme.caption?.copyWith(color: slate500),
-                                    )
-                                  )
-                                ).toList(),
-                                onChanged: ((item) {
-                                  item = item.toString();
-                                })
-                              ),
+                            child: DropdownWidget(
+                              dropdownValue: controller.sortValue.value,
+                              items: controller.sortItems.map((String item) {
+                                return DropdownMenuItem(
+                                  value: item,
+                                  child: Text(item),
+                                );
+                              }).toList(),
+                              onChanged: (String? newValue) async {
+                                controller.sortValue.value = newValue!;
+                              }
+                            ),
                           ),
                         ],
                       ),

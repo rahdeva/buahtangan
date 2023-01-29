@@ -9,6 +9,12 @@ class ArticlesController extends GetxController {
   static ArticlesController find = Get.find();
   TextEditingController searchC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
+  var sortValue = 'Newest'.obs;
+  var sortItems = [
+    'Newest',
+    'Oldest',
+    'Popular',
+  ];
   // List<Article> dataList = [];
 
   void refreshPage() async {
@@ -18,9 +24,69 @@ class ArticlesController extends GetxController {
     refreshController.refreshCompleted();
   }
 
-  Stream<List<Article>> getArticles() {
+  // Stream<List<Article>> getArticles() {
+  //   if(sortValue.value == 'Oldest'){
+  //     return FirebaseFirestore.instance
+  //       .collection('articles')
+  //       .orderBy("publishedAt", descending: false)
+  //       .snapshots()
+  //       .map(
+  //         (snapshot) => snapshot.docs.map(
+  //           (doc) => Article.fromJson(doc.data())
+  //         ).toList()
+  //       );
+  //   }
+  //   else if(sortValue.value == 'Popular'){
+  //     return FirebaseFirestore.instance
+  //       .collection('articles')
+  //       .orderBy("publishedAt", descending: false)
+  //       .orderBy("likeCount", descending: false)
+  //       .snapshots()
+  //       .map(
+  //         (snapshot) => snapshot.docs.map(
+  //           (doc) => Article.fromJson(doc.data())
+  //         ).toList()
+  //       );
+  //   }
+  //   return FirebaseFirestore.instance
+  //     .collection('articles')
+  //     .orderBy("publishedAt", descending: true)
+  //     .snapshots()
+  //     .map(
+  //       (snapshot) => snapshot.docs.map(
+  //         (doc) => Article.fromJson(doc.data())
+  //       ).toList()
+  //     );
+  // }
+
+  Stream<List<Article>> getArticlesNewest() {
     return FirebaseFirestore.instance
       .collection('articles')
+      .orderBy("publishedAt", descending: true)
+      .snapshots()
+      .map(
+        (snapshot) => snapshot.docs.map(
+          (doc) => Article.fromJson(doc.data())
+        ).toList()
+      );
+  }
+
+  Stream<List<Article>> getArticlesOldest() {
+    return FirebaseFirestore.instance
+      .collection('articles')
+      .orderBy("publishedAt", descending: false)
+      .snapshots()
+      .map(
+        (snapshot) => snapshot.docs.map(
+          (doc) => Article.fromJson(doc.data())
+        ).toList()
+      );
+  }
+
+  Stream<List<Article>> getArticlesPopular() {
+    return FirebaseFirestore.instance
+      .collection('articles')
+      .orderBy("likeCount", descending: true)
       .snapshots()
       .map(
         (snapshot) => snapshot.docs.map(
@@ -30,7 +96,7 @@ class ArticlesController extends GetxController {
   }
 
   Future createNewArticle() async {
-    const slug = "new-article";
+    const slug = "new-article-2";
     final docArticle = FirebaseFirestore.instance
       .collection("articles")
       .doc(slug);
@@ -39,7 +105,7 @@ class ArticlesController extends GetxController {
       createdAt: DateTime.now(),
       slug: slug, 
       pictureUrl: "https://picsum.photos/500/500", 
-      title: "New Article", 
+      title: "New Article 2", 
       author: "Ngurah", 
       readTime: "1,", 
       publishedAt: DateTime.now(),
