@@ -1,10 +1,12 @@
 import 'package:buahtangan/app/models/article.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ArticlesDetailController extends GetxController {
   static ArticlesDetailController find = Get.find();
+  TextEditingController commentC = TextEditingController();
   RefreshController refreshController = RefreshController(initialRefresh: false);
   late final String slug;
 

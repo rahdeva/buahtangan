@@ -88,9 +88,19 @@ class ArticlesDetailView extends StatelessWidget {
                                         ),
                                       ),
                                       title: TextField(
+                                        controller: controller.commentC,
                                         decoration: const InputDecoration(
+                                          border: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          disabledBorder: InputBorder.none,
                                           hintText: "Add Comment",
+                                          counterText: "",
                                         ),
+                                        minLines: 1,
+                                        maxLines: 8,
+                                        maxLength: 250,
                                         style: projectTextTheme.caption!.copyWith(
                                           color: slate500
                                         ),
