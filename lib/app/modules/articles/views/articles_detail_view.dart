@@ -43,7 +43,7 @@ class ArticlesDetailView extends StatelessWidget {
                             width: 100.w,
                             constraints: BoxConstraints(minHeight: 90.h),
                             decoration: BoxDecoration(
-                              color: backgroundColor,
+                              color: backgroundColor, 
                               boxShadow: [dropShadow()],
                               borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(30), 
