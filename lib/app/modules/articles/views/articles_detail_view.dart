@@ -89,6 +89,9 @@ class ArticlesDetailView extends StatelessWidget {
                                       ),
                                       title: TextField(
                                         controller: controller.commentC,
+                                        onChanged: (value) {
+                                          controller.commentFilled.value = value;
+                                        },
                                         decoration: const InputDecoration(
                                           border: InputBorder.none,
                                           focusedBorder: InputBorder.none,
@@ -105,9 +108,18 @@ class ArticlesDetailView extends StatelessWidget {
                                           color: slate500
                                         ),
                                       ),
-                                      trailing: Icon(
-                                        Icons.send,
-                                        color: slate500,
+                                      trailing: Obx(
+                                        () => controller.commentFilled.isEmpty
+                                          ? const SizedBox()
+                                          : IconButton(
+                                              onPressed: () {
+                                                controller.addComment();
+                                              },
+                                              icon: Icon(
+                                                Icons.send,
+                                                color: slate500,
+                                              ),
+                                            )
                                       ),
                                     ),
                                   ),
