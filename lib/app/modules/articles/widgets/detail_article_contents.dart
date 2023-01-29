@@ -1,4 +1,6 @@
 import 'package:buahtangan/app/models/article.dart';
+import 'package:buahtangan/app/modules/articles/controllers/articles_detail_controller.dart';
+import 'package:buahtangan/app/modules/articles/widgets/share_bottom_sheet.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
@@ -9,10 +11,12 @@ import 'package:sizer/sizer.dart';
 class DetailArticleContents extends StatelessWidget {
   const DetailArticleContents({
     Key? key,
-    required this.article,
+    required this.article, 
+    required this.controller,
   }) : super(key: key);
 
   final Article article;
+  final ArticlesDetailController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +124,10 @@ class DetailArticleContents extends StatelessWidget {
                 ],
               ),
               InkWell(
-                onTap: (){},
+                onTap: () async => shareBottomSheet(
+                  context, 
+                  controller: controller
+                ),
                 child: Image.asset(
                   "assets/images/ic_share.png",
                   width: 24,

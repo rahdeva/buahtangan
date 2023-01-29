@@ -58,7 +58,10 @@ class ArticlesDetailView extends StatelessWidget {
                                 children: [
                                   DetailArticlePicture(article: article),
                                   const SizedBox(height: 24),
-                                  DetailArticleContents(article: article),
+                                  DetailArticleContents(
+                                    article: article,
+                                    controller: controller
+                                  ),
                                   const SizedBox(height: 24),
                                   Container(
                                     width: 100.w,
