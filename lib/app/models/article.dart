@@ -6,8 +6,6 @@
 
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 Article articleFromJson(String str) => Article.fromJson(json.decode(str));
 
 String articleToJson(Article data) => json.encode(data.toJson());
@@ -26,6 +24,7 @@ class Article {
         required this.commentCount,
         required this.content,
         required this.comments,
+        required this.searchKeyword,
     });
 
     int? id;
@@ -40,6 +39,7 @@ class Article {
     int? commentCount;
     String? content;
     List<Comment>? comments;
+    List<String>? searchKeyword;
 
     factory Article.fromJson(Map<String, dynamic> json) => Article(
         id: json["id"] == null ? null : json["id"],
@@ -54,6 +54,7 @@ class Article {
         commentCount: json["commentCount"]  == null ? null : json["commentCount"],
         content: json["content"]  == null ? null : json["content"],
         comments: json["comments"] == null ? null :  List<Comment>.from(json["comments"].map((x) => Comment.fromJson(x))),
+        searchKeyword: json["searchKeyword"] == null ? null :  List<String>.from(json["searchKeyword"].map((x) => x)),
     );
 
     Map<String, dynamic> toJson() => {
@@ -69,6 +70,7 @@ class Article {
         "commentCount": commentCount == null ? null : commentCount,
         "content": content == null ? null : content,
         "comments": comments == null ? null : List<dynamic>.from(comments!.map((x) => x.toJson())),
+        "searchKeyword": searchKeyword == null ? null : List<dynamic>.from(searchKeyword!.map((x) => x)),
     };
 }
 

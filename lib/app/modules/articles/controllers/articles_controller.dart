@@ -8,6 +8,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 class ArticlesController extends GetxController {
   static ArticlesController find = Get.find();
   TextEditingController searchC = TextEditingController();
+  RxString searchKeyword = "".obs;
   RefreshController refreshController = RefreshController(initialRefresh: false);
   var sortValue = 'Newest'.obs;
   var sortItems = [
@@ -23,41 +24,6 @@ class ArticlesController extends GetxController {
     // if failed,use refreshFailed()
     refreshController.refreshCompleted();
   }
-
-  // Stream<List<Article>> getArticles() {
-  //   if(sortValue.value == 'Oldest'){
-  //     return FirebaseFirestore.instance
-  //       .collection('articles')
-  //       .orderBy("publishedAt", descending: false)
-  //       .snapshots()
-  //       .map(
-  //         (snapshot) => snapshot.docs.map(
-  //           (doc) => Article.fromJson(doc.data())
-  //         ).toList()
-  //       );
-  //   }
-  //   else if(sortValue.value == 'Popular'){
-  //     return FirebaseFirestore.instance
-  //       .collection('articles')
-  //       .orderBy("publishedAt", descending: false)
-  //       .orderBy("likeCount", descending: false)
-  //       .snapshots()
-  //       .map(
-  //         (snapshot) => snapshot.docs.map(
-  //           (doc) => Article.fromJson(doc.data())
-  //         ).toList()
-  //       );
-  //   }
-  //   return FirebaseFirestore.instance
-  //     .collection('articles')
-  //     .orderBy("publishedAt", descending: true)
-  //     .snapshots()
-  //     .map(
-  //       (snapshot) => snapshot.docs.map(
-  //         (doc) => Article.fromJson(doc.data())
-  //       ).toList()
-  //     );
-  // }
 
   Stream<List<Article>> getArticlesNewest() {
     return FirebaseFirestore.instance
@@ -95,6 +61,28 @@ class ArticlesController extends GetxController {
       );
   }
 
+  Stream<List<Article>> getArticlesSearch(String searchKeyword) {
+    return FirebaseFirestore.instance
+      .collection('articles')
+      .where("searchKeyword", arrayContains: searchKeyword)
+      .snapshots()
+      .map(
+        (snapshot) => snapshot.docs.map(
+          (doc) => Article.fromJson(doc.data())
+        ).toList()
+      );
+  }
+
+  List<String> setSearchParam(String title) {
+    List<String> caseSearchList = [];
+    String temp = "";
+    for (int i = 0; i < title.length; i++) {
+      temp = temp + title[i];
+      caseSearchList.add(temp.toLowerCase());
+    }
+    return caseSearchList;
+  }
+
   Future createNewArticle() async {
     const slug = "new-article-2";
     final docArticle = FirebaseFirestore.instance
@@ -118,7 +106,8 @@ class ArticlesController extends GetxController {
           comment: "Mantap", 
           date: DateTime.now(),
         )
-      ]
+      ],
+      searchKeyword: setSearchParam("New Article 2"),
     );
 
     final json = article.toJson();
@@ -152,7 +141,8 @@ class ArticlesController extends GetxController {
           comment: "Mantap", 
           date: DateTime.now(),
         )
-      ]
+      ],
+      searchKeyword: setSearchParam("New Article Update")
     );
 
     final json = article.toJson();
@@ -164,7 +154,7 @@ class ArticlesController extends GetxController {
   }
 
   Future deleteArticle() async {
-    const slug = "new-article-2";
+    const slug = "new-article";
     final docArticle = FirebaseFirestore.instance
       .collection("articles")
       .doc(slug);

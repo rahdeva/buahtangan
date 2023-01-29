@@ -1,4 +1,5 @@
 import 'package:buahtangan/app/modules/articles/widgets/article_list_builder.dart';
+import 'package:buahtangan/app/modules/articles/widgets/article_search_list_builder.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:buahtangan/app/widgets/dropdown/dropdown_widget.dart';
@@ -61,7 +62,7 @@ class ArticlesView extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       SearchTextFieldWidget(
-                        // controller : controller,
+                        controller : controller,
                         searchC: controller.searchC, 
                         hintText: "Search an Article", 
                       ),
@@ -101,7 +102,11 @@ class ArticlesView extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       Divider(color: slate400),
-                      ListArticleBuilder(controller), 
+                      Obx(
+                        () => controller.searchKeyword.value.isEmpty
+                          ? ListArticleBuilder(controller)
+                          : ListArticleSearchBuilder(controller),
+                      ), 
                     ]
                   ),
                 )
