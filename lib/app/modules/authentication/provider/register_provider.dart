@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/userData.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -44,14 +45,21 @@ class RegisterProvider extends GetConnect {
   Future<bool?> createNewUser(userCredential, name, phone, email, password) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     try{
-      await firestore.collection("users").doc(userCredential.user!.uid).set({
-        "name": name,
-        "phone": phone,
-        "email": email,
-        "uid": userCredential.user!.uid,
-        "profile": null,
-        "createdAt": DateTime.now().toIso8601String(),
-      });
+      final docUser = firestore.collection("users").doc(userCredential.user!.uid);
+      final user = UserData(
+        uid: userCredential.user!.uid, 
+        createdAt: DateTime.now(), 
+        name: name, 
+        email: email, 
+        phone: phone, 
+        profile: "https://ui-avatars.com/api/?size=120&name=$name", 
+        articleLiked: [], 
+        giftFavourited: [], 
+        giftLiked: [],
+      );
+
+      final json = user.toJson();
+      await docUser.set(json);
       return true;
     }
     catch(e){

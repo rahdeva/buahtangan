@@ -6,12 +6,12 @@
 
 import 'dart:convert';
 
-User userFromJson(String str) => User.fromJson(json.decode(str));
+UserData userDataFromJson(String str) => UserData.fromJson(json.decode(str));
 
-String userToJson(User data) => json.encode(data.toJson());
+String userDataToJson(UserData data) => json.encode(data.toJson());
 
-class User {
-    User({
+class UserData {
+    UserData({
         required this.uid,
         required this.createdAt,
         required this.name,
@@ -33,7 +33,7 @@ class User {
     List<String>? giftFavourited;
     List<String>? giftLiked;
 
-    factory User.fromJson(Map<String, dynamic> json) => User(
+    factory UserData.fromJson(Map<String, dynamic> json) => UserData(
         uid: json["uid"] == null ? null : json["uid"],
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
         name: json["name"] == null ? null : json["name"],

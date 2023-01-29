@@ -88,11 +88,11 @@ class GiftDirectoryView extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 16),
-                        // SearchTextFieldWidget(
-                        //   // controller : controller,
-                        //   searchC: controller.searchC, 
-                        //   hintText: "Search an Article", 
-                        // ),
+                        SearchTextFieldWidget(
+                          controller : controller,
+                          searchC: controller.searchC, 
+                          hintText: "Search an Article", 
+                        ),
                         const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

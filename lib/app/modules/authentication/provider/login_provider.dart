@@ -142,34 +142,34 @@ class LoginProvider {
   //   return null;
   // }
 
-  Future<UserCredential?> signInWithFacebook() async {
-    try {
-      final LoginResult loginResult = await FacebookAuth.instance.login(permissions: ['email']);
-      print(loginResult.status);
-      print("masuk satu");
-      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
-      print(facebookAuthCredential);
-      print("masuk dua");
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-      print("masuk tiga");
-      print(userCredential);
-      return userCredential;
-    // } on FirebaseAuthException {
-    //   showSnackbar(
-    //     "There's an error",
-    //     "There's error on server",
-    //     const Icon(Icons.close_rounded, color: Colors.red)
-    //   );
-    } catch (e) {
-      print(e);
-      print(e.toString());
-      showSnackbar(
-        "There's an error","Can't login using this Email",
-        const Icon(Icons.close_rounded, color: Colors.red)
-      );
-    }
-    return null;
-  }
+  // Future<UserCredential?> signInWithFacebook() async {
+  //   try {
+  //     final LoginResult loginResult = await FacebookAuth.instance.login(permissions: ['email']);
+  //     print(loginResult.status);
+  //     print("masuk satu");
+  //     final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+  //     print(facebookAuthCredential);
+  //     print("masuk dua");
+  //     UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  //     print("masuk tiga");
+  //     print(userCredential);
+  //     return userCredential;
+  //   // } on FirebaseAuthException {
+  //   //   showSnackbar(
+  //   //     "There's an error",
+  //   //     "There's error on server",
+  //   //     const Icon(Icons.close_rounded, color: Colors.red)
+  //   //   );
+  //   } catch (e) {
+  //     print(e);
+  //     print(e.toString());
+  //     showSnackbar(
+  //       "There's an error","Can't login using this Email",
+  //       const Icon(Icons.close_rounded, color: Colors.red)
+  //     );
+  //   }
+  //   return null;
+  // }
 
   
 }
