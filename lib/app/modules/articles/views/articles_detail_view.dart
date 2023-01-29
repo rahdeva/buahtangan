@@ -64,7 +64,7 @@ class ArticlesDetailView extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(15),
                                     ),
                                     child: CachedNetworkImage(
-                                      imageUrl: "https://picsum.photos/300/300",
+                                      imageUrl: article.pictureUrl ?? "",
                                       imageBuilder: (context, imageProvider) => Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(15),
@@ -113,39 +113,39 @@ class ArticlesDetailView extends StatelessWidget {
                                           textAlign: TextAlign.center,
                                         ),
                                         const SizedBox(height: 8),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                        Wrap(
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.center,
+                                          alignment: WrapAlignment.center,
+                                          crossAxisAlignment: WrapCrossAlignment.center,
+                                          spacing: 8,
                                           children: [
                                             Text(
-                                              "Ngurah Deva",
+                                              article.author ?? "-",
                                               style: projectTextTheme.bodyText2!.copyWith(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500,
                                                 color: slate500
                                               ),
                                             ),
-                                            const SizedBox(width: 8),
                                             CircleAvatar(
                                               radius: 2.5,
                                               backgroundColor: slate300,
                                             ),
-                                            const SizedBox(width: 8),
                                             Text(
-                                              "12d ago",
+                                              article.publishedAt.toString(),
                                               style: projectTextTheme.bodyText2!.copyWith(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500,
                                                 color: slate500
                                               ),
                                             ),
-                                            const SizedBox(width: 8),
                                             CircleAvatar(
                                               radius: 2.5,
                                               backgroundColor: slate300,
                                             ),
-                                            const SizedBox(width: 8),
                                             Text(
-                                              "13m read",
+                                              article.readTime ?? "-",
                                               style: projectTextTheme.bodyText2!.copyWith(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500,
@@ -156,7 +156,7 @@ class ArticlesDetailView extends StatelessWidget {
                                         ),
                                         const SizedBox(height: 16),
                                         Text(
-                                          "A music box is a mechanical device that plays a musical tune when a handle or lever is turned. Music boxes come in a variety of shapes and sizes, and can be made of a variety of materials, such as wood, metal, or glass.\n\nGifting someone a music box can be a thoughtful and sentimental gesture. It can be a special keepsake that the recipient can treasure for years to come. A music box can be especially meaningful if it plays a tune that is special to the recipient, such as a song from their childhood, a song that holds special memories, or a tune that represents a special place or occasion.\n\nOverall, it is a good idea to keep the recipient's interests and preferences in mind and choose a music box that you think they will appreciate and enjoy.",
+                                          article.content ?? "-",
                                           textAlign: TextAlign.justify,
                                           style: projectTextTheme.bodyText2!.copyWith(
                                             fontSize: 14,
@@ -177,7 +177,7 @@ class ArticlesDetailView extends StatelessWidget {
                                                 ),
                                                 const SizedBox(width: 8),
                                                 Text(
-                                                  "200",
+                                                  article.likeCount.toString(),
                                                   style: projectTextTheme.caption!.copyWith(
                                                     color: onSurfaceColor
                                                   ),
@@ -189,7 +189,7 @@ class ArticlesDetailView extends StatelessWidget {
                                                 ),
                                                 const SizedBox(width: 8),
                                                 Text(
-                                                  "200",
+                                                  article.commentCount.toString(),
                                                   style: projectTextTheme.caption!.copyWith(
                                                     color: onSurfaceColor
                                                   ),
