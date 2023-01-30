@@ -1,19 +1,21 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
+import 'package:buahtangan/app/modules/articles/controllers/articles_controller.dart';
 import 'package:buahtangan/app/themes/color_theme.dart';
 import 'package:buahtangan/app/themes/decoration.dart';
 import 'package:buahtangan/app/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:get/get.dart';
 
 class SearchTextFieldWidget extends StatelessWidget {
   const SearchTextFieldWidget({
     Key? key,
     required this.searchC,
     required this.hintText, 
-    // required this.controller,
+    required this.controller,
   }) : super(key: key);
 
-  // final OurHospitalController controller;
+  final controller;
   final TextEditingController searchC;
   final String hintText;
 
@@ -60,11 +62,7 @@ class SearchTextFieldWidget extends StatelessWidget {
           ),
           textInputAction: TextInputAction.search,
           onChanged: (value) {
-            // controller.searchKeyword.value = value;
-          },
-          onSubmitted: (value) {
-            // controller.searchKeyword.value = value;
-            // controller.getHospitalsSearch(controller.searchKeyword.value);
+            controller.searchKeyword.value = value;
           },
         ),
       // ),

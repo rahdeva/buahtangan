@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/userData.dart';
 import 'package:buahtangan/app/modules/setting/widgets/setting_widget.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -34,123 +35,84 @@ class SettingView extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    // StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
-                    //   stream: controller.streamProfile(),
-                    //   builder: (context, snapshot) {
-                    //     if (snapshot.connectionState == ConnectionState.waiting) {
-                    //       return Center(
-                    //         child: CircleAvatar(
-                    //           radius: 80,
-                    //           backgroundColor: slate500,
-                    //         ),
-                    //       );
-                    //     }
-                
-                    //     Map<String, dynamic>? data = snapshot.data!.data();
-                
-                    //     return Column(
-                    //       children: [
-                    //         Container(
-                    //           decoration: shadowDecoration(),
-                    //           margin: const EdgeInsets.all(25.0),
-                    //           child: Center(
-                    //             child: Stack(
-                    //               children: [
-                    //                 CircleAvatar(
-                    //                   radius: 80,
-                    //                   backgroundImage: NetworkImage(
-                    //                     data?["profile"] != null 
-                    //                     ? data!["profile"] 
-                    //                     : "https://ui-avatars.com/api/?size=120&name=${data!["name"]}"
-                    //                   ),
-                    //                 ),
-                    //                 Positioned(
-                    //                   bottom: 0,
-                    //                   right: 10,
-                    //                   child: CircleAvatar(
-                    //                     backgroundColor: secondaryColor,
-                    //                     radius: 20,
-                    //                     child: IconButton(
-                    //                       onPressed: () => controller.pickImage(), 
-                    //                       icon: Icon(
-                    //                         Icons.edit,
-                    //                         color: onSecondaryColor,
-                    //                       ),
-                    //                     ),
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         Text(
-                    //           data["name"], 
-                    //           style: projectTextTheme.headline6?.copyWith(
-                    //             color: onPrimaryColor
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     );
-                    //   }
-                    // ),
-                    Column(
-                          children: [
-                            Container(
-                              decoration: shadowDecoration(),
-                              margin: const EdgeInsets.all(24.0),
-                              child: Center(
-                                child: Stack(
-                                  children: [
-                                    CachedNetworkImage(
-                                      imageUrl: "https://ui-avatars.com/api/?size=120&name=Nyoman Charles",
-                                      imageBuilder: (context, imageProvider) => CircleAvatar(
-                                        radius: 60,
-                                        backgroundImage: imageProvider,
-                                      ),
-                                      placeholder: (context, url) => Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.white,
-                                        child: const CircleAvatar(
+                    StreamBuilder<DocumentSnapshot<UserData>>(
+                      stream: controller.getProfile(),
+                      builder: (context, snapshot) {
+                        if(snapshot.hasData){
+                          final user = snapshot.data!.data()!;
+                          return Column(
+                            children: [
+                              Container(
+                                decoration: shadowDecoration(),
+                                margin: const EdgeInsets.all(25.0),
+                                child: Center(
+                                  child: Stack(
+                                    children: [
+                                      CachedNetworkImage(
+                                        imageUrl: user.profile ?? "https://ui-avatars.com/api/?size=120&name=${user.name}",
+                                        imageBuilder: (context, imageProvider) => CircleAvatar(
                                           radius: 60,
-                                          backgroundColor: Colors.white,
+                                          backgroundImage: imageProvider,
                                         ),
+                                        placeholder: (context, url) => Shimmer.fromColors(
+                                          baseColor: Colors.grey.shade300,
+                                          highlightColor: Colors.white,
+                                          child: const CircleAvatar(
+                                            radius: 60,
+                                            backgroundColor: Colors.white,
+                                          ),
+                                        ),
+                                        errorWidget: (context, url, error) => const CircleAvatar(
+                                          radius: 60,
+                                          backgroundImage: AssetImage(
+                                            "assets/images/img_square_placeholder.png"
+                                          ),
+                                        )
                                       ),
-                                      errorWidget: (context, url, error) => const CircleAvatar(
-                                        radius: 60,
-                                        backgroundImage: AssetImage(
-                                          "assets/images/img_square_placeholder.png"
-                                        ),
-                                      )
-                                    ),
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: CircleAvatar(
-                                        backgroundColor: secondaryColor,
-                                        radius: 15,
-                                        child: IconButton(
-                                          onPressed: () => controller.pickImage(), 
-                                          icon: Icon(
-                                            size: 15,
-                                            Icons.edit,
-                                            color: onSecondaryColor,
+                                      Positioned(
+                                        bottom: 0,
+                                        right: 0,
+                                        child: CircleAvatar(
+                                          backgroundColor: secondaryColor,
+                                          radius: 15,
+                                          child: IconButton(
+                                            onPressed: () => controller.pickImage(), 
+                                            icon: Icon(
+                                              size: 15,
+                                              Icons.edit,
+                                              color: onSecondaryColor,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                user.name ?? "-",
+                                style: projectTextTheme.headline6?.copyWith(
+                                  color: onPrimaryColor
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+                        else{
+                          return Container(
+                            margin: const EdgeInsets.all(25.0),
+                            child: const Center(
+                              child: CircleAvatar(
+                                radius: 60,
+                                backgroundImage: AssetImage(
+                                  "assets/images/img_square_placeholder.png"
                                 ),
                               ),
                             ),
-                            Text(
-                              "Nyoman Charles", 
-                              style: projectTextTheme.headline6?.copyWith(
-                                color: onPrimaryColor
-                              ),
-                            ),
-                          ],
-                        ),
-                      
+                          );
+                        }
+                      }
+                    ),
                     const SizedBox(height: 24),
                     Container(
                       width: 100.w,

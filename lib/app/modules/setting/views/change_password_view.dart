@@ -44,7 +44,7 @@ class ChangePasswordView extends StatelessWidget{
                       ),
                       const SizedBox(height: 40),
                       PasswordTextFieldWidget(
-                        controller: controller.curentPassC,
+                        controller: controller.currentPassC,
                         isHidden: controller.isHidden1, 
                         labelText: "Current Password",
                         hintText: "Current Password...",

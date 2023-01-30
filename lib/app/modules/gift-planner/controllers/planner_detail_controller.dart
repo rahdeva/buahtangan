@@ -48,7 +48,7 @@ class PlannerDetailController extends GetxController {
     return null;
   }
 
-  void  fillDataTextController(Planner planner) {
+  void fillDataTextController(Planner planner) {
     dateC.text = DateFormat("dd MMMM yyyy").format(planner.date ?? DateTime.now());
     eventC.text = planner.event ?? "-";
     budgetC.text = planner.budget ?? "-";

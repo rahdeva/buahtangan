@@ -1,3 +1,4 @@
+import 'package:buahtangan/app/models/userData.dart';
 import 'package:buahtangan/app/widgets/colored_status_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -218,56 +219,68 @@ class EditProfileView extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   const BackButtonWidget(),
-                  Container(
-                    width: 100.w,
-                    constraints: BoxConstraints(
-                      minHeight: 90.h,
-                    ),
-                    padding: const EdgeInsets.fromLTRB(40, 60, 40, 0),
-                    decoration: whiteContainerDecoration(),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Edit Profile",
-                          style: projectTextTheme.headline6?.copyWith(
-                            color: onBackgroundColor
+                  FutureBuilder<UserData?>(
+                    future: controller.getProfile(),
+                    builder: (context, snapshot) {
+                      if(snapshot.hasData){
+                        final userData = snapshot.data!;
+                        controller.fillDataTextController(userData);
+                        return Container(
+                          width: 100.w,
+                          constraints: BoxConstraints(
+                            minHeight: 90.h,
                           ),
-                        ),
-                        const SizedBox(height: 40),
-                        TextFieldWidget(
-                          controller: controller.nameC,
-                          keyboardType: TextInputType.name,
-                          labelText: "Name",
-                          hintText: "Your Name...",
-                        ),
-                        const SizedBox(height: 24),
-                        DisableTextFieldWidget(
-                          controller: controller.emailC,
-                          keyboardType: TextInputType.emailAddress,
-                          labelText: "Email", 
-                        ),
-                        const SizedBox(height: 24),
-                        TextFieldWidget(
-                          controller: controller.phoneC,
-                          keyboardType: TextInputType.phone,
-                          labelText: "Phone Number",
-                          hintText: "Your Phone Number...",
-                        ),
-                        const SizedBox(height: 40),
-                        PrimaryButtonWidget(
-                          buttonText: "Update Profile",           
-                          isLoading: controller.isLoading,
-                          backgroundColor: secondaryColor, 
-                          overlayColor: secondaryVariantColor, 
-                          foregroundColor: onSecondaryColor, 
-                          onPress: () {
-                            if (controller.isLoading.isFalse) {
-                              controller.updateProfile();
-                            }
-                          }, 
-                        ),
-                      ]
-                    ),
+                          padding: const EdgeInsets.fromLTRB(40, 60, 40, 0),
+                          decoration: whiteContainerDecoration(),
+                          child: Column(
+                            children: [
+                              Text(
+                                "Edit Profile",
+                                style: projectTextTheme.headline6?.copyWith(
+                                  color: onBackgroundColor
+                                ),
+                              ),
+                              const SizedBox(height: 40),
+                              TextFieldWidget(
+                                controller: controller.nameC,
+                                keyboardType: TextInputType.name,
+                                labelText: "Name",
+                                hintText: "Your Name...",
+                              ),
+                              const SizedBox(height: 24),
+                              DisableTextFieldWidget(
+                                controller: controller.emailC,
+                                keyboardType: TextInputType.emailAddress,
+                                labelText: "Email", 
+                              ),
+                              const SizedBox(height: 24),
+                              TextFieldWidget(
+                                controller: controller.phoneC,
+                                keyboardType: TextInputType.phone,
+                                labelText: "Phone Number",
+                                hintText: "Your Phone Number...",
+                              ),
+                              const SizedBox(height: 40),
+                              PrimaryButtonWidget(
+                                buttonText: "Update Profile",           
+                                isLoading: controller.isLoading,
+                                backgroundColor: secondaryColor, 
+                                overlayColor: secondaryVariantColor, 
+                                foregroundColor: onSecondaryColor, 
+                                onPress: () {
+                                  if (controller.isLoading.isFalse) {
+                                    controller.updateProfile();
+                                  }
+                                }, 
+                              ),
+                            ]
+                          ),
+                        );
+                      }
+                      else{
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                    }
                   )
                 ],
               )

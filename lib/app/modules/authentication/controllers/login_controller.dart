@@ -125,21 +125,21 @@ class LoginController extends GetxController {
     }
   }
 
-  Future<void> loginFacebook() async {
-    final userCredential = await service.signInWithFacebook();
-    if (userCredential != null) {
-      // var userData = await service.getUserData(userCredential.user!.uid);
-      if (userCredential.additionalUserInfo!.isNewUser) {
-        // if(userData == null){
-          print("masuk 1");
-          // Get.offNamed(Routes.HOME_RESULT);
-        // } 
-      } else {
-          print("masuk 2");
-        Get.offNamed(Routes.HOME_RESULT);
-      }
-    }
-  }
+  // Future<void> loginFacebook() async {
+  //   final userCredential = await service.signInWithFacebook();
+  //   if (userCredential != null) {
+  //     // var userData = await service.getUserData(userCredential.user!.uid);
+  //     if (userCredential.additionalUserInfo!.isNewUser) {
+  //       // if(userData == null){
+  //         print("masuk 1");
+  //         // Get.offNamed(Routes.HOME_RESULT);
+  //       // } 
+  //     } else {
+  //         print("masuk 2");
+  //       Get.offNamed(Routes.HOME_RESULT);
+  //     }
+  //   }
+  // }
 
   void resetDialog() {
     Get.defaultDialog(

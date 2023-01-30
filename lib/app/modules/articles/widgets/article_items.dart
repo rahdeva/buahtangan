@@ -57,7 +57,7 @@ class ArticleListItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                     child: CachedNetworkImage(
-                      imageUrl: "https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+                      imageUrl: mData.pictureUrl ?? "",
                       imageBuilder: (context, imageProvider) => Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
@@ -65,6 +65,7 @@ class ArticleListItem extends StatelessWidget {
                             image: imageProvider,
                             fit: BoxFit.cover,
                           ),
+                          color: surfaceColor
                         ),
                       ),
                       placeholder: (context, url) => Shimmer.fromColors(
@@ -107,7 +108,8 @@ class ArticleListItem extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            "12d ago",
+                            // mData.publishedAt
+                            "13d ago",
                             style: projectTextTheme.bodyText2!.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
@@ -121,7 +123,8 @@ class ArticleListItem extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            "13m read",
+                            mData.readTime ?? "10m read",
+                            overflow: TextOverflow.ellipsis,
                             style: projectTextTheme.bodyText2!.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
