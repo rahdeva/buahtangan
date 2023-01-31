@@ -234,7 +234,7 @@ class SettingView extends StatelessWidget {
                                       height: 60,
                                       decoration: shadowDecoration(),
                                       child: ElevatedButton(
-                                        onPressed: (){},
+                                        onPressed: () => controller.addFeedback(),
                                         style: ButtonStyle(
                                           backgroundColor: MaterialStateProperty.all(primaryColor),
                                           overlayColor: MaterialStateProperty.all(primaryVariantColor),

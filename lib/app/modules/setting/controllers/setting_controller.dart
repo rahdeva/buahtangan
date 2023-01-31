@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'package:buahtangan/app/models/feedback.dart';
 import 'package:buahtangan/app/models/userData.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:buahtangan/app/widgets/snackbar/show_snackbar.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -79,6 +81,50 @@ class SettingController extends GetxController {
     } catch (e) {
       print(e);
       Get.snackbar("TERJADI KESALAHAN", "Tidak dapat logout.");
+    }
+  }
+
+  Future<void> addFeedback() async {
+    Get.focusScope?.unfocus();
+    Get.dialog(
+      const Center(child: CircularProgressIndicator()),
+      barrierDismissible: false,
+      useSafeArea: false,
+    );
+    FirebaseAuth auth = FirebaseAuth.instance;
+    if (reviewResult.value.isNotEmpty) {
+      final docFeedback = FirebaseFirestore.instance
+        .collection("feedbacks")
+        .doc();
+      final feeedback = UserFeedback(
+        id: docFeedback.id,
+        userName: auth.currentUser!.displayName, 
+        createdAt: DateTime.now(), 
+        feedback: reviewResult.value, 
+        rating: rating
+      );
+
+      final json = feeedback.toJson();
+      await docFeedback.set(json);
+      
+      Get.back();
+      showSnackbar(
+        "Success!",
+        "Your profile has been updated",
+        const Icon(
+          Icons.check_circle_outline_rounded,
+          color: Colors.green
+        )
+      );
+    } else {
+      Get.back();
+      showSnackbar(
+        "Oops!", "All of the input must be filled",
+        const Icon(
+          Icons.close_rounded, 
+          color: Colors.red
+        )
+      );
     }
   }
 }
