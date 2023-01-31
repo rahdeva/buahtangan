@@ -1,17 +1,17 @@
 // To parse this JSON data, do
 //
-//     final feedback = feedbackFromJson(jsonString);
+//     final userFeedback = userFeedbackFromJson(jsonString);
 
 // ignore_for_file: prefer_if_null_operators
 
 import 'dart:convert';
 
-Feedback feedbackFromJson(String str) => Feedback.fromJson(json.decode(str));
+UserFeedback userFeedbackFromJson(String str) => UserFeedback.fromJson(json.decode(str));
 
-String feedbackToJson(Feedback data) => json.encode(data.toJson());
+String userFeedbackToJson(UserFeedback data) => json.encode(data.toJson());
 
-class Feedback {
-    Feedback({
+class UserFeedback {
+    UserFeedback({
         required this.id,
         required this.userName,
         required this.createdAt,
@@ -25,7 +25,7 @@ class Feedback {
     String? feedback;
     double? rating;
 
-    factory Feedback.fromJson(Map<String, dynamic> json) => Feedback(
+    factory UserFeedback.fromJson(Map<String, dynamic> json) => UserFeedback(
         id: json["id"] == null ? null : json["id"],
         userName: json["userName"] == null ? null : json["userName"],
         createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
