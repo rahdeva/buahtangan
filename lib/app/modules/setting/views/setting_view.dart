@@ -174,6 +174,7 @@ class SettingView extends StatelessWidget {
                                         onRatingUpdate: (rating) {
                                           // controller.rating = rating;
                                           // debugPrint(controller.rating.toString());
+                                          
                                         },
                                       ),
                                     ),
