@@ -24,5 +24,5 @@ class DashboardController extends GetxController {
     GiftPlannerView(),
     SettingView()
   ];
-  
+    
 }
